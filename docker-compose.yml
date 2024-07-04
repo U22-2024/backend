@@ -1,0 +1,24 @@
+﻿services:
+  grpc_service:
+    image: grpc_service
+    build:
+      context: .
+      dockerfile: GrpcService/Dockerfile
+    networks:
+      - backend-network
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    networks:
+      - backend-network
+
+volumes:
+  db-store:
+networks:
+  backend-network:
