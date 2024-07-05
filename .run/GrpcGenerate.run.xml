@@ -1,0 +1,6 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GrpcGenerate" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="./tools/grpc-gen.ps1" workingDirectory="$SolutionDir$GrpcService" executablePath="pwsh.exe">
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
