@@ -1,4 +1,14 @@
 ﻿services:
+  grpc_service:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    restart: always
+    tty: true
+    working_dir: /app
+    command: [ "dotnet", "watch" ]
+    volumes:
+      - ./GrpcService:/app
+    networks:
+      - backend-network
   db:
     image: postgres
     restart: always
@@ -10,6 +20,10 @@
       - "5432:5432"
     volumes:
       - db-store:/var/lib/postgresql/data
+    networks:
+      - backend-network
 
 volumes:
   db-store:
+networks:
+  backend-network:

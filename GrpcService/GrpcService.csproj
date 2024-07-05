@@ -9,16 +9,13 @@
 
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
+        <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.63.0" />
     </ItemGroup>
 
     <ItemGroup>
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>
