@@ -1,0 +1,27 @@
+﻿@API_KEY = AIzaSyB2pyd51G15siy7seu2zYQQ81AjeTFzM_A
+
+### Firebase Authorization
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{API_KEY}}
+Content-Type: application/json
+
+{
+  "email": "test-user@example.com",
+  "password": "password",
+  "returnSecureToken": true
+}
+
+> {%
+    client.global.set("auth_token", response.body.idToken);
+    client.global.set("refresh_token", response.body.refreshToken);
+%}
+
+### Exchange Refresh Token for ID Token
+POST https://securetoken.googleapis.com/v1/token?key={{API_KEY}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&refresh_token={{refresh_token}}
+
+> {%
+    client.global.set("auth_token", response.body.id_token);
+    client.global.set("refresh_token", response.body.refresh_token);
+%}

@@ -1,14 +1,19 @@
-﻿services:
+﻿version: '3'
+services:
   grpc_service:
     image: mcr.microsoft.com/dotnet/sdk:8.0
     restart: always
     tty: true
     working_dir: /app
-    command: [ "dotnet", "watch" ]
+    command: [ "dotnet", "watch", "--", "--launch-profile", "http-container" ]
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/Secret/ServiceAccountKey.json
+    ports:
+      - "5065:8080"
     volumes:
       - ./GrpcService:/app
-    networks:
-      - backend-network
+      - grpc-service-bin:/app/bin
+      - grpc-service-obj:/app/obj
   db:
     image: postgres
     restart: always
@@ -20,10 +25,8 @@
       - "5432:5432"
     volumes:
       - db-store:/var/lib/postgresql/data
-    networks:
-      - backend-network
 
 volumes:
   db-store:
-networks:
-  backend-network:
+  grpc-service-bin:
+  grpc-service-obj:
