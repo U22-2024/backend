@@ -1,18 +1,17 @@
 using System.Security.Claims;
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using TodoService = GrpcService.Services.TodoService;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var firebaseOpt = new AppOptions
-{
-    Credential = GoogleCredential.GetApplicationDefault(),
-    ProjectId = "u22-2024"
-};
-FirebaseApp.Create(firebaseOpt);
+const string firebaseProjectId = "u22-2024";
+// var firebaseOpt = new AppOptions
+// {
+//     Credential = GoogleCredential.GetApplicationDefault(),
+//     ProjectId = "u22-2024"
+// };
+// FirebaseApp.Create(firebaseOpt);
 
 // Add services to the container.
 builder.Services.AddGrpc();
@@ -26,13 +25,13 @@ builder.Services.AddAuthorizationBuilder()
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
     {
-        opt.Authority = $"https://securetoken.google.com/{firebaseOpt.ProjectId}";
+        opt.Authority = $"https://securetoken.google.com/{firebaseProjectId}";
         opt.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = $"https://securetoken.google.com/{firebaseOpt.ProjectId}",
+            ValidIssuer = $"https://securetoken.google.com/{firebaseProjectId}",
             ValidateAudience = true,
-            ValidAudience = firebaseOpt.ProjectId,
+            ValidAudience = firebaseProjectId,
             ValidateLifetime = true
         };
     });
