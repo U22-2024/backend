@@ -49,6 +49,10 @@ namespace Proto.User.V1 {
     static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceCreateRequest> __Marshaller_proto_user_v1_UserServiceCreateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceCreateRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceCreateResponse> __Marshaller_proto_user_v1_UserServiceCreateResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceCreateResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceReadRequest> __Marshaller_proto_user_v1_UserServiceReadRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceReadRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceReadResponse> __Marshaller_proto_user_v1_UserServiceReadResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceReadResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse> __Method_Create = new grpc::Method<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse>(
@@ -57,6 +61,14 @@ namespace Proto.User.V1 {
         "Create",
         __Marshaller_proto_user_v1_UserServiceCreateRequest,
         __Marshaller_proto_user_v1_UserServiceCreateResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Proto.User.V1.UserServiceReadRequest, global::Proto.User.V1.UserServiceReadResponse> __Method_Read = new grpc::Method<global::Proto.User.V1.UserServiceReadRequest, global::Proto.User.V1.UserServiceReadResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Read",
+        __Marshaller_proto_user_v1_UserServiceReadRequest,
+        __Marshaller_proto_user_v1_UserServiceReadResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -70,6 +82,12 @@ namespace Proto.User.V1 {
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Proto.User.V1.UserServiceCreateResponse> Create(global::Proto.User.V1.UserServiceCreateRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Proto.User.V1.UserServiceReadResponse> Read(global::Proto.User.V1.UserServiceReadRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -123,6 +141,26 @@ namespace Proto.User.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Create, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceReadResponse Read(global::Proto.User.V1.UserServiceReadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Read(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceReadResponse Read(global::Proto.User.V1.UserServiceReadRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Read, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceReadResponse> ReadAsync(global::Proto.User.V1.UserServiceReadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ReadAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceReadResponse> ReadAsync(global::Proto.User.V1.UserServiceReadRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Read, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override UserServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -137,7 +175,8 @@ namespace Proto.User.V1 {
     public static grpc::ServerServiceDefinition BindService(UserServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_Create, serviceImpl.Create).Build();
+          .AddMethod(__Method_Create, serviceImpl.Create)
+          .AddMethod(__Method_Read, serviceImpl.Read).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -148,6 +187,7 @@ namespace Proto.User.V1 {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UserServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse>(serviceImpl.Create));
+      serviceBinder.AddMethod(__Method_Read, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceReadRequest, global::Proto.User.V1.UserServiceReadResponse>(serviceImpl.Read));
     }
 
   }
