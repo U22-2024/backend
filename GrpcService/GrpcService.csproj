@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FirebaseAdmin" Version="3.0.0" />
+        <PackageReference Include="FirebaseAdmin" Version="3.0.0"/>
         <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
-        <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.63.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+        <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.63.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6"/>
     </ItemGroup>
 
     <ItemGroup>

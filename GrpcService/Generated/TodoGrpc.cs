@@ -49,6 +49,10 @@ namespace Proto.Todo.V1 {
     static readonly grpc::Marshaller<global::Proto.Todo.V1.TodoServiceCreateRequest> __Marshaller_proto_todo_v1_TodoServiceCreateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.Todo.V1.TodoServiceCreateRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Proto.Todo.V1.TodoServiceCreateResponse> __Marshaller_proto_todo_v1_TodoServiceCreateResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.Todo.V1.TodoServiceCreateResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.Todo.V1.TodoServiceDeleteRequest> __Marshaller_proto_todo_v1_TodoServiceDeleteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.Todo.V1.TodoServiceDeleteRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.Todo.V1.TodoServiceDeleteResponse> __Marshaller_proto_todo_v1_TodoServiceDeleteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.Todo.V1.TodoServiceDeleteResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Proto.Todo.V1.TodoServiceCreateRequest, global::Proto.Todo.V1.TodoServiceCreateResponse> __Method_Create = new grpc::Method<global::Proto.Todo.V1.TodoServiceCreateRequest, global::Proto.Todo.V1.TodoServiceCreateResponse>(
@@ -57,6 +61,14 @@ namespace Proto.Todo.V1 {
         "Create",
         __Marshaller_proto_todo_v1_TodoServiceCreateRequest,
         __Marshaller_proto_todo_v1_TodoServiceCreateResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Proto.Todo.V1.TodoServiceDeleteRequest, global::Proto.Todo.V1.TodoServiceDeleteResponse> __Method_Delete = new grpc::Method<global::Proto.Todo.V1.TodoServiceDeleteRequest, global::Proto.Todo.V1.TodoServiceDeleteResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Delete",
+        __Marshaller_proto_todo_v1_TodoServiceDeleteRequest,
+        __Marshaller_proto_todo_v1_TodoServiceDeleteResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -70,6 +82,12 @@ namespace Proto.Todo.V1 {
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Proto.Todo.V1.TodoServiceCreateResponse> Create(global::Proto.Todo.V1.TodoServiceCreateRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Proto.Todo.V1.TodoServiceDeleteResponse> Delete(global::Proto.Todo.V1.TodoServiceDeleteRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -123,6 +141,26 @@ namespace Proto.Todo.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Create, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.Todo.V1.TodoServiceDeleteResponse Delete(global::Proto.Todo.V1.TodoServiceDeleteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Delete(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.Todo.V1.TodoServiceDeleteResponse Delete(global::Proto.Todo.V1.TodoServiceDeleteRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Delete, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.Todo.V1.TodoServiceDeleteResponse> DeleteAsync(global::Proto.Todo.V1.TodoServiceDeleteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.Todo.V1.TodoServiceDeleteResponse> DeleteAsync(global::Proto.Todo.V1.TodoServiceDeleteRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override TodoServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -137,7 +175,8 @@ namespace Proto.Todo.V1 {
     public static grpc::ServerServiceDefinition BindService(TodoServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_Create, serviceImpl.Create).Build();
+          .AddMethod(__Method_Create, serviceImpl.Create)
+          .AddMethod(__Method_Delete, serviceImpl.Delete).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -148,6 +187,7 @@ namespace Proto.Todo.V1 {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, TodoServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.Todo.V1.TodoServiceCreateRequest, global::Proto.Todo.V1.TodoServiceCreateResponse>(serviceImpl.Create));
+      serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.Todo.V1.TodoServiceDeleteRequest, global::Proto.Todo.V1.TodoServiceDeleteResponse>(serviceImpl.Delete));
     }
 
   }

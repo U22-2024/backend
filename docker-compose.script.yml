@@ -1,0 +1,9 @@
+﻿services:
+  update-proto:
+    build:
+      context: .
+      dockerfile: ./Docker/proto.Dockerfile
+    working_dir: /app
+    command: ./scripts/update-proto.sh
+    volumes:
+      - ".:/app"

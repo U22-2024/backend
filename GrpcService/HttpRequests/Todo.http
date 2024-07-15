@@ -1,7 +1,7 @@
 ﻿### Create a todo
-< {% 
- request.variables.set("auth_token", client.global.get("auth_token"));
- %}
+< {%
+    request.variables.set("auth_token", client.global.get("auth_token"));
+%}
 GRPC localhost:5065/proto.todo.v1.TodoService/Create
 Authorization: Bearer {{auth_token}}
 
