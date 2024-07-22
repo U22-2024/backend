@@ -53,6 +53,14 @@ namespace Proto.User.V1 {
     static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceReadRequest> __Marshaller_proto_user_v1_UserServiceReadRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceReadRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceReadResponse> __Marshaller_proto_user_v1_UserServiceReadResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceReadResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceUpdateRequest> __Marshaller_proto_user_v1_UserServiceUpdateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceUpdateRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceUpdateResponse> __Marshaller_proto_user_v1_UserServiceUpdateResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceUpdateResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceDeleteRequest> __Marshaller_proto_user_v1_UserServiceDeleteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceDeleteRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Proto.User.V1.UserServiceDeleteResponse> __Marshaller_proto_user_v1_UserServiceDeleteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Proto.User.V1.UserServiceDeleteResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse> __Method_Create = new grpc::Method<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse>(
@@ -69,6 +77,22 @@ namespace Proto.User.V1 {
         "Read",
         __Marshaller_proto_user_v1_UserServiceReadRequest,
         __Marshaller_proto_user_v1_UserServiceReadResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Proto.User.V1.UserServiceUpdateRequest, global::Proto.User.V1.UserServiceUpdateResponse> __Method_Update = new grpc::Method<global::Proto.User.V1.UserServiceUpdateRequest, global::Proto.User.V1.UserServiceUpdateResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Update",
+        __Marshaller_proto_user_v1_UserServiceUpdateRequest,
+        __Marshaller_proto_user_v1_UserServiceUpdateResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Proto.User.V1.UserServiceDeleteRequest, global::Proto.User.V1.UserServiceDeleteResponse> __Method_Delete = new grpc::Method<global::Proto.User.V1.UserServiceDeleteRequest, global::Proto.User.V1.UserServiceDeleteResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Delete",
+        __Marshaller_proto_user_v1_UserServiceDeleteRequest,
+        __Marshaller_proto_user_v1_UserServiceDeleteResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -88,6 +112,18 @@ namespace Proto.User.V1 {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Proto.User.V1.UserServiceReadResponse> Read(global::Proto.User.V1.UserServiceReadRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Proto.User.V1.UserServiceUpdateResponse> Update(global::Proto.User.V1.UserServiceUpdateRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Proto.User.V1.UserServiceDeleteResponse> Delete(global::Proto.User.V1.UserServiceDeleteRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -161,6 +197,46 @@ namespace Proto.User.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Read, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceUpdateResponse Update(global::Proto.User.V1.UserServiceUpdateRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Update(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceUpdateResponse Update(global::Proto.User.V1.UserServiceUpdateRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Update, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceUpdateResponse> UpdateAsync(global::Proto.User.V1.UserServiceUpdateRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceUpdateResponse> UpdateAsync(global::Proto.User.V1.UserServiceUpdateRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Update, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceDeleteResponse Delete(global::Proto.User.V1.UserServiceDeleteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Delete(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Proto.User.V1.UserServiceDeleteResponse Delete(global::Proto.User.V1.UserServiceDeleteRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Delete, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceDeleteResponse> DeleteAsync(global::Proto.User.V1.UserServiceDeleteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Proto.User.V1.UserServiceDeleteResponse> DeleteAsync(global::Proto.User.V1.UserServiceDeleteRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override UserServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -176,7 +252,9 @@ namespace Proto.User.V1 {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Create, serviceImpl.Create)
-          .AddMethod(__Method_Read, serviceImpl.Read).Build();
+          .AddMethod(__Method_Read, serviceImpl.Read)
+          .AddMethod(__Method_Update, serviceImpl.Update)
+          .AddMethod(__Method_Delete, serviceImpl.Delete).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -188,6 +266,8 @@ namespace Proto.User.V1 {
     {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceCreateRequest, global::Proto.User.V1.UserServiceCreateResponse>(serviceImpl.Create));
       serviceBinder.AddMethod(__Method_Read, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceReadRequest, global::Proto.User.V1.UserServiceReadResponse>(serviceImpl.Read));
+      serviceBinder.AddMethod(__Method_Update, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceUpdateRequest, global::Proto.User.V1.UserServiceUpdateResponse>(serviceImpl.Update));
+      serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Proto.User.V1.UserServiceDeleteRequest, global::Proto.User.V1.UserServiceDeleteResponse>(serviceImpl.Delete));
     }
 
   }

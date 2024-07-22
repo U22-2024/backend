@@ -7,6 +7,7 @@
     command: [ "dotnet", "watch", "--", "--launch-profile", "http-container" ]
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/app/Secret/ServiceAccountKey.json
+      - CONNECTION_STRING=Host=db;Port=5432;Database=postgres;Username=postgres;Password=postgres
     ports:
       - "5065:8080"
     volumes:
