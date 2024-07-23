@@ -16,8 +16,6 @@ public static class ServerCallContextExt
             .FirstOrDefault(claim => claim is { ValueType: ClaimValueTypes.Boolean, Type: "email_verified" })
             ?.Value;
 
-        logger?.LogInformation("AuthUser: {Uid}, {Email}, {EmailVerified}", uid, email, emailVerified);
-
         if (uid is null || email is null || emailVerified is null)
             throw new RpcException(new Status(StatusCode.Unauthenticated, "User not authenticated"));
 

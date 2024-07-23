@@ -1,4 +1,5 @@
 using GrpcService.Extensions;
+using GrpcService.Repository;
 using TodoService = GrpcService.Services.TodoService;
 using UserService = GrpcService.Services.UserService;
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.SetupApp();
+
+builder.Services.AddScoped<UserRepository>();
 
 var app = builder.Build();
 
