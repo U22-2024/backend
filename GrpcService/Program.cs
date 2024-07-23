@@ -5,6 +5,8 @@ using UserService = GrpcService.Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container.
 builder.SetupApp();
 
@@ -14,6 +16,8 @@ var app = builder.Build();
 
 app.UseHttpLogging();
 app.UseExceptionHandler();
+
+app.MapDefaultEndpoints();
 
 app.UseAuthentication();
 app.UseAuthorization();

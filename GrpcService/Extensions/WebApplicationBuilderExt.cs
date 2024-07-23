@@ -42,8 +42,7 @@ public static class WebApplicationBuilderExt
 
     private static void SetupDb(WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<AppDbContext>(opt =>
-            opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+        builder.AddNpgsqlDbContext<AppDbContext>("postgres");
     }
 
     private static void SetupGrpc(WebApplicationBuilder builder)
