@@ -28,5 +28,9 @@
     <ItemGroup>
       <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
     </ItemGroup>
+    
+    <Target Name="GenerateGrpcServices" BeforeTargets="CoreCompile">
+        <Exec Command="docker compose -f ../docker-compose.script.yml run --rm update-proto" />
+    </Target>
 
 </Project>
