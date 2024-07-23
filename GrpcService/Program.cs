@@ -1,3 +1,4 @@
+using GrpcService;
 using GrpcService.Extensions;
 using GrpcService.Repository;
 using TodoService = GrpcService.Services.TodoService;
@@ -26,5 +27,10 @@ app.MapGrpcService<UserService>();
 app.MapGrpcService<TodoService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
+using (var scope = app.Services.CreateScope())
+await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>())
+{
+    await dbCtx.Database.EnsureCreatedAsync();
+}
 
 app.Run();

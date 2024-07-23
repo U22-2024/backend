@@ -15,7 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DbInitializer\DbInitializer.csproj" />
       <ProjectReference Include="..\GrpcService\GrpcService.csproj" />
     </ItemGroup>
 

@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost", "AppHost\AppHost.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "ServiceDefaults\ServiceDefaults.csproj", "{D82679A7-41ED-49ED-930F-17A61A34B3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbInitializer", "DbInitializer\DbInitializer.csproj", "{E6AE2DB4-38CC-4E9A-B3D6-97919F8C476C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6AE2DB4-38CC-4E9A-B3D6-97919F8C476C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6AE2DB4-38CC-4E9A-B3D6-97919F8C476C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6AE2DB4-38CC-4E9A-B3D6-97919F8C476C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6AE2DB4-38CC-4E9A-B3D6-97919F8C476C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
