@@ -1,6 +1,7 @@
 using GrpcService;
 using GrpcService.Extensions;
 using GrpcService.Repository;
+using Microsoft.EntityFrameworkCore;
 using TodoService = GrpcService.Services.TodoService;
 using UserService = GrpcService.Services.UserService;
 
@@ -30,7 +31,8 @@ if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())
 await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>())
 {
-    await dbCtx.Database.EnsureCreatedAsync();
+    var strategy = dbCtx.Database.CreateExecutionStrategy();
+    await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
 }
 
 app.Run();
