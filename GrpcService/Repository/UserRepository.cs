@@ -1,11 +1,10 @@
 ﻿using Grpc.Core;
-using GrpcService.Models;
 
 namespace GrpcService.Repository;
 
 public class UserRepository(AppDbContext dbCtx)
 {
-    public async Task<User> Create(User user)
+    public async Task<Models.User> Create(Models.User user)
     {
         if (dbCtx.Users.Any(u => u.Uid == user.Uid))
             throw new RpcException(new Status(StatusCode.AlreadyExists, "User already exists"));
@@ -14,14 +13,14 @@ public class UserRepository(AppDbContext dbCtx)
         return user;
     }
 
-    public async Task<User> GetById(string uid)
+    public async Task<Models.User> GetById(string uid)
     {
         var user = await dbCtx.Users.FindAsync(uid);
         if (user is null) throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
         return user;
     }
 
-    public async Task<User> UpdateById(string id, Func<User, Task> op)
+    public async Task<Models.User> UpdateById(string id, Func<Models.User, Task> op)
     {
         var user = await GetById(id);
         await op(user);

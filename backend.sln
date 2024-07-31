@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{C2D06598-9A08-4A16-861E-D6A2CEFE01D9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6B056BB-5437-44A7-82ED-8BDC8EAEFBA8}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-		docker-compose.script.yml = docker-compose.script.yml
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost", "AppHost\AppHost.csproj", "{6ED6C18B-4481-45DF-BFDA-10A9E072AF34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "ServiceDefaults\ServiceDefaults.csproj", "{D82679A7-41ED-49ED-930F-17A61A34B3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGenerated", "GrpcGenerated\GrpcGenerated.csproj", "{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +27,9 @@ Global
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D82679A7-41ED-49ED-930F-17A61A34B3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

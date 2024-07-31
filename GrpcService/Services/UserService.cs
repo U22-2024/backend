@@ -1,86 +1,53 @@
 ﻿using Grpc.Core;
 using GrpcService.Extensions;
-using GrpcService.Models;
 using GrpcService.Repository;
 using Microsoft.AspNetCore.Authorization;
-using Proto.User.V1;
+using User.V1;
 
 namespace GrpcService.Services;
 
 public class UserService(AppDbContext dbCtx, ILogger<UserService> logger, UserRepository userRepository)
-    : Proto.User.V1.UserService.UserServiceBase
+    : User.V1.UserService.UserServiceBase
 {
     [Authorize]
-    public override async Task<UserServiceCreateResponse> Create(UserServiceCreateRequest request,
+    public override async Task<CreateUserResponse> CreateUser(CreateUserRequest request,
         ServerCallContext context)
     {
         var authUser = context.GetAuthUser(logger);
         if (authUser.Uid != request.Uid)
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Unauthorized"));
 
-        var user = await userRepository.Create(new User
+        var user = await userRepository.Create(new Models.User
         {
-            Uid = request.Uid,
-            Email = request.Email,
-            DisplayName = string.IsNullOrEmpty(request.DisplayName) ? request.Email : request.DisplayName,
-            IconUrl = request.IconUrl
+            Uid = request.Uid
         });
         await dbCtx.SaveChangesAsync();
 
-        return new UserServiceCreateResponse
+        return new CreateUserResponse
         {
-            Uid = user.Uid,
-            Email = user.Email,
-            DisplayName = user.DisplayName,
-            IconUrl = user.IconUrl
+            User = new User.V1.User
+            {
+                Uid = user.Uid
+            }
         };
     }
 
     [Authorize]
-    public override async Task<UserServiceReadResponse> Read(UserServiceReadRequest request, ServerCallContext context)
-    {
-        var authUser = context.GetAuthUser();
-        if (authUser.Uid != request.Uid)
-            throw new RpcException(new Status(StatusCode.PermissionDenied, "Unauthorized"));
-
-        var user = await userRepository.GetById(request.Uid);
-
-        return new UserServiceReadResponse
-        {
-            Uid = user.Uid,
-            Email = user.Email,
-            DisplayName = user.DisplayName,
-            IconUrl = user.IconUrl
-        };
-    }
-
-    [Authorize]
-    public override async Task<UserServiceUpdateResponse> Update(UserServiceUpdateRequest request,
+    public override Task<UpdateUserResponse> UpdateUser(UpdateUserRequest request,
         ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
-        if (authUser.Uid != request.Uid)
+        if (authUser.Uid != request.User.Uid)
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Unauthorized"));
 
-        var user = await userRepository.UpdateById(request.Uid, user =>
+        return Task.FromResult(new UpdateUserResponse
         {
-            user.DisplayName = string.IsNullOrEmpty(request.DisplayName) ? request.Email : request.DisplayName;
-            user.IconUrl = request.IconUrl;
-            return Task.CompletedTask;
+            User = request.User
         });
-        await dbCtx.SaveChangesAsync();
-
-        return new UserServiceUpdateResponse
-        {
-            Uid = user.Uid,
-            Email = user.Email,
-            DisplayName = user.DisplayName,
-            IconUrl = user.IconUrl
-        };
     }
 
     [Authorize]
-    public override async Task<UserServiceDeleteResponse> Delete(UserServiceDeleteRequest request,
+    public override async Task<DeleteUserResponse> DeleteUser(DeleteUserRequest request,
         ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
@@ -89,7 +56,7 @@ public class UserService(AppDbContext dbCtx, ILogger<UserService> logger, UserRe
 
         await userRepository.DeleteById(request.Uid);
 
-        return new UserServiceDeleteResponse
+        return new DeleteUserResponse
         {
             Success = true
         };

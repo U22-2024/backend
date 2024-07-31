@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "InitTask",
+      "type": "shell",
+      "command": [
+        "dotnet tool restore &&",
+        "dotnet husky install &&",
+        "dotnet husky run --group init"
+      ],
+      "group": "build",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}
