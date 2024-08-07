@@ -9,6 +9,28 @@
         "./scripts/init.fsx"
       ],
       "group": "init"
+    },
+    {
+      "name": "generate-grpc",
+      "command": "./Tools/bin/buf",
+      "windows": {
+        "command": "Tools\\bin\\buf.exe"
+      },
+      "args": [
+        "generate"
+      ],
+      "group": "generate"
+    },
+    {
+      "name": "clean",
+      "command": "dotnet",
+      "args": [
+        "fsi",
+        "./scripts/clean.fsx",
+        "--",
+        "./"
+      ],
+      "group": "clean"
     }
   ]
 }

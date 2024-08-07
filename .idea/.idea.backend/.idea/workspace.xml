@@ -17,43 +17,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d60f8259-b5a3-469a-88ae-fbe70ad4cc65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.husky/task-runner.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buf.gen.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/github.fsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/init.fsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/lint-staged.fsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/settings.fsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.config/dotnet-tools.json" beforeDir="false" afterPath="$PROJECT_DIR$/.config/dotnet-tools.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/externalDependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/Update Grpc.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker/proto.Dockerfile" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/AppHost_ http.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/AppHost_ https.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/GenerateGrpc.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/InitTask.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcGenerated/Remind.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcGenerated/RemindGroupGrpc.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcGenerated/RemindGrpc.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcService/Models/Auth/AuthUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcService/Models/Remind/RemindGroupModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcService/Models/Remind/RemindModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcService/Services/RemindGroupService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcService/Services/RemindService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcServiceTest/GrpcServiceTest.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GrpcServiceTest/IntegrationTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/clean.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.husky/task-runner.json" beforeDir="false" afterPath="$PROJECT_DIR$/.husky/task-runner.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrpcGenerated/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcGenerated/RemindGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrpcGenerated/UserGrpc.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GrpcService/AppDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/AppDBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Dockerfile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GrpcService/Extensions/ServerCallContextExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/Extensions/ServerCallContextExt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Generated/Todo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Generated/TodoGrpc.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Generated/User.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Generated/UserGrpc.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GrpcService/GrpcService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/GrpcService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Models/AuthUser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrpcService/Models/User.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GrpcService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Repository/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/Repository/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Services/TodoService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrpcService/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GrpcService/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrpcService/Repository/UserRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrpcService/Services/UserService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.script.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,151 +65,59 @@
     &quot;accountId&quot;: &quot;0b37c183-178b-4e15-a97b-14af0c24c6ac&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/keigo/develop/U22/backend/GrpcService/AppDBContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/keigo/develop/U22/backend/GrpcService/Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2jztirUSnG28p6Ah8MkDu2EAsJW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.AppHost: http.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Aspire Host.AppHost: http.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Shell Script.GenerateGrpc.executor": "Run",
+    "Shell Script.InitTask.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\keigo\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\keigo\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\keigo\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\keigo\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\keigo\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\keigo\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.AppHost: http">
-    <configuration name="AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
-      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/AppHost/AppHost.csproj" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="TRACK_ENVS" value="1" />
-      <envs>
-        <env name="DOTNET_ENVIRONMENT" value="Development" />
-        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
-        <env name="DOTNET_DASHBOARD_OTLP_ENDPOINT_URL" value="http://localhost:19227" />
-        <env name="DOTNET_RESOURCE_SERVICE_ENDPOINT_URL" value="http://localhost:20140" />
-        <env name="ASPNETCORE_URLS" value="http://localhost:15272" />
-        <env name="DOTNET_LAUNCH_PROFILE" value="http" />
-      </envs>
-      <option name="TRACK_URL" value="1" />
-      <browser url="http://localhost:15272" start="true" />
-      <method v="2">
-        <option name="Build Solution" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppHost: https" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
-      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/AppHost/AppHost.csproj" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="TRACK_ENVS" value="1" />
-      <envs>
-        <env name="DOTNET_ENVIRONMENT" value="Development" />
-        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
-        <env name="DOTNET_DASHBOARD_OTLP_ENDPOINT_URL" value="https://localhost:21243" />
-        <env name="DOTNET_RESOURCE_SERVICE_ENDPOINT_URL" value="https://localhost:22069" />
-        <env name="ASPNETCORE_URLS" value="https://localhost:17256;http://localhost:15272" />
-        <env name="DOTNET_LAUNCH_PROFILE" value="https" />
-      </envs>
-      <option name="TRACK_URL" value="1" />
-      <browser url="https://localhost:17256" start="true" />
-      <method v="2">
-        <option name="Build Solution" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppHost: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AppHost/AppHost.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="AppHost: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AppHost/AppHost.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="GrpcService: http-container" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GrpcService/GrpcService.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http-container" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="GrpcService: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GrpcService/GrpcService.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="GrpcService: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GrpcService/GrpcService.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager" selected="Shell Script.GenerateGrpc">
+    <list>
+      <item itemvalue="Aspire Host.AppHost: http" />
+      <item itemvalue="Aspire Host.AppHost: https" />
+      <item itemvalue="Shell Script.GenerateGrpc" />
+      <item itemvalue="Shell Script.InitTask" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -230,7 +128,22 @@
       <option name="presentableId" value="Default" />
       <updated>1722401864172</updated>
       <workItem from="1722401865425" duration="1693000" />
+      <workItem from="1722415313493" duration="604000" />
+      <workItem from="1722415934817" duration="130000" />
+      <workItem from="1722416074408" duration="3250000" />
+      <workItem from="1722737823474" duration="617000" />
+      <workItem from="1722860196859" duration="6450000" />
+      <workItem from="1722985753226" duration="5451000" />
     </task>
+    <task id="LOCAL-00001" summary="BufCLIでコード生成するように変更">
+      <option name="closed" value="true" />
+      <created>1722415444430</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1722415444430</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +151,25 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="BufCLIでコード生成するように変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="BufCLIでコード生成するように変更" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

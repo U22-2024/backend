@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "ServiceD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGenerated", "GrpcGenerated\GrpcGenerated.csproj", "{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServiceTest", "GrpcServiceTest\GrpcServiceTest.csproj", "{3A7EA6A5-DDC9-4956-AD56-1278C3A02C5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{911C73A0-CD2C-4D1E-93DF-8DDA44C93FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A7EA6A5-DDC9-4956-AD56-1278C3A02C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A7EA6A5-DDC9-4956-AD56-1278C3A02C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A7EA6A5-DDC9-4956-AD56-1278C3A02C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A7EA6A5-DDC9-4956-AD56-1278C3A02C5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

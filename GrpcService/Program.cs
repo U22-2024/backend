@@ -1,8 +1,7 @@
 using GrpcService;
 using GrpcService.Extensions;
-using GrpcService.Repository;
+using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
-using UserService = GrpcService.Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +9,6 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.SetupApp();
-
-builder.Services.AddScoped<UserRepository>();
 
 var app = builder.Build();
 
@@ -23,7 +20,8 @@ app.MapDefaultEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGrpcService<UserService>();
+app.MapGrpcService<RemindService>();
+app.MapGrpcService<RemindGroupService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())

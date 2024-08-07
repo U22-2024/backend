@@ -24,4 +24,8 @@
         <ProjectReference Include="..\GrpcGenerated\GrpcGenerated.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Repository\" />
+    </ItemGroup>
+
 </Project>
