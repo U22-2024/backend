@@ -7,4 +7,4 @@ RUN apk update \
  && npm install -g firebase-tools
 
 WORKDIR /opt/firebase
-CMD [ "firebase", "emulators:start", "--project", "u22-2024" ]
+CMD [ "firebase", "emulators:start", "--project", "u22-2024", "--import", "data" ]

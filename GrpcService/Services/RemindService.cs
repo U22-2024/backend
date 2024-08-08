@@ -1,12 +1,14 @@
 ﻿using Grpc.Core;
 using GrpcService.Extensions;
 using GrpcService.Models.Remind;
+using Microsoft.AspNetCore.Authorization;
 using Remind.V1;
 
 namespace GrpcService.Services;
 
 public class RemindService(AppDbContext dbContext) : Remind.V1.RemindService.RemindServiceBase
 {
+    [Authorize]
     public override async Task<CreateRemindResponse> CreateRemind(CreateRemindRequest request,
         ServerCallContext context)
     {
@@ -39,6 +41,7 @@ public class RemindService(AppDbContext dbContext) : Remind.V1.RemindService.Rem
         };
     }
 
+    [Authorize]
     public override async Task<GetRemindResponse> GetRemind(GetRemindRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
@@ -62,6 +65,7 @@ public class RemindService(AppDbContext dbContext) : Remind.V1.RemindService.Rem
         };
     }
 
+    [Authorize]
     public override Task<GetRemindsResponse> GetReminds(GetRemindsRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
@@ -78,6 +82,7 @@ public class RemindService(AppDbContext dbContext) : Remind.V1.RemindService.Rem
         return Task.FromResult(response);
     }
 
+    [Authorize]
     public override async Task<UpdateRemindResponse> UpdateRemind(UpdateRemindRequest request,
         ServerCallContext context)
     {
@@ -107,6 +112,7 @@ public class RemindService(AppDbContext dbContext) : Remind.V1.RemindService.Rem
         };
     }
 
+    [Authorize]
     public override Task<DeleteRemindResponse> DeleteRemind(DeleteRemindRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();

@@ -1,13 +1,16 @@
 ﻿using Grpc.Core;
 using GrpcService.Extensions;
 using GrpcService.Models.Remind;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Remind.V1;
 
 namespace GrpcService.Services;
 
-public class RemindGroupService(AppDbContext dbContext) : Remind.V1.RemindGroupService.RemindGroupServiceBase
+public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupService> logger)
+    : Remind.V1.RemindGroupService.RemindGroupServiceBase
 {
+    [Authorize]
     public override async Task<CreateRemindGroupResponse> CreateRemindGroup(CreateRemindGroupRequest request,
         ServerCallContext context)
     {
@@ -36,6 +39,7 @@ public class RemindGroupService(AppDbContext dbContext) : Remind.V1.RemindGroupS
         };
     }
 
+    [Authorize]
     public override async Task<GetRemindGroupResponse> GetRemindGroup(GetRemindGroupRequest request,
         ServerCallContext context)
     {
@@ -58,10 +62,11 @@ public class RemindGroupService(AppDbContext dbContext) : Remind.V1.RemindGroupS
         };
     }
 
+    [Authorize]
     public override async Task<GetRemindGroupsResponse> GetRemindGroups(GetRemindGroupsRequest request,
         ServerCallContext context)
     {
-        var authUser = context.GetAuthUser();
+        var authUser = context.GetAuthUser(logger);
         var remindGroups = await dbContext.RemindGroups.Where(x => x.Uid == authUser.Uid).ToListAsync();
 
         return new GetRemindGroupsResponse
@@ -79,6 +84,7 @@ public class RemindGroupService(AppDbContext dbContext) : Remind.V1.RemindGroupS
         };
     }
 
+    [Authorize]
     public override async Task<UpdateRemindGroupResponse> UpdateRemindGroup(UpdateRemindGroupRequest request,
         ServerCallContext context)
     {
@@ -105,6 +111,7 @@ public class RemindGroupService(AppDbContext dbContext) : Remind.V1.RemindGroupS
         };
     }
 
+    [Authorize]
     public override async Task<DeleteRemindGroupResponse> DeleteRemindGroup(DeleteRemindGroupRequest request,
         ServerCallContext context)
     {

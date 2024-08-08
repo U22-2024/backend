@@ -7,6 +7,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 builder.AddDockerfile("firebase", "Docker", "authEmulator.Dockerfile")
     .WithBindMount("./Docker/firebase/.firebaserc", "/opt/firebase/.firebaserc")
     .WithBindMount("./Docker/firebase/firebase.json", "/opt/firebase/firebase.json")
+    .WithBindMount("./Docker/firebase/data", "/opt/firebase/data")
     .WithExternalHttpEndpoints()
     .WithHttpEndpoint(port: 9099, targetPort: 9099, name: "auth-emulator")
     .WithHttpEndpoint(port: 4000, targetPort: 4000, name: "auth-ui");
