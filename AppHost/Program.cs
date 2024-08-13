@@ -4,8 +4,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 // Postgresql を追加
 var postgres = builder
-    .AddPostgres("postgres")
-    .WithPgAdmin();
+    .AddPostgres("postgres", port: 50522);
 
 // Grpcサーバーに外部HTTPエンドポイントとPostgresqlを追加
 builder.AddProject<GrpcService>("grpc")

@@ -114,6 +114,8 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
 
         remindGroup.Title = request.Title;
         remindGroup.Description = request.Description;
+        remindGroup.IconCodePoint = request.Icon.CodePoint;
+        remindGroup.IconFontFamily = request.Icon.FontFamily;
         await dbContext.SaveChangesAsync();
 
         return new UpdateRemindGroupResponse
