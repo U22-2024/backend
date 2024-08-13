@@ -21,8 +21,5 @@
     "editor.maxTokenizationLineLength": 2500,
     "editor.inlineSuggest.suppressSuggestions": false,
     "editor.defaultFormatter": "ms-dotnettools.csdevkit"
-  },
-  "terminal.integrated.env.windows": {
-    "PATH": "C:\\Program Files\\Git\\usr\\bin;${workspaceRoot}\\Tools\\bin;${env:PATH}"
   }
 }

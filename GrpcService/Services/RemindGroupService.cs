@@ -22,7 +22,9 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
         {
             Title = request.Title,
             Description = request.Description,
-            Uid = request.Uid
+            Uid = request.Uid,
+            IconCodePoint = request.Icon.CodePoint,
+            IconFontFamily = request.Icon.FontFamily
         };
         await dbContext.RemindGroups.AddAsync(remindGroup);
         await dbContext.SaveChangesAsync();
@@ -34,7 +36,12 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
                 Id = remindGroup.Id.ToString(),
                 Title = remindGroup.Title,
                 Description = remindGroup.Description,
-                Uid = remindGroup.Uid
+                Uid = remindGroup.Uid,
+                Icon = new IconData
+                {
+                    CodePoint = remindGroup.IconCodePoint,
+                    FontFamily = remindGroup.IconFontFamily
+                }
             }
         };
     }
@@ -57,7 +64,12 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
                 Id = remindGroup.Id.ToString(),
                 Title = remindGroup.Title,
                 Description = remindGroup.Description,
-                Uid = remindGroup.Uid
+                Uid = remindGroup.Uid,
+                Icon = new IconData
+                {
+                    CodePoint = remindGroup.IconCodePoint,
+                    FontFamily = remindGroup.IconFontFamily
+                }
             }
         };
     }
@@ -78,7 +90,12 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
                     Id = x.Id.ToString(),
                     Title = x.Title,
                     Description = x.Description,
-                    Uid = x.Uid
+                    Uid = x.Uid,
+                    Icon = new IconData
+                    {
+                        CodePoint = x.IconCodePoint,
+                        FontFamily = x.IconFontFamily
+                    }
                 })
             }
         };
@@ -106,7 +123,12 @@ public class RemindGroupService(AppDbContext dbContext, ILogger<RemindGroupServi
                 Id = remindGroup.Id.ToString(),
                 Title = remindGroup.Title,
                 Description = remindGroup.Description,
-                Uid = remindGroup.Uid
+                Uid = remindGroup.Uid,
+                Icon = new IconData
+                {
+                    CodePoint = remindGroup.IconCodePoint,
+                    FontFamily = remindGroup.IconFontFamily
+                }
             }
         };
     }

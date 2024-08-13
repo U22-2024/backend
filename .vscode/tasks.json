@@ -2,13 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "InitTask",
+      "label": "GenerateGrpc",
       "type": "shell",
-      "command": [
-        "dotnet tool restore &&",
-        "dotnet husky install &&",
-        "dotnet husky run --group init"
-      ],
+      "command": "docker run --rm --volume \"./:/workspace\" --workdir /workspace bufbuild/buf generate --include-imports --include-wkt",
       "group": "build",
       "runOptions": {
         "runOn": "folderOpen"

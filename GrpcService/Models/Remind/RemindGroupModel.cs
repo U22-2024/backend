@@ -15,6 +15,9 @@ public class RemindGroupModel
 
     [Required] [MaxLength(32)] public required string Uid { get; init; }
 
+    [Required] public required int IconCodePoint { get; set; }
+    [Required] [MaxLength(32)] public required string IconFontFamily { get; set; }
+
     public ICollection<RemindModel> Reminds { get; } = new List<RemindModel>();
 
     public DateTime CreatedAt { get; init; }
