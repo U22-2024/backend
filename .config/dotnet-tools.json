@@ -8,13 +8,6 @@
         "dotnet-ef"
       ],
       "rollForward": false
-    },
-    "husky": {
-      "version": "0.7.0",
-      "commands": [
-        "husky"
-      ],
-      "rollForward": false
     }
   }
 }
