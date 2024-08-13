@@ -4,15 +4,15 @@
     <option name="LAUNCH_PROFILE_NAME" value="http" />
     <option name="TRACK_ENVS" value="1" />
     <envs>
-      <env name="DOTNET_ENVIRONMENT" value="Development" />
       <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+      <env name="DOTNET_ENVIRONMENT" value="Development" />
       <env name="DOTNET_DASHBOARD_OTLP_ENDPOINT_URL" value="http://localhost:19227" />
       <env name="DOTNET_RESOURCE_SERVICE_ENDPOINT_URL" value="http://localhost:20140" />
-      <env name="ASPNETCORE_URLS" value="http://localhost:15272" />
       <env name="DOTNET_LAUNCH_PROFILE" value="http" />
+      <env name="ASPNETCORE_URLS" value="http://localhost:15272" />
     </envs>
     <option name="TRACK_URL" value="1" />
-    <browser url="http://localhost:15272/login?t=2f95fccb-c5f7-4df3-94b5-e4fa939964be" start="true" />
+    <browser url="http://localhost:15272" start="true" />
     <method v="2">
       <option name="Build Solution" enabled="true" />
     </method>
