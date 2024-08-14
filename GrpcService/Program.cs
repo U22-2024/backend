@@ -23,6 +23,7 @@ app.UseAuthorization();
 app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
+app.MapGrpcService<RemindTemplateService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())

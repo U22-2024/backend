@@ -1,4 +1,5 @@
 ﻿using GrpcService.Models.Remind;
+using GrpcService.Models.RemindTemplate;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrpcService;
@@ -7,6 +8,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> opt) : DbContext(opt)
 {
     public DbSet<RemindModel> Reminds { get; set; }
     public DbSet<RemindGroupModel> RemindGroups { get; set; }
+
+    public DbSet<RemindTemplateModel> RemindTemplates { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
