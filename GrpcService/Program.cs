@@ -3,6 +3,8 @@ using GrpcService.Extensions;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
 
+test.Test();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
