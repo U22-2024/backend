@@ -6,3 +6,6 @@ riderModule.iml
 **/Secret
 .fake
 Tools/
+
+/.idea
+!.idea/.idea.backend/.idea/externalDependencies.xml
