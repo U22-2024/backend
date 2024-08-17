@@ -35,11 +35,4 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var ai = scope.ServiceProvider.GetRequiredService<PredictRemindType>();
-    RemindTypeResponse response = await ai.GetRemindType("寮のコンセント抜く");
-    Console.WriteLine($"remind = {response.remind}, subRemind = {response.subRemind.before}, {response.subRemind.doing}");
-}
-
 app.Run();

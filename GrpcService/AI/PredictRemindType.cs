@@ -8,8 +8,21 @@ public class PredictRemindType(IConfiguration _config)
         ApiKey = _config["AnthropicApiKey"]
     };
 
+    /// <summary>
+    ///  Get remind type from the given prompt.
+    ///  This method uses the Anthropic API to generate a reminder type from the given prompt
+    /// </summary>
+    /// <param name="prompt"></param>
+    /// <returns></returns>
     public async Task<RemindTypeResponse> GetRemindType(string prompt)
     {
+        // if use it :
+        // PredictRemindType predictRemindType;
+        // using (var scope = context.GetHttpContext().RequestServices.CreateScope())
+        // {
+        //     predictRemindType = scope.ServiceProvider.GetRequiredService<PredictRemindType>();
+        // }
+
         var message = await _anthropic.Messages.CreateAsync(new()
         {
             Model = "claude-3-5-sonnet-20240620",
