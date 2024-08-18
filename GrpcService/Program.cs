@@ -10,6 +10,8 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.SetupApp();
 
+builder.Services.AddScoped<PredictRemindType>();
+
 var app = builder.Build();
 
 app.UseHttpLogging();
