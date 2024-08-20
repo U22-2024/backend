@@ -35,4 +35,11 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var ai = scope.ServiceProvider.GetRequiredService<PredictRemindType>();
+    RemindTypeResponse response = await ai.GetRemindType("トマトを買う", new string[]{"スーパー", "他買い物", "School", "Programming", "Home", "Other"});
+    Console.WriteLine($"name: {response.name}, quantity: {response.quantity}");
+}
+
 app.Run();

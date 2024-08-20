@@ -42,21 +42,24 @@ namespace Remind.V1 {
             "Cghncm91cF9pZBgFIAEoCVIHZ3JvdXBJZCJBChRVcGRhdGVSZW1pbmRSZXNw",
             "b25zZRIpCgZyZW1pbmQYASABKAsyES5yZW1pbmQudjEuUmVtaW5kUgZyZW1p",
             "bmQiJQoTRGVsZXRlUmVtaW5kUmVxdWVzdBIOCgJpZBgBIAEoCVICaWQiFgoU",
-            "RGVsZXRlUmVtaW5kUmVzcG9uc2UylQMKDVJlbWluZFNlcnZpY2USRgoJR2V0",
-            "UmVtaW5kEhsucmVtaW5kLnYxLkdldFJlbWluZFJlcXVlc3QaHC5yZW1pbmQu",
-            "djEuR2V0UmVtaW5kUmVzcG9uc2USSQoKR2V0UmVtaW5kcxIcLnJlbWluZC52",
-            "MS5HZXRSZW1pbmRzUmVxdWVzdBodLnJlbWluZC52MS5HZXRSZW1pbmRzUmVz",
-            "cG9uc2USTwoMQ3JlYXRlUmVtaW5kEh4ucmVtaW5kLnYxLkNyZWF0ZVJlbWlu",
-            "ZFJlcXVlc3QaHy5yZW1pbmQudjEuQ3JlYXRlUmVtaW5kUmVzcG9uc2USTwoM",
-            "VXBkYXRlUmVtaW5kEh4ucmVtaW5kLnYxLlVwZGF0ZVJlbWluZFJlcXVlc3Qa",
-            "Hy5yZW1pbmQudjEuVXBkYXRlUmVtaW5kUmVzcG9uc2USTwoMRGVsZXRlUmVt",
-            "aW5kEh4ucmVtaW5kLnYxLkRlbGV0ZVJlbWluZFJlcXVlc3QaHy5yZW1pbmQu",
-            "djEuRGVsZXRlUmVtaW5kUmVzcG9uc2VCYQoNY29tLnJlbWluZC52MUILUmVt",
-            "aW5kUHJvdG9QAaICA1JYWKoCCVJlbWluZC5WMcoCCVJlbWluZFxWMeICFVJl",
-            "bWluZFxWMVxHUEJNZXRhZGF0YeoCClJlbWluZDo6VjFiBnByb3RvMw=="));
+            "RGVsZXRlUmVtaW5kUmVzcG9uc2UqdQoKUmVtaW5kVHlwZRIbChdSRU1JTkRf",
+            "VFlQRV9VTlNQRUNJRklFRBAAEhgKFFJFTUlORF9UWVBFX1NIT1BQSU5HEAES",
+            "GAoUUkVNSU5EX1RZUEVfSE9NRVdPUksQAhIWChJSRU1JTkRfVFlQRV9PVVRJ",
+            "TkcQAzKVAwoNUmVtaW5kU2VydmljZRJGCglHZXRSZW1pbmQSGy5yZW1pbmQu",
+            "djEuR2V0UmVtaW5kUmVxdWVzdBocLnJlbWluZC52MS5HZXRSZW1pbmRSZXNw",
+            "b25zZRJJCgpHZXRSZW1pbmRzEhwucmVtaW5kLnYxLkdldFJlbWluZHNSZXF1",
+            "ZXN0Gh0ucmVtaW5kLnYxLkdldFJlbWluZHNSZXNwb25zZRJPCgxDcmVhdGVS",
+            "ZW1pbmQSHi5yZW1pbmQudjEuQ3JlYXRlUmVtaW5kUmVxdWVzdBofLnJlbWlu",
+            "ZC52MS5DcmVhdGVSZW1pbmRSZXNwb25zZRJPCgxVcGRhdGVSZW1pbmQSHi5y",
+            "ZW1pbmQudjEuVXBkYXRlUmVtaW5kUmVxdWVzdBofLnJlbWluZC52MS5VcGRh",
+            "dGVSZW1pbmRSZXNwb25zZRJPCgxEZWxldGVSZW1pbmQSHi5yZW1pbmQudjEu",
+            "RGVsZXRlUmVtaW5kUmVxdWVzdBofLnJlbWluZC52MS5EZWxldGVSZW1pbmRS",
+            "ZXNwb25zZUJhCg1jb20ucmVtaW5kLnYxQgtSZW1pbmRQcm90b1ABogIDUlhY",
+            "qgIJUmVtaW5kLlYxygIJUmVtaW5kXFYx4gIVUmVtaW5kXFYxXEdQQk1ldGFk",
+            "YXRh6gIKUmVtaW5kOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Remind.V1.RemindType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Remind.V1.Remind), global::Remind.V1.Remind.Parser, new[]{ "Id", "Title", "Description", "Uid", "GroupId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Remind.V1.GetRemindRequest), global::Remind.V1.GetRemindRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Remind.V1.GetRemindResponse), global::Remind.V1.GetRemindResponse.Parser, new[]{ "Remind" }, null, null, null, null),
@@ -73,6 +76,16 @@ namespace Remind.V1 {
     #endregion
 
   }
+  #region Enums
+  public enum RemindType {
+    [pbr::OriginalName("REMIND_TYPE_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("REMIND_TYPE_SHOPPING")] Shopping = 1,
+    [pbr::OriginalName("REMIND_TYPE_HOMEWORK")] Homework = 2,
+    [pbr::OriginalName("REMIND_TYPE_OUTING")] Outing = 3,
+  }
+
+  #endregion
+
   #region Messages
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Remind : pb::IMessage<Remind>

@@ -13,14 +13,16 @@ public class PredictRemindType(IConfiguration _config)
     ///  This method uses the Anthropic API to generate a reminder type from the given prompt
     /// </summary>
     /// <param name="prompt"></param>
+    /// <param name="categories"></param>
     /// <returns></returns>
-    public async Task<RemindTypeResponse> GetRemindType(string prompt)
+    public async Task<RemindTypeResponse> GetRemindType(string prompt, string[] categories)
     {
         // if use it :
         // PredictRemindType predictRemindType;
         // using (var scope = context.GetHttpContext().RequestServices.CreateScope())
         // {
         //     predictRemindType = scope.ServiceProvider.GetRequiredService<PredictRemindType>();
+        //     predictRemindType.GetRemindType("トマトを買う", shoppingItems);
         // }
 
         var message = await _anthropic.Messages.CreateAsync(new()
@@ -31,12 +33,16 @@ public class PredictRemindType(IConfiguration _config)
             Messages = [new ()
                 {
                     Role = "user",
-                    Content = $"You are tasked with analyzing a given text to predict its classification, main remind, and sub-reminds. Follow these steps carefully:\\n\\n1. You will be given a text in Japanese. The text will be provided within <text> tags:\\n\\n<text>\\n{prompt}\\n</text>\\n\\n2. Your task is to classify this text into one of the following categories:\\n   - スーパーマーケット (Supermarket)\\n   - 外出 (Going out)\\n   - 学校 (School)\\n   - その他 (Other)\\n\\n3. You need to determine:\\n   a) The classification of the text\\n   b) The main remind (主なリマインド) extracted from the text\\n   c) Any sub-reminds (サブリマインド) that should be done before or during the main remind\\n\\n4. Analyze the text carefully. Consider the context and the actions described in the text to determine the most appropriate classification.\\n\\n5. For the main remind, extract the primary action or task mentioned in the text. Content not mentioned in the main text need not be output. If there are no clear sub-reminds, leave these fields empty.\\n\\n6. In the case of a sub-reminds, consider the steps that are implied by the main reminder or that are necessary to perform the main reminder or that are done in advance.  If there are no clear sub-reminds, leave these fields empty.\\n\\n7. After your analysis, provide your output in the following JSON format:\\n{{\\n  \\\"kind\\\": \\\"[分類]\\\",\\n  \\\"remind\\\": \\\"[[主なリマインド]]\\\",\\n  \\\"subRemind\\\": {{\\n    \\\"before\\\": \\\"[[事前のサブリマインド]]\\\",\\n    \\\"doing\\\": \\\"[[必要なサブリマインド]]\\\"\\n  }}\\n}}\\n\\n8. Ensure that your JSON output is properly formatted and that all fields are included, even if some are empty.\\n\\nProvide your analysis and JSON output without any additional commentary."
+                    Content = $"You are an AI assistant tasked with analyzing a given sentence and categorizing it based on a provided list of categories. You will also extract information about what item is being purchased (if applicable) and its quantity. Follow these steps:\n\n1. You will be given a list of categories in the following format:\n<categories>\n{string.Join(", ", categories)}\n</categories>\n\n2. You will then be presented with a sentence to analyze:\n<sentence>\n{prompt}\n</sentence>\n\n3. Your task is to determine the category of the sentence, identify the item being purchased (if any), and specify the quantity. You will provide this information in a JSON format.\n\n4. To classify the sentence:\n   - If the sentence is about buying items typically found in a supermarket, classify it as \"スーパー\".\n   - If the sentence is about buying items not typically found in a supermarket but available in large shopping malls, classify it as \"他買い物\".\n   - If the sentence is not about purchasing anything, classify it into one of the other categories provided.\n\n5. If the sentence is about purchasing an item:\n   - Identify the item being purchased.\n   - Determine the quantity of the item, if specified.\n   If is not:\n   - The item should be the sentence itself\n\n6. Provide your output in the following JSON format:\n   {{\n     \"type\":\"category\",\n     \"name\":\"item name\",\n     \"quantity\":\"quantity (if applicable)\"\n   }}\n\n   If the sentence is not about purchasing an item, the \"quantity\" field in JSON output should be empty string.\n\nRemember to think carefully about the classification and extraction of information before providing your final answer. Output your response only JSON format."
                 }
             ]
         });
 
+        Console.WriteLine(message.ToString());
+
         RemindTypeResponse? response = JsonSerializer.Deserialize<RemindTypeResponse>(message.ToString());
+
+        Console.WriteLine($"response.type = {response.type}");
 
         return response;
     }
@@ -44,13 +50,7 @@ public class PredictRemindType(IConfiguration _config)
 
 public class RemindTypeResponse
 {
-    public string kind { get; set; }
-    public string remind { get; set; }
-    public SubRemind subRemind { get; set; }
-}
-
-public class SubRemind
-{
-    public string before { get; set; }
-    public string doing { get; set; }
+    public string type;
+    public string name;
+    public string quantity;
 }
