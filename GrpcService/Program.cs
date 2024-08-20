@@ -1,4 +1,5 @@
 using GrpcService;
+using GrpcService.AI;
 using GrpcService.Extensions;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ builder.AddServiceDefaults();
 builder.SetupApp();
 
 builder.Services.AddScoped<PredictRemindType>();
+builder.Services.AddScoped<PredictShoppingItemCategory>();
 
 var app = builder.Build();
 
@@ -24,8 +26,8 @@ app.UseAuthorization();
 
 app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
-app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
+app.MapGrpcService<ShoppingService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())
