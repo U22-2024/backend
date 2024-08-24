@@ -12,7 +12,7 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.SetupApp();
 
-builder.Services.AddScoped<PredictEvent>();
+builder.Services.AddScoped<PredictEventMaterial>();
 builder.Services.AddScoped<GetPlace>();
 
 var app = builder.Build();
@@ -29,6 +29,7 @@ app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
+// app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())

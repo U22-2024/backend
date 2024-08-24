@@ -29,53 +29,55 @@ namespace Event.V1 {
             "AmlkGAEgASgLMg8uY29tbW9uLnYxLkd1aWRSAmlkEh0KCmV2ZW50X2l0ZW0Y",
             "AiADKAlSCWV2ZW50SXRlbRIyCgp0aW1lX3RhYmxlGAMgASgLMhMuZXZlbnQu",
             "djEuVGltZVRhYmxlUgl0aW1lVGFibGUSMgoKdXNlcl9pdGVtcxgEIAEoCzIT",
-            "LmV2ZW50LnYxLlVzZXJJdGVtc1IJdXNlckl0ZW1zIjgKCVRpbWVUYWJsZRIr",
-            "CgRpdGVtGAEgAygLMhcuZXZlbnQudjEuVGltZVRhYmxlSXRlbVIEaXRlbSLE",
-            "AgoNVGltZVRhYmxlSXRlbRIrCgR0eXBlGAEgASgOMhcuZXZlbnQudjEuVGlt",
-            "ZVRhYmxlVHlwZVIEdHlwZRISCgRuYW1lGAIgASgJUgRuYW1lEiYKBG1vdmUY",
-            "AyABKA4yEi5ldmVudC52MS5Nb3ZlVHlwZVIEbW92ZRIvCglmcm9tX3RpbWUY",
-            "BCABKAsyEi5ldmVudC52MS5EYXRlVGltZVIIZnJvbVRpbWUSLQoIZW5kX3Rp",
-            "bWUYBSABKAsyEi5ldmVudC52MS5EYXRlVGltZVIHZW5kVGltZRIaCghkaXN0",
-            "YW5jZRgGIAEoDVIIZGlzdGFuY2USGwoJbGluZV9uYW1lGAcgASgJUghsaW5l",
-            "TmFtZRIxCgl0cmFuc3BvcnQYCCABKAsyEy5ldmVudC52MS5UcmFuc3BvcnRS",
-            "CXRyYW5zcG9ydCKUAQoJVHJhbnNwb3J0EhIKBGZhcmUYASABKAlSBGZhcmUS",
-            "HQoKdHJhaW5fbmFtZRgCIAEoCVIJdHJhaW5OYW1lEhQKBWNvbG9yGAMgASgJ",
-            "UgVjb2xvchIcCglkaXJlY3Rpb24YBCABKAlSCWRpcmVjdGlvbhIgCgtkZXN0",
-            "aW5hdGlvbhgFIAEoCVILZGVzdGluYXRpb24iHwoJVXNlckl0ZW1zEhIKBGl0",
-            "ZW0YASADKAlSBGl0ZW0iVAoPR2V0RXZlbnRSZXF1ZXN0EiAKA3VpZBgBIAEo",
-            "CzIOLmNvbW1vbi52MS5VaWRSA3VpZBIfCgJpZBgCIAEoCzIPLmNvbW1vbi52",
-            "MS5HdWlkUgJpZCI5ChBHZXRFdmVudFJlc3BvbnNlEiUKBWV2ZW50GAEgASgL",
-            "Mg8uZXZlbnQudjEuRXZlbnRSBWV2ZW50IjQKEEdldEV2ZW50c1JlcXVlc3QS",
-            "IAoDdWlkGAEgASgLMg4uY29tbW9uLnYxLlVpZFIDdWlkIjwKEUdldEV2ZW50",
-            "c1Jlc3BvbnNlEicKBmV2ZW50cxgBIAMoCzIPLmV2ZW50LnYxLkV2ZW50UgZl",
-            "dmVudHMingEKEkNyZWF0ZUV2ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5j",
-            "b21tb24udjEuVWlkUgN1aWQSMgoKdGltZV90YWJsZRgCIAEoCzITLmV2ZW50",
-            "LnYxLlRpbWVUYWJsZVIJdGltZVRhYmxlEjIKCnVzZXJfaXRlbXMYAyABKAsy",
-            "Ey5ldmVudC52MS5Vc2VySXRlbXNSCXVzZXJJdGVtcyI8ChNDcmVhdGVFdmVu",
-            "dFJlc3BvbnNlEiUKBWV2ZW50GAEgASgLMg8uZXZlbnQudjEuRXZlbnRSBWV2",
-            "ZW50In4KElVwZGF0ZUV2ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21t",
-            "b24udjEuVWlkUgN1aWQSHwoCaWQYAiABKAsyDy5jb21tb24udjEuR3VpZFIC",
-            "aWQSJQoFZXZlbnQYAyABKAsyDy5ldmVudC52MS5FdmVudFIFZXZlbnQiPAoT",
-            "VXBkYXRlRXZlbnRSZXNwb25zZRIlCgVldmVudBgBIAEoCzIPLmV2ZW50LnYx",
-            "LkV2ZW50UgVldmVudCJbChJEZWxldGVFdmVudFJlcXVlc3QSIAoDdWlkGAEg",
-            "ASgLMg4uY29tbW9uLnYxLlVpZFIDdWlkEiMKBGd1aWQYAiABKAsyDy5jb21t",
-            "b24udjEuR3VpZFIEZ3VpZCIVChNEZWxldGVFdmVudFJlc3BvbnNlMvsCCgxF",
-            "dmVudFNlcnZpY2USQQoIR2V0RXZlbnQSGS5ldmVudC52MS5HZXRFdmVudFJl",
-            "cXVlc3QaGi5ldmVudC52MS5HZXRFdmVudFJlc3BvbnNlEkQKCUdldEV2ZW50",
-            "cxIaLmV2ZW50LnYxLkdldEV2ZW50c1JlcXVlc3QaGy5ldmVudC52MS5HZXRF",
-            "dmVudHNSZXNwb25zZRJKCgtDcmVhdGVFdmVudBIcLmV2ZW50LnYxLkNyZWF0",
-            "ZUV2ZW50UmVxdWVzdBodLmV2ZW50LnYxLkNyZWF0ZUV2ZW50UmVzcG9uc2US",
-            "SgoLVXBkYXRlRXZlbnQSHC5ldmVudC52MS5VcGRhdGVFdmVudFJlcXVlc3Qa",
-            "HS5ldmVudC52MS5VcGRhdGVFdmVudFJlc3BvbnNlEkoKC0RlbGV0ZUV2ZW50",
-            "EhwuZXZlbnQudjEuRGVsZXRlRXZlbnRSZXF1ZXN0Gh0uZXZlbnQudjEuRGVs",
-            "ZXRlRXZlbnRSZXNwb25zZUJbCgxjb20uZXZlbnQudjFCCkV2ZW50UHJvdG9Q",
-            "AaICA0VYWKoCCEV2ZW50LlYxygIIRXZlbnRcVjHiAhRFdmVudFxWMVxHUEJN",
-            "ZXRhZGF0YeoCCUV2ZW50OjpWMWIGcHJvdG8z"));
+            "LmV2ZW50LnYxLlVzZXJJdGVtc1IJdXNlckl0ZW1zIpYBCglUaW1lVGFibGUS",
+            "KwoEaXRlbRgBIAMoCzIXLmV2ZW50LnYxLlRpbWVUYWJsZUl0ZW1SBGl0ZW0S",
+            "IwoNdHJhbnNpdF9jb3VudBgCIAEoDVIMdHJhbnNpdENvdW50EiMKDXdhbGtf",
+            "ZGlzdGFuY2UYAyABKA1SDHdhbGtEaXN0YW5jZRISCgRmYXJlGAQgASgNUgRm",
+            "YXJlIrACCg1UaW1lVGFibGVJdGVtEisKBHR5cGUYASABKA4yFy5ldmVudC52",
+            "MS5UaW1lVGFibGVUeXBlUgR0eXBlEhIKBG5hbWUYAiABKAlSBG5hbWUSEgoE",
+            "bW92ZRgDIAEoCVIEbW92ZRIvCglmcm9tX3RpbWUYBCABKAsyEi5ldmVudC52",
+            "MS5EYXRlVGltZVIIZnJvbVRpbWUSLQoIZW5kX3RpbWUYBSABKAsyEi5ldmVu",
+            "dC52MS5EYXRlVGltZVIHZW5kVGltZRIaCghkaXN0YW5jZRgGIAEoDVIIZGlz",
+            "dGFuY2USGwoJbGluZV9uYW1lGAcgASgJUghsaW5lTmFtZRIxCgl0cmFuc3Bv",
+            "cnQYCCABKAsyEy5ldmVudC52MS5UcmFuc3BvcnRSCXRyYW5zcG9ydCKUAQoJ",
+            "VHJhbnNwb3J0EhIKBGZhcmUYASABKA1SBGZhcmUSHQoKdHJhaW5fbmFtZRgC",
+            "IAEoCVIJdHJhaW5OYW1lEhQKBWNvbG9yGAMgASgJUgVjb2xvchIcCglkaXJl",
+            "Y3Rpb24YBCABKAlSCWRpcmVjdGlvbhIgCgtkZXN0aW5hdGlvbhgFIAEoCVIL",
+            "ZGVzdGluYXRpb24iHwoJVXNlckl0ZW1zEhIKBGl0ZW0YASADKAlSBGl0ZW0i",
+            "VAoPR2V0RXZlbnRSZXF1ZXN0EiAKA3VpZBgBIAEoCzIOLmNvbW1vbi52MS5V",
+            "aWRSA3VpZBIfCgJpZBgCIAEoCzIPLmNvbW1vbi52MS5HdWlkUgJpZCI5ChBH",
+            "ZXRFdmVudFJlc3BvbnNlEiUKBWV2ZW50GAEgASgLMg8uZXZlbnQudjEuRXZl",
+            "bnRSBWV2ZW50IjQKEEdldEV2ZW50c1JlcXVlc3QSIAoDdWlkGAEgASgLMg4u",
+            "Y29tbW9uLnYxLlVpZFIDdWlkIjwKEUdldEV2ZW50c1Jlc3BvbnNlEicKBmV2",
+            "ZW50cxgBIAMoCzIPLmV2ZW50LnYxLkV2ZW50UgZldmVudHMingEKEkNyZWF0",
+            "ZUV2ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21tb24udjEuVWlkUgN1",
+            "aWQSMgoKdGltZV90YWJsZRgCIAEoCzITLmV2ZW50LnYxLlRpbWVUYWJsZVIJ",
+            "dGltZVRhYmxlEjIKCnVzZXJfaXRlbXMYAyABKAsyEy5ldmVudC52MS5Vc2Vy",
+            "SXRlbXNSCXVzZXJJdGVtcyI8ChNDcmVhdGVFdmVudFJlc3BvbnNlEiUKBWV2",
+            "ZW50GAEgASgLMg8uZXZlbnQudjEuRXZlbnRSBWV2ZW50In4KElVwZGF0ZUV2",
+            "ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21tb24udjEuVWlkUgN1aWQS",
+            "HwoCaWQYAiABKAsyDy5jb21tb24udjEuR3VpZFICaWQSJQoFZXZlbnQYAyAB",
+            "KAsyDy5ldmVudC52MS5FdmVudFIFZXZlbnQiPAoTVXBkYXRlRXZlbnRSZXNw",
+            "b25zZRIlCgVldmVudBgBIAEoCzIPLmV2ZW50LnYxLkV2ZW50UgVldmVudCJb",
+            "ChJEZWxldGVFdmVudFJlcXVlc3QSIAoDdWlkGAEgASgLMg4uY29tbW9uLnYx",
+            "LlVpZFIDdWlkEiMKBGd1aWQYAiABKAsyDy5jb21tb24udjEuR3VpZFIEZ3Vp",
+            "ZCIVChNEZWxldGVFdmVudFJlc3BvbnNlMvsCCgxFdmVudFNlcnZpY2USQQoI",
+            "R2V0RXZlbnQSGS5ldmVudC52MS5HZXRFdmVudFJlcXVlc3QaGi5ldmVudC52",
+            "MS5HZXRFdmVudFJlc3BvbnNlEkQKCUdldEV2ZW50cxIaLmV2ZW50LnYxLkdl",
+            "dEV2ZW50c1JlcXVlc3QaGy5ldmVudC52MS5HZXRFdmVudHNSZXNwb25zZRJK",
+            "CgtDcmVhdGVFdmVudBIcLmV2ZW50LnYxLkNyZWF0ZUV2ZW50UmVxdWVzdBod",
+            "LmV2ZW50LnYxLkNyZWF0ZUV2ZW50UmVzcG9uc2USSgoLVXBkYXRlRXZlbnQS",
+            "HC5ldmVudC52MS5VcGRhdGVFdmVudFJlcXVlc3QaHS5ldmVudC52MS5VcGRh",
+            "dGVFdmVudFJlc3BvbnNlEkoKC0RlbGV0ZUV2ZW50EhwuZXZlbnQudjEuRGVs",
+            "ZXRlRXZlbnRSZXF1ZXN0Gh0uZXZlbnQudjEuRGVsZXRlRXZlbnRSZXNwb25z",
+            "ZUJbCgxjb20uZXZlbnQudjFCCkV2ZW50UHJvdG9QAaICA0VYWKoCCEV2ZW50",
+            "LlYxygIIRXZlbnRcVjHiAhRFdmVudFxWMVxHUEJNZXRhZGF0YeoCCUV2ZW50",
+            "OjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Common.V1.CommonReflection.Descriptor, global::Event.V1.CoreReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Event), global::Event.V1.Event.Parser, new[]{ "Id", "EventItem", "TimeTable", "UserItems" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.TimeTable), global::Event.V1.TimeTable.Parser, new[]{ "Item" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.TimeTable), global::Event.V1.TimeTable.Parser, new[]{ "Item", "TransitCount", "WalkDistance", "Fare" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.TimeTableItem), global::Event.V1.TimeTableItem.Parser, new[]{ "Type", "Name", "Move", "FromTime", "EndTime", "Distance", "LineName", "Transport" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Transport), global::Event.V1.Transport.Parser, new[]{ "Fare", "TrainName", "Color", "Direction", "Destination" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.UserItems), global::Event.V1.UserItems.Parser, new[]{ "Item" }, null, null, null, null),
@@ -456,6 +458,9 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TimeTable(TimeTable other) : this() {
       item_ = other.item_.Clone();
+      transitCount_ = other.transitCount_;
+      walkDistance_ = other.walkDistance_;
+      fare_ = other.fare_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -476,6 +481,42 @@ namespace Event.V1 {
       get { return item_; }
     }
 
+    /// <summary>Field number for the "transit_count" field.</summary>
+    public const int TransitCountFieldNumber = 2;
+    private uint transitCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TransitCount {
+      get { return transitCount_; }
+      set {
+        transitCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "walk_distance" field.</summary>
+    public const int WalkDistanceFieldNumber = 3;
+    private uint walkDistance_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WalkDistance {
+      get { return walkDistance_; }
+      set {
+        walkDistance_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fare" field.</summary>
+    public const int FareFieldNumber = 4;
+    private uint fare_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Fare {
+      get { return fare_; }
+      set {
+        fare_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -492,6 +533,9 @@ namespace Event.V1 {
         return true;
       }
       if(!item_.Equals(other.item_)) return false;
+      if (TransitCount != other.TransitCount) return false;
+      if (WalkDistance != other.WalkDistance) return false;
+      if (Fare != other.Fare) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -500,6 +544,9 @@ namespace Event.V1 {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= item_.GetHashCode();
+      if (TransitCount != 0) hash ^= TransitCount.GetHashCode();
+      if (WalkDistance != 0) hash ^= WalkDistance.GetHashCode();
+      if (Fare != 0) hash ^= Fare.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -519,6 +566,18 @@ namespace Event.V1 {
       output.WriteRawMessage(this);
     #else
       item_.WriteTo(output, _repeated_item_codec);
+      if (TransitCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(TransitCount);
+      }
+      if (WalkDistance != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(WalkDistance);
+      }
+      if (Fare != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Fare);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -530,6 +589,18 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       item_.WriteTo(ref output, _repeated_item_codec);
+      if (TransitCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(TransitCount);
+      }
+      if (WalkDistance != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(WalkDistance);
+      }
+      if (Fare != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Fare);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -541,6 +612,15 @@ namespace Event.V1 {
     public int CalculateSize() {
       int size = 0;
       size += item_.CalculateSize(_repeated_item_codec);
+      if (TransitCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TransitCount);
+      }
+      if (WalkDistance != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WalkDistance);
+      }
+      if (Fare != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Fare);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -554,6 +634,15 @@ namespace Event.V1 {
         return;
       }
       item_.Add(other.item_);
+      if (other.TransitCount != 0) {
+        TransitCount = other.TransitCount;
+      }
+      if (other.WalkDistance != 0) {
+        WalkDistance = other.WalkDistance;
+      }
+      if (other.Fare != 0) {
+        Fare = other.Fare;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -577,6 +666,18 @@ namespace Event.V1 {
             item_.AddEntriesFrom(input, _repeated_item_codec);
             break;
           }
+          case 16: {
+            TransitCount = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            WalkDistance = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Fare = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -598,6 +699,18 @@ namespace Event.V1 {
             break;
           case 10: {
             item_.AddEntriesFrom(ref input, _repeated_item_codec);
+            break;
+          }
+          case 16: {
+            TransitCount = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            WalkDistance = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Fare = input.ReadUInt32();
             break;
           }
         }
@@ -688,16 +801,16 @@ namespace Event.V1 {
 
     /// <summary>Field number for the "move" field.</summary>
     public const int MoveFieldNumber = 3;
-    private global::Event.V1.MoveType move_ = global::Event.V1.MoveType.Unspecified;
+    private string move_ = "";
     /// <summary>
     /// type = move
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Event.V1.MoveType Move {
+    public string Move {
       get { return move_; }
       set {
-        move_ = value;
+        move_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -796,7 +909,7 @@ namespace Event.V1 {
       int hash = 1;
       if (Type != global::Event.V1.TimeTableType.Unspecified) hash ^= Type.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Move != global::Event.V1.MoveType.Unspecified) hash ^= Move.GetHashCode();
+      if (Move.Length != 0) hash ^= Move.GetHashCode();
       if (fromTime_ != null) hash ^= FromTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
       if (Distance != 0) hash ^= Distance.GetHashCode();
@@ -828,9 +941,9 @@ namespace Event.V1 {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (Move != global::Event.V1.MoveType.Unspecified) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) Move);
+      if (Move.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Move);
       }
       if (fromTime_ != null) {
         output.WriteRawTag(34);
@@ -870,9 +983,9 @@ namespace Event.V1 {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (Move != global::Event.V1.MoveType.Unspecified) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) Move);
+      if (Move.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Move);
       }
       if (fromTime_ != null) {
         output.WriteRawTag(34);
@@ -910,8 +1023,8 @@ namespace Event.V1 {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Move != global::Event.V1.MoveType.Unspecified) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Move);
+      if (Move.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Move);
       }
       if (fromTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(FromTime);
@@ -946,7 +1059,7 @@ namespace Event.V1 {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Move != global::Event.V1.MoveType.Unspecified) {
+      if (other.Move.Length != 0) {
         Move = other.Move;
       }
       if (other.fromTime_ != null) {
@@ -1000,8 +1113,8 @@ namespace Event.V1 {
             Name = input.ReadString();
             break;
           }
-          case 24: {
-            Move = (global::Event.V1.MoveType) input.ReadEnum();
+          case 26: {
+            Move = input.ReadString();
             break;
           }
           case 34: {
@@ -1060,8 +1173,8 @@ namespace Event.V1 {
             Name = input.ReadString();
             break;
           }
-          case 24: {
-            Move = (global::Event.V1.MoveType) input.ReadEnum();
+          case 26: {
+            Move = input.ReadString();
             break;
           }
           case 34: {
@@ -1151,13 +1264,13 @@ namespace Event.V1 {
 
     /// <summary>Field number for the "fare" field.</summary>
     public const int FareFieldNumber = 1;
-    private string fare_ = "";
+    private uint fare_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Fare {
+    public uint Fare {
       get { return fare_; }
       set {
-        fare_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        fare_ = value;
       }
     }
 
@@ -1236,7 +1349,7 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Fare.Length != 0) hash ^= Fare.GetHashCode();
+      if (Fare != 0) hash ^= Fare.GetHashCode();
       if (TrainName.Length != 0) hash ^= TrainName.GetHashCode();
       if (Color.Length != 0) hash ^= Color.GetHashCode();
       if (Direction.Length != 0) hash ^= Direction.GetHashCode();
@@ -1259,9 +1372,9 @@ namespace Event.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Fare.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Fare);
+      if (Fare != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Fare);
       }
       if (TrainName.Length != 0) {
         output.WriteRawTag(18);
@@ -1289,9 +1402,9 @@ namespace Event.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Fare.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Fare);
+      if (Fare != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Fare);
       }
       if (TrainName.Length != 0) {
         output.WriteRawTag(18);
@@ -1319,8 +1432,8 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Fare.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Fare);
+      if (Fare != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Fare);
       }
       if (TrainName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TrainName);
@@ -1346,7 +1459,7 @@ namespace Event.V1 {
       if (other == null) {
         return;
       }
-      if (other.Fare.Length != 0) {
+      if (other.Fare != 0) {
         Fare = other.Fare;
       }
       if (other.TrainName.Length != 0) {
@@ -1380,8 +1493,8 @@ namespace Event.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Fare = input.ReadString();
+          case 8: {
+            Fare = input.ReadUInt32();
             break;
           }
           case 18: {
@@ -1419,8 +1532,8 @@ namespace Event.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            Fare = input.ReadString();
+          case 8: {
+            Fare = input.ReadUInt32();
             break;
           }
           case 18: {

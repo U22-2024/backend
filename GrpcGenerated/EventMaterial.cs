@@ -25,43 +25,55 @@ namespace Event.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1ldmVudC92MS9ldmVudF9tYXRlcmlhbC5wcm90bxIIZXZlbnQudjEaFmNv",
-            "bW1vbi92MS9jb21tb24ucHJvdG8aE2V2ZW50L3YxL2NvcmUucHJvdG8iVgoF",
-            "UGxhY2USEgoEbmFtZRgBIAEoCVIEbmFtZRIYCgdhZGRyZXNzGAIgASgJUgdh",
-            "ZGRyZXNzEh8KA3BvcxgDIAEoCzINLmV2ZW50LnYxLlBvc1IDcG9zItUCCg1F",
-            "dmVudE1hdGVyaWFsEhUKBmlzX291dBgBIAEoCFIFaXNPdXQSFgoGcmVtaW5k",
-            "GAIgASgJUgZyZW1pbmQSKAoIZnJvbV9wb3MYAyABKAsyDS5ldmVudC52MS5Q",
-            "b3NSB2Zyb21Qb3MSIAoLZGVzdGluYXRpb24YBCABKAlSC2Rlc3RpbmF0aW9u",
-            "EjYKD2Rlc3RpbmF0aW9uX3BvcxgFIAEoCzINLmV2ZW50LnYxLlBvc1IOZGVz",
-            "dGluYXRpb25Qb3MSLwoJbW92ZV90eXBlGAYgASgOMhIuZXZlbnQudjEuTW92",
-            "ZVR5cGVSCG1vdmVUeXBlEjEKCnN0YXJ0X3RpbWUYByABKAsyEi5ldmVudC52",
-            "MS5EYXRlVGltZVIJc3RhcnRUaW1lEi0KCGVuZF90aW1lGAggASgLMhIuZXZl",
-            "bnQudjEuRGF0ZVRpbWVSB2VuZFRpbWUilwEKH1ByZWRpY3RFdmVudE1hdGVy",
-            "aWFsSXRlbVJlcXVlc3QSIAoDdWlkGAEgASgLMg4uY29tbW9uLnYxLlVpZFID",
-            "dWlkEj4KDmV2ZW50X21hdGVyaWFsGAIgASgLMhcuZXZlbnQudjEuRXZlbnRN",
-            "YXRlcmlhbFINZXZlbnRNYXRlcmlhbBISCgR0ZXh0GAMgASgJUgR0ZXh0ImIK",
-            "IFByZWRpY3RFdmVudE1hdGVyaWFsSXRlbVJlc3BvbnNlEj4KDmV2ZW50X21h",
-            "dGVyaWFsGAEgASgLMhcuZXZlbnQudjEuRXZlbnRNYXRlcmlhbFINZXZlbnRN",
-            "YXRlcmlhbCJXCh9QcmVkaWN0UG9zaXRpb25zRnJvbVRleHRSZXF1ZXN0EiAK",
-            "A3VpZBgBIAEoCzIOLmNvbW1vbi52MS5VaWRSA3VpZBISCgR0ZXh0GAIgASgJ",
-            "UgR0ZXh0IkkKIFByZWRpY3RQb3NpdGlvbnNGcm9tVGV4dFJlc3BvbnNlEiUK",
-            "BXBsYWNlGAEgAygLMg8uZXZlbnQudjEuUGxhY2VSBXBsYWNlMvwBChRFdmVu",
-            "dE1hdGVyaWFsU2VydmljZRJxChhQcmVkaWN0RXZlbnRNYXRlcmlhbEl0ZW0S",
-            "KS5ldmVudC52MS5QcmVkaWN0RXZlbnRNYXRlcmlhbEl0ZW1SZXF1ZXN0Giou",
-            "ZXZlbnQudjEuUHJlZGljdEV2ZW50TWF0ZXJpYWxJdGVtUmVzcG9uc2UScQoY",
-            "UHJlZGljdFBvc2l0aW9uc0Zyb21UZXh0EikuZXZlbnQudjEuUHJlZGljdFBv",
-            "c2l0aW9uc0Zyb21UZXh0UmVxdWVzdBoqLmV2ZW50LnYxLlByZWRpY3RQb3Np",
-            "dGlvbnNGcm9tVGV4dFJlc3BvbnNlQmMKDGNvbS5ldmVudC52MUISRXZlbnRN",
-            "YXRlcmlhbFByb3RvUAGiAgNFWFiqAghFdmVudC5WMcoCCEV2ZW50XFYx4gIU",
-            "RXZlbnRcVjFcR1BCTWV0YWRhdGHqAglFdmVudDo6VjFiBnByb3RvMw=="));
+            "bW1vbi92MS9jb21tb24ucHJvdG8aE2V2ZW50L3YxL2NvcmUucHJvdG8aFGV2",
+            "ZW50L3YxL2V2ZW50LnByb3RvIlYKBVBsYWNlEhIKBG5hbWUYASABKAlSBG5h",
+            "bWUSGAoHYWRkcmVzcxgCIAEoCVIHYWRkcmVzcxIfCgNwb3MYAyABKAsyDS5l",
+            "dmVudC52MS5Qb3NSA3BvcyLtAgoNRXZlbnRNYXRlcmlhbBIVCgZpc19vdXQY",
+            "ASABKAhSBWlzT3V0EhYKBnJlbWluZBgCIAEoCVIGcmVtaW5kEigKCGZyb21f",
+            "cG9zGAMgASgLMg0uZXZlbnQudjEuUG9zUgdmcm9tUG9zEiAKC2Rlc3RpbmF0",
+            "aW9uGAQgASgJUgtkZXN0aW5hdGlvbhI2Cg9kZXN0aW5hdGlvbl9wb3MYBSAB",
+            "KAsyDS5ldmVudC52MS5Qb3NSDmRlc3RpbmF0aW9uUG9zEi8KCW1vdmVfdHlw",
+            "ZRgGIAEoDjISLmV2ZW50LnYxLk1vdmVUeXBlUghtb3ZlVHlwZRIWCgZvcHRp",
+            "b24YByABKAlSBm9wdGlvbhIxCgpzdGFydF90aW1lGAggASgLMhIuZXZlbnQu",
+            "djEuRGF0ZVRpbWVSCXN0YXJ0VGltZRItCghlbmRfdGltZRgJIAEoCzISLmV2",
+            "ZW50LnYxLkRhdGVUaW1lUgdlbmRUaW1lIpcBCh9QcmVkaWN0RXZlbnRNYXRl",
+            "cmlhbEl0ZW1SZXF1ZXN0EiAKA3VpZBgBIAEoCzIOLmNvbW1vbi52MS5VaWRS",
+            "A3VpZBI+Cg5ldmVudF9tYXRlcmlhbBgCIAEoCzIXLmV2ZW50LnYxLkV2ZW50",
+            "TWF0ZXJpYWxSDWV2ZW50TWF0ZXJpYWwSEgoEdGV4dBgDIAEoCVIEdGV4dCJi",
+            "CiBQcmVkaWN0RXZlbnRNYXRlcmlhbEl0ZW1SZXNwb25zZRI+Cg5ldmVudF9t",
+            "YXRlcmlhbBgBIAEoCzIXLmV2ZW50LnYxLkV2ZW50TWF0ZXJpYWxSDWV2ZW50",
+            "TWF0ZXJpYWwigQEKH1ByZWRpY3RQb3NpdGlvbnNGcm9tVGV4dFJlcXVlc3QS",
+            "IAoDdWlkGAEgASgLMg4uY29tbW9uLnYxLlVpZFIDdWlkEhIKBHRleHQYAiAB",
+            "KAlSBHRleHQSKAoIZnJvbV9wb3MYAyABKAsyDS5ldmVudC52MS5Qb3NSB2Zy",
+            "b21Qb3MiSQogUHJlZGljdFBvc2l0aW9uc0Zyb21UZXh0UmVzcG9uc2USJQoF",
+            "cGxhY2UYASADKAsyDy5ldmVudC52MS5QbGFjZVIFcGxhY2UilgEKF1ByZWRp",
+            "Y3RUaW1lVGFibGVSZXF1ZXN0EiAKA3VpZBgBIAEoCzIOLmNvbW1vbi52MS5V",
+            "aWRSA3VpZBI+Cg5ldmVudF9tYXRlcmlhbBgCIAEoCzIXLmV2ZW50LnYxLkV2",
+            "ZW50TWF0ZXJpYWxSDWV2ZW50TWF0ZXJpYWwSGQoIaXNfZ29pbmcYAyABKAhS",
+            "B2lzR29pbmciTgoYUHJlZGljdFRpbWVUYWJsZVJlc3BvbnNlEjIKCnRpbWVf",
+            "dGFibGUYASADKAsyEy5ldmVudC52MS5UaW1lVGFibGVSCXRpbWVUYWJsZTLX",
+            "AgoURXZlbnRNYXRlcmlhbFNlcnZpY2UScQoYUHJlZGljdEV2ZW50TWF0ZXJp",
+            "YWxJdGVtEikuZXZlbnQudjEuUHJlZGljdEV2ZW50TWF0ZXJpYWxJdGVtUmVx",
+            "dWVzdBoqLmV2ZW50LnYxLlByZWRpY3RFdmVudE1hdGVyaWFsSXRlbVJlc3Bv",
+            "bnNlEnEKGFByZWRpY3RQb3NpdGlvbnNGcm9tVGV4dBIpLmV2ZW50LnYxLlBy",
+            "ZWRpY3RQb3NpdGlvbnNGcm9tVGV4dFJlcXVlc3QaKi5ldmVudC52MS5QcmVk",
+            "aWN0UG9zaXRpb25zRnJvbVRleHRSZXNwb25zZRJZChBQcmVkaWN0VGltZVRh",
+            "YmxlEiEuZXZlbnQudjEuUHJlZGljdFRpbWVUYWJsZVJlcXVlc3QaIi5ldmVu",
+            "dC52MS5QcmVkaWN0VGltZVRhYmxlUmVzcG9uc2VCYwoMY29tLmV2ZW50LnYx",
+            "QhJFdmVudE1hdGVyaWFsUHJvdG9QAaICA0VYWKoCCEV2ZW50LlYxygIIRXZl",
+            "bnRcVjHiAhRFdmVudFxWMVxHUEJNZXRhZGF0YeoCCUV2ZW50OjpWMWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Common.V1.CommonReflection.Descriptor, global::Event.V1.CoreReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Common.V1.CommonReflection.Descriptor, global::Event.V1.CoreReflection.Descriptor, global::Event.V1.EventReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Place), global::Event.V1.Place.Parser, new[]{ "Name", "Address", "Pos" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.EventMaterial), global::Event.V1.EventMaterial.Parser, new[]{ "IsOut", "Remind", "FromPos", "Destination", "DestinationPos", "MoveType", "StartTime", "EndTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.EventMaterial), global::Event.V1.EventMaterial.Parser, new[]{ "IsOut", "Remind", "FromPos", "Destination", "DestinationPos", "MoveType", "Option", "StartTime", "EndTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictEventMaterialItemRequest), global::Event.V1.PredictEventMaterialItemRequest.Parser, new[]{ "Uid", "EventMaterial", "Text" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictEventMaterialItemResponse), global::Event.V1.PredictEventMaterialItemResponse.Parser, new[]{ "EventMaterial" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextRequest), global::Event.V1.PredictPositionsFromTextRequest.Parser, new[]{ "Uid", "Text" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextResponse), global::Event.V1.PredictPositionsFromTextResponse.Parser, new[]{ "Place" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextRequest), global::Event.V1.PredictPositionsFromTextRequest.Parser, new[]{ "Uid", "Text", "FromPos" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextResponse), global::Event.V1.PredictPositionsFromTextResponse.Parser, new[]{ "Place" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictTimeTableRequest), global::Event.V1.PredictTimeTableRequest.Parser, new[]{ "Uid", "EventMaterial", "IsGoing" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictTimeTableResponse), global::Event.V1.PredictTimeTableResponse.Parser, new[]{ "TimeTable" }, null, null, null, null)
           }));
     }
     #endregion
@@ -390,6 +402,7 @@ namespace Event.V1 {
       destination_ = other.destination_;
       destinationPos_ = other.destinationPos_ != null ? other.destinationPos_.Clone() : null;
       moveType_ = other.moveType_;
+      option_ = other.option_;
       startTime_ = other.startTime_ != null ? other.startTime_.Clone() : null;
       endTime_ = other.endTime_ != null ? other.endTime_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -473,8 +486,20 @@ namespace Event.V1 {
       }
     }
 
+    /// <summary>Field number for the "option" field.</summary>
+    public const int OptionFieldNumber = 7;
+    private string option_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Option {
+      get { return option_; }
+      set {
+        option_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "start_time" field.</summary>
-    public const int StartTimeFieldNumber = 7;
+    public const int StartTimeFieldNumber = 8;
     private global::Event.V1.DateTime startTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -486,7 +511,7 @@ namespace Event.V1 {
     }
 
     /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 8;
+    public const int EndTimeFieldNumber = 9;
     private global::Event.V1.DateTime endTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -518,6 +543,7 @@ namespace Event.V1 {
       if (Destination != other.Destination) return false;
       if (!object.Equals(DestinationPos, other.DestinationPos)) return false;
       if (MoveType != other.MoveType) return false;
+      if (Option != other.Option) return false;
       if (!object.Equals(StartTime, other.StartTime)) return false;
       if (!object.Equals(EndTime, other.EndTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -533,6 +559,7 @@ namespace Event.V1 {
       if (Destination.Length != 0) hash ^= Destination.GetHashCode();
       if (destinationPos_ != null) hash ^= DestinationPos.GetHashCode();
       if (MoveType != global::Event.V1.MoveType.Unspecified) hash ^= MoveType.GetHashCode();
+      if (Option.Length != 0) hash ^= Option.GetHashCode();
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
       if (_unknownFields != null) {
@@ -577,12 +604,16 @@ namespace Event.V1 {
         output.WriteRawTag(48);
         output.WriteEnum((int) MoveType);
       }
-      if (startTime_ != null) {
+      if (Option.Length != 0) {
         output.WriteRawTag(58);
+        output.WriteString(Option);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(66);
         output.WriteMessage(StartTime);
       }
       if (endTime_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(EndTime);
       }
       if (_unknownFields != null) {
@@ -619,12 +650,16 @@ namespace Event.V1 {
         output.WriteRawTag(48);
         output.WriteEnum((int) MoveType);
       }
-      if (startTime_ != null) {
+      if (Option.Length != 0) {
         output.WriteRawTag(58);
+        output.WriteString(Option);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(66);
         output.WriteMessage(StartTime);
       }
       if (endTime_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(EndTime);
       }
       if (_unknownFields != null) {
@@ -654,6 +689,9 @@ namespace Event.V1 {
       }
       if (MoveType != global::Event.V1.MoveType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MoveType);
+      }
+      if (Option.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Option);
       }
       if (startTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StartTime);
@@ -696,6 +734,9 @@ namespace Event.V1 {
       }
       if (other.MoveType != global::Event.V1.MoveType.Unspecified) {
         MoveType = other.MoveType;
+      }
+      if (other.Option.Length != 0) {
+        Option = other.Option;
       }
       if (other.startTime_ != null) {
         if (startTime_ == null) {
@@ -759,13 +800,17 @@ namespace Event.V1 {
             break;
           }
           case 58: {
+            Option = input.ReadString();
+            break;
+          }
+          case 66: {
             if (startTime_ == null) {
               StartTime = new global::Event.V1.DateTime();
             }
             input.ReadMessage(StartTime);
             break;
           }
-          case 66: {
+          case 74: {
             if (endTime_ == null) {
               EndTime = new global::Event.V1.DateTime();
             }
@@ -822,13 +867,17 @@ namespace Event.V1 {
             break;
           }
           case 58: {
+            Option = input.ReadString();
+            break;
+          }
+          case 66: {
             if (startTime_ == null) {
               StartTime = new global::Event.V1.DateTime();
             }
             input.ReadMessage(StartTime);
             break;
           }
-          case 66: {
+          case 74: {
             if (endTime_ == null) {
               EndTime = new global::Event.V1.DateTime();
             }
@@ -1376,6 +1425,7 @@ namespace Event.V1 {
     public PredictPositionsFromTextRequest(PredictPositionsFromTextRequest other) : this() {
       uid_ = other.uid_ != null ? other.uid_.Clone() : null;
       text_ = other.text_;
+      fromPos_ = other.fromPos_ != null ? other.fromPos_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1409,6 +1459,18 @@ namespace Event.V1 {
       }
     }
 
+    /// <summary>Field number for the "from_pos" field.</summary>
+    public const int FromPosFieldNumber = 3;
+    private global::Event.V1.Pos fromPos_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Event.V1.Pos FromPos {
+      get { return fromPos_; }
+      set {
+        fromPos_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1426,6 +1488,7 @@ namespace Event.V1 {
       }
       if (!object.Equals(Uid, other.Uid)) return false;
       if (Text != other.Text) return false;
+      if (!object.Equals(FromPos, other.FromPos)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1435,6 +1498,7 @@ namespace Event.V1 {
       int hash = 1;
       if (uid_ != null) hash ^= Uid.GetHashCode();
       if (Text.Length != 0) hash ^= Text.GetHashCode();
+      if (fromPos_ != null) hash ^= FromPos.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1461,6 +1525,10 @@ namespace Event.V1 {
         output.WriteRawTag(18);
         output.WriteString(Text);
       }
+      if (fromPos_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(FromPos);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1479,6 +1547,10 @@ namespace Event.V1 {
         output.WriteRawTag(18);
         output.WriteString(Text);
       }
+      if (fromPos_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(FromPos);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1494,6 +1566,9 @@ namespace Event.V1 {
       }
       if (Text.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
+      }
+      if (fromPos_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FromPos);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1515,6 +1590,12 @@ namespace Event.V1 {
       }
       if (other.Text.Length != 0) {
         Text = other.Text;
+      }
+      if (other.fromPos_ != null) {
+        if (fromPos_ == null) {
+          FromPos = new global::Event.V1.Pos();
+        }
+        FromPos.MergeFrom(other.FromPos);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1546,6 +1627,13 @@ namespace Event.V1 {
             Text = input.ReadString();
             break;
           }
+          case 26: {
+            if (fromPos_ == null) {
+              FromPos = new global::Event.V1.Pos();
+            }
+            input.ReadMessage(FromPos);
+            break;
+          }
         }
       }
     #endif
@@ -1574,6 +1662,13 @@ namespace Event.V1 {
           }
           case 18: {
             Text = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (fromPos_ == null) {
+              FromPos = new global::Event.V1.Pos();
+            }
+            input.ReadMessage(FromPos);
             break;
           }
         }
@@ -1761,6 +1856,483 @@ namespace Event.V1 {
             break;
           case 10: {
             place_.AddEntriesFrom(ref input, _repeated_place_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PredictTimeTableRequest : pb::IMessage<PredictTimeTableRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PredictTimeTableRequest> _parser = new pb::MessageParser<PredictTimeTableRequest>(() => new PredictTimeTableRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PredictTimeTableRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Event.V1.EventMaterialReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableRequest(PredictTimeTableRequest other) : this() {
+      uid_ = other.uid_ != null ? other.uid_.Clone() : null;
+      eventMaterial_ = other.eventMaterial_ != null ? other.eventMaterial_.Clone() : null;
+      isGoing_ = other.isGoing_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableRequest Clone() {
+      return new PredictTimeTableRequest(this);
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private global::Common.V1.Uid uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Common.V1.Uid Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "event_material" field.</summary>
+    public const int EventMaterialFieldNumber = 2;
+    private global::Event.V1.EventMaterial eventMaterial_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Event.V1.EventMaterial EventMaterial {
+      get { return eventMaterial_; }
+      set {
+        eventMaterial_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_going" field.</summary>
+    public const int IsGoingFieldNumber = 3;
+    private bool isGoing_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsGoing {
+      get { return isGoing_; }
+      set {
+        isGoing_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PredictTimeTableRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PredictTimeTableRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Uid, other.Uid)) return false;
+      if (!object.Equals(EventMaterial, other.EventMaterial)) return false;
+      if (IsGoing != other.IsGoing) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (uid_ != null) hash ^= Uid.GetHashCode();
+      if (eventMaterial_ != null) hash ^= EventMaterial.GetHashCode();
+      if (IsGoing != false) hash ^= IsGoing.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (uid_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Uid);
+      }
+      if (eventMaterial_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EventMaterial);
+      }
+      if (IsGoing != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsGoing);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (uid_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Uid);
+      }
+      if (eventMaterial_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EventMaterial);
+      }
+      if (IsGoing != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsGoing);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (uid_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Uid);
+      }
+      if (eventMaterial_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EventMaterial);
+      }
+      if (IsGoing != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PredictTimeTableRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.uid_ != null) {
+        if (uid_ == null) {
+          Uid = new global::Common.V1.Uid();
+        }
+        Uid.MergeFrom(other.Uid);
+      }
+      if (other.eventMaterial_ != null) {
+        if (eventMaterial_ == null) {
+          EventMaterial = new global::Event.V1.EventMaterial();
+        }
+        EventMaterial.MergeFrom(other.EventMaterial);
+      }
+      if (other.IsGoing != false) {
+        IsGoing = other.IsGoing;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
+            break;
+          }
+          case 18: {
+            if (eventMaterial_ == null) {
+              EventMaterial = new global::Event.V1.EventMaterial();
+            }
+            input.ReadMessage(EventMaterial);
+            break;
+          }
+          case 24: {
+            IsGoing = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
+            break;
+          }
+          case 18: {
+            if (eventMaterial_ == null) {
+              EventMaterial = new global::Event.V1.EventMaterial();
+            }
+            input.ReadMessage(EventMaterial);
+            break;
+          }
+          case 24: {
+            IsGoing = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PredictTimeTableResponse : pb::IMessage<PredictTimeTableResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PredictTimeTableResponse> _parser = new pb::MessageParser<PredictTimeTableResponse>(() => new PredictTimeTableResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PredictTimeTableResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Event.V1.EventMaterialReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableResponse(PredictTimeTableResponse other) : this() {
+      timeTable_ = other.timeTable_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictTimeTableResponse Clone() {
+      return new PredictTimeTableResponse(this);
+    }
+
+    /// <summary>Field number for the "time_table" field.</summary>
+    public const int TimeTableFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Event.V1.TimeTable> _repeated_timeTable_codec
+        = pb::FieldCodec.ForMessage(10, global::Event.V1.TimeTable.Parser);
+    private readonly pbc::RepeatedField<global::Event.V1.TimeTable> timeTable_ = new pbc::RepeatedField<global::Event.V1.TimeTable>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Event.V1.TimeTable> TimeTable {
+      get { return timeTable_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PredictTimeTableResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PredictTimeTableResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!timeTable_.Equals(other.timeTable_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= timeTable_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      timeTable_.WriteTo(output, _repeated_timeTable_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      timeTable_.WriteTo(ref output, _repeated_timeTable_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += timeTable_.CalculateSize(_repeated_timeTable_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PredictTimeTableResponse other) {
+      if (other == null) {
+        return;
+      }
+      timeTable_.Add(other.timeTable_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            timeTable_.AddEntriesFrom(input, _repeated_timeTable_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            timeTable_.AddEntriesFrom(ref input, _repeated_timeTable_codec);
             break;
           }
         }

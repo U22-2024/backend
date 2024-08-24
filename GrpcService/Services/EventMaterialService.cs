@@ -21,8 +21,8 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
 
         var scope = context.GetHttpContext().RequestServices.CreateScope();
 
-        PredictEvent predictEvent = scope.ServiceProvider.GetRequiredService<PredictEvent>();
-        var after = await predictEvent.PredictEventMaterial(prompt, eventMaterial);
+        PredictEventMaterial predictEventMaterial = scope.ServiceProvider.GetRequiredService<PredictEventMaterial>();
+        var after = await predictEventMaterial.UpdateEventMaterial(prompt, eventMaterial);
         return new PredictEventMaterialItemResponse
         {
             EventMaterial = after
@@ -37,7 +37,7 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
 
         var prompt = request.Text;
-        var homePos = request.FomePos;
+        var homePos = request.FromPos;
 
         var scope = context.GetHttpContext().RequestServices.CreateScope();
 
@@ -47,6 +47,27 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
         return new PredictPositionsFromTextResponse
         {
             Place = { response }
+        };
+    }
+
+    [Authorize]
+    public override async Task<PredictTimeTableResponse> PredictTimeTable(PredictTimeTableRequest request, ServerCallContext context)
+    {
+        var authUser = context.GetAuthUser();
+        if (request.Uid.Value != authUser.Uid)
+            throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
+
+        var eventMaterial = request.EventMaterial;
+        var isStart = request.IsGoing;
+
+        var scope = context.GetHttpContext().RequestServices.CreateScope();
+
+        GetTimeTable getTimeTable = scope.ServiceProvider.GetRequiredService<GetTimeTable>();
+        var response = await getTimeTable.GetTimeTableList(eventMaterial, isStart);
+
+        return new PredictTimeTableResponse
+        {
+            TimeTable = { response }
         };
     }
 }

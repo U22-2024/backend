@@ -3,21 +3,14 @@ using Claudia;
 using Event.V1;
 using DateTime = Event.V1.DateTime;
 
-public class PredictEvent(IConfiguration _config)
+public class PredictEventMaterial(IConfiguration _config)
 {
     private Anthropic _anthropic = new Anthropic
     {
         ApiKey = _config["AnthropicApiKey"]
     };
 
-    /// <summary>
-    ///  Get Remind type from the given prompt.
-    ///  This method uses the Anthropic API To generate a Reminder type from the given prompt
-    /// </summary>
-    /// <param name="prompt"></param>
-    /// <param name="eventMaterial"></param>
-    /// <returns></returns>
-    public async Task<EventMaterial> PredictEventMaterial(string prompt, EventMaterial eventMaterial)
+    public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial eventMaterial)
     {
         string startTimeStr = GetDateTimeString(eventMaterial.StartTime);
         string endTimeStr = GetDateTimeString(eventMaterial.EndTime);
