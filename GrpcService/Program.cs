@@ -1,4 +1,3 @@
-using Event.V1;
 using GrpcService;
 using GrpcService.API;
 using GrpcService.Extensions;
@@ -29,7 +28,7 @@ app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
-// app.MapGrpcService<EventService>();
+app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GrpcService.Services;
 
-public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialService> logger)
+public class EventMaterialService(PredictEventMaterial predictEventMaterial, GetPlace getPlace, GetTimeTable getTimeTable)
     : Event.V1.EventMaterialService.EventMaterialServiceBase
 {
     [Authorize]
@@ -19,9 +19,6 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
         var prompt = request.Text;
         var eventMaterial = request.EventMaterial;
 
-        var scope = context.GetHttpContext().RequestServices.CreateScope();
-
-        PredictEventMaterial predictEventMaterial = scope.ServiceProvider.GetRequiredService<PredictEventMaterial>();
         var after = await predictEventMaterial.UpdateEventMaterial(prompt, eventMaterial);
         return new PredictEventMaterialItemResponse
         {
@@ -39,9 +36,6 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
         var prompt = request.Text;
         var homePos = request.FromPos;
 
-        var scope = context.GetHttpContext().RequestServices.CreateScope();
-
-        GetPlace getPlace = scope.ServiceProvider.GetRequiredService<GetPlace>();
         var response = await getPlace.GetTextPos(prompt, homePos);
 
         return new PredictPositionsFromTextResponse
@@ -60,9 +54,6 @@ public class EventMaterialService(AppDbContext dbContext, ILogger<EventMaterialS
         var eventMaterial = request.EventMaterial;
         var isStart = request.IsGoing;
 
-        var scope = context.GetHttpContext().RequestServices.CreateScope();
-
-        GetTimeTable getTimeTable = scope.ServiceProvider.GetRequiredService<GetTimeTable>();
         var response = await getTimeTable.GetTimeTableList(eventMaterial, isStart);
 
         return new PredictTimeTableResponse

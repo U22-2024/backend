@@ -23,7 +23,7 @@ public class PredictEventMaterial(IConfiguration _config)
         {
             var message = await _anthropic.Messages.CreateAsync(new()
             {
-                Model = "claude-3-5-sonnet-20240620",
+                Model = "claude-3-haiku-20240307",
                 MaxTokens = 1000,
                 Temperature = 0,
                 Messages =
