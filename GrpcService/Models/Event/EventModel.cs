@@ -27,5 +27,6 @@ public class EventModel
     public int WalkDistance { get; set; } = -1;
     public int Fare = -1;
 
-    public string Uid { get; set; } = null!;
+    [Required]
+    public required string Uid { get; set; } = null!;
 }

@@ -25,7 +25,8 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
 
             TransitCount = (int)request.TimeTable.TransitCount,
             WalkDistance = (int)request.TimeTable.WalkDistance,
-            Fare = (int)request.TimeTable.Fare
+            Fare = (int)request.TimeTable.Fare,
+            Uid = request.Uid.Value
         };
 
         dbContext.Events.Add(eventModel);
