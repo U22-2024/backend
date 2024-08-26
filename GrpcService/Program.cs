@@ -28,6 +28,8 @@ app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
+app.MapGrpcService<GreetService>();
+
 app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
@@ -36,19 +38,27 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
 {
     var strategy = dbCtx.Database.CreateExecutionStrategy();
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
-}
 
-using (var scope = app.Services.CreateScope())
-{
-    // var ai = scope.ServiceProvider.GetRequiredService<GetPlace>();
-    // var pos = new Pos();
-    // pos.Lat = 34.23404579573394;
-    // pos.Lon = 133.6358061308664;
-    // ai.GetTextPos("イオン", pos);
+    // 一言メッセージを読み込んでデータベースに保存する
+    Workbook wb = new Workbook();
+    wb.LoadFromFile("../mother_hitokoto.xlsx");
 
-    // var ai = scope.ServiceProvider.GetRequiredService<PredictEvent>();
-    // var eventMaterial = new EventMaterial();
-    // EventMaterial after = await ai.PredictEventMaterial("明日の9時に友達とバイクでイオンに行く。今日は2024/08/24", eventMaterial);
+    Worksheet worksheet = wb.Worksheets[0];
+
+    for (int row = 1; row <= worksheet.LastRow; row++)
+    {
+        CellRange range = worksheet.Range[row, 1];
+        string cellValue = range.Text == null ? string.Empty : range.Text.ToString();
+        GreetModel greet = new GreetModel { Id = row, Message = cellValue };
+
+        dbCtx.Greets.Add(greet);
+    }
+
+    // リソースを解放する
+    wb.Dispose();
+
+    // DBへ書き込み
+    await dbCtx.SaveChangesAsync();
 }
 
 app.Run();
