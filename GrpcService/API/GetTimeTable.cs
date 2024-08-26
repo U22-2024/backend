@@ -36,6 +36,8 @@ public class GetTimeTable(IConfiguration _config)
                      "%2C" + eventMaterial.FromPos.Lon + "&goal=" + eventMaterial.DestinationPos.Lat + "%2C" + eventMaterial.DestinationPos.Lon +
                      "&datum=wgs84&term=1440" + order + "&limit=5&" + timeStr + "&coord_unit=degree";
 
+        Console.WriteLine(url);
+
         var client = new HttpClient();
         var request = new HttpRequestMessage
         {
@@ -103,13 +105,16 @@ public class GetTimeTable(IConfiguration _config)
                     timeTableItem.Distance = (uint)section.distance;
                     timeTableItem.LineName = section.line_name;
 
-                    var transport = new Event.V1.Transport();
-                    transport.Fare = (uint)section.transport.fare.unit_0;
-                    transport.Color = section.transport.color;
-                    transport.TrainName = section.transport.self_name;
-                    transport.Direction = section.transport.links[0].direction;
-                    transport.Destination = section.transport.links[0].destination.name;
-                    timeTableItem.Transport = transport;
+                    if (timeTableItem.Move == "train" || timeTableItem.Move == "paid_train")
+                    {
+                        var transport = new Event.V1.Transport();
+                        transport.Fare = (uint)section.transport.fare.unit_0;
+                        transport.Color = section.transport.color;
+                        transport.TrainName = section.transport.self_name;
+                        transport.Direction = section.transport.links[0].direction;
+                        transport.Destination = section.transport.links[0].destination.name;
+                        timeTableItem.Transport = transport;
+                    }
                 }
 
                 timeTable.Item.Add(timeTableItem);
@@ -207,7 +212,7 @@ public class RouteSummaryItem
 
 public class Fare
 {
-    public int unit_0 { get; set; } = -1;
+    public double unit_0 { get; set; } = -1;
 }
 
 public class RouteSectionItem

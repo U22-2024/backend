@@ -417,6 +417,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "is_out" field.</summary>
     public const int IsOutFieldNumber = 1;
     private bool isOut_;
+    /// <summary>
+    /// 外出するかしないか
+    /// ただのタスクか外出イベントか
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsOut {
@@ -429,6 +433,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "remind" field.</summary>
     public const int RemindFieldNumber = 2;
     private string remind_ = "";
+    /// <summary>
+    /// イベントのタイトル
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Remind {
@@ -441,6 +448,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "from_pos" field.</summary>
     public const int FromPosFieldNumber = 3;
     private global::Event.V1.Pos fromPos_;
+    /// <summary>
+    /// 現在地の緯度経度
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos FromPos {
@@ -453,6 +463,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "destination" field.</summary>
     public const int DestinationFieldNumber = 4;
     private string destination_ = "";
+    /// <summary>
+    /// 目的地の名前
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Destination {
@@ -465,6 +478,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "destination_pos" field.</summary>
     public const int DestinationPosFieldNumber = 5;
     private global::Event.V1.Pos destinationPos_;
+    /// <summary>
+    /// 目的地の緯度経度
+    /// PredictPositionsFromTextで取得したものを使う
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos DestinationPos {
@@ -477,6 +494,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "move_type" field.</summary>
     public const int MoveTypeFieldNumber = 6;
     private global::Event.V1.MoveType moveType_ = global::Event.V1.MoveType.Unspecified;
+    /// <summary>
+    /// 移動手段
+    /// リクエスト時には設定しなくてよい
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.MoveType MoveType {
@@ -489,6 +510,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "option" field.</summary>
     public const int OptionFieldNumber = 7;
     private string option_ = "";
+    /// <summary>
+    /// 移動手段のオプション
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Option {
@@ -501,6 +525,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "start_time" field.</summary>
     public const int StartTimeFieldNumber = 8;
     private global::Event.V1.DateTime startTime_;
+    /// <summary>
+    /// イベントの開始時間
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.DateTime StartTime {
@@ -513,6 +540,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "end_time" field.</summary>
     public const int EndTimeFieldNumber = 9;
     private global::Event.V1.DateTime endTime_;
+    /// <summary>
+    /// イベントの終了時間
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.DateTime EndTime {
@@ -953,6 +983,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "event_material" field.</summary>
     public const int EventMaterialFieldNumber = 2;
     private global::Event.V1.EventMaterial eventMaterial_;
+    /// <summary>
+    /// 初回は空でリクエスト
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.EventMaterial EventMaterial {
@@ -965,6 +998,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 3;
     private string text_ = "";
+    /// <summary>
+    /// レスポンスをもとにして、テキストをクライアント側で作成する
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Text {
@@ -1450,6 +1486,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 2;
     private string text_ = "";
+    /// <summary>
+    /// ex.) イオン、スターバックス、東京駅
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Text {
@@ -1462,6 +1501,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "from_pos" field.</summary>
     public const int FromPosFieldNumber = 3;
     private global::Event.V1.Pos fromPos_;
+    /// <summary>
+    /// 現在地の緯度経度
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos FromPos {
@@ -1728,6 +1770,9 @@ namespace Event.V1 {
     private static readonly pb::FieldCodec<global::Event.V1.Place> _repeated_place_codec
         = pb::FieldCodec.ForMessage(10, global::Event.V1.Place.Parser);
     private readonly pbc::RepeatedField<global::Event.V1.Place> place_ = new pbc::RepeatedField<global::Event.V1.Place>();
+    /// <summary>
+    /// 候補をいくつか返す
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::Event.V1.Place> Place {
@@ -1927,6 +1972,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "event_material" field.</summary>
     public const int EventMaterialFieldNumber = 2;
     private global::Event.V1.EventMaterial eventMaterial_;
+    /// <summary>
+    /// 全て埋まった状態でリクエスト
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.EventMaterial EventMaterial {
@@ -1939,6 +1987,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "is_going" field.</summary>
     public const int IsGoingFieldNumber = 3;
     private bool isGoing_;
+    /// <summary>
+    /// 行きか帰りか
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsGoing {
