@@ -1,8 +1,10 @@
 using GrpcService;
 using GrpcService.API;
 using GrpcService.Extensions;
+using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
+using Spire.Xls;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,16 +42,16 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
 
     // 一言メッセージを読み込んでデータベースに保存する
-    Workbook wb = new Workbook();
+    var wb = new Workbook();
     wb.LoadFromFile("../mother_hitokoto.xlsx");
 
-    Worksheet worksheet = wb.Worksheets[0];
+    var worksheet = wb.Worksheets[0];
 
-    for (int row = 1; row <= worksheet.LastRow; row++)
+    for (var row = 1; row <= worksheet.LastRow; row++)
     {
-        CellRange range = worksheet.Range[row, 1];
-        string cellValue = range.Text == null ? string.Empty : range.Text.ToString();
-        GreetModel greet = new GreetModel { Id = row, Message = cellValue };
+        var range = worksheet.Range[row, 1];
+        var cellValue = range.Text == null ? string.Empty : range.Text;
+        var greet = new GreetModel { Id = row, Message = cellValue };
 
         dbCtx.Greets.Add(greet);
     }
