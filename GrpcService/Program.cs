@@ -1,10 +1,10 @@
-using Spire.Xls;
-using System.Data;
 using GrpcService;
+using GrpcService.API;
 using GrpcService.Extensions;
+using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
-using GrpcService.Models.Greet;
+using Spire.Xls;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,8 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.SetupApp();
 
-builder.Services.AddScoped<PredictRemindType>();
+builder.Services.AddScoped<PredictEventMaterial>();
+builder.Services.AddScoped<GetPlace>();
 
 var app = builder.Build();
 
@@ -31,6 +32,7 @@ app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
 app.MapGrpcService<GreetService>();
 
+app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())
@@ -40,16 +42,16 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
 
     // 一言メッセージを読み込んでデータベースに保存する
-    Workbook wb = new Workbook();
+    var wb = new Workbook();
     wb.LoadFromFile("../mother_hitokoto.xlsx");
 
-    Worksheet worksheet = wb.Worksheets[0];
+    var worksheet = wb.Worksheets[0];
 
-    for (int row = 1; row <= worksheet.LastRow; row++)
+    for (var row = 1; row <= worksheet.LastRow; row++)
     {
-        CellRange range = worksheet.Range[row, 1];
-        string cellValue = range.Text == null ? string.Empty : range.Text.ToString();
-        GreetModel greet = new GreetModel { Id = row, Message = cellValue };
+        var range = worksheet.Range[row, 1];
+        var cellValue = range.Text == null ? string.Empty : range.Text;
+        var greet = new GreetModel { Id = row, Message = cellValue };
 
         dbCtx.Greets.Add(greet);
     }
@@ -61,6 +63,4 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
     await dbCtx.SaveChangesAsync();
 }
 
-
 app.Run();
-

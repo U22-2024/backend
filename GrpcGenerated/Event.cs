@@ -25,11 +25,13 @@ namespace Event.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRldmVudC92MS9ldmVudC5wcm90bxIIZXZlbnQudjEaFmNvbW1vbi92MS9j",
-            "b21tb24ucHJvdG8aE2V2ZW50L3YxL2NvcmUucHJvdG8irwEKBUV2ZW50Eh8K",
-            "AmlkGAEgASgLMg8uY29tbW9uLnYxLkd1aWRSAmlkEh0KCmV2ZW50X2l0ZW0Y",
-            "AiADKAlSCWV2ZW50SXRlbRIyCgp0aW1lX3RhYmxlGAMgASgLMhMuZXZlbnQu",
-            "djEuVGltZVRhYmxlUgl0aW1lVGFibGUSMgoKdXNlcl9pdGVtcxgEIAEoCzIT",
-            "LmV2ZW50LnYxLlVzZXJJdGVtc1IJdXNlckl0ZW1zIpYBCglUaW1lVGFibGUS",
+            "b21tb24ucHJvdG8aE2V2ZW50L3YxL2NvcmUucHJvdG8iiQIKBUV2ZW50Eh8K",
+            "AmlkGAEgASgLMg8uY29tbW9uLnYxLkd1aWRSAmlkEhQKBXRpdGxlGAIgASgJ",
+            "UgV0aXRsZRIgCgtkZXNjcmlwdGlvbhgDIAEoCVILZGVzY3JpcHRpb24SHQoK",
+            "ZXZlbnRfaXRlbRgEIAMoCVIJZXZlbnRJdGVtEjIKCnRpbWVfdGFibGUYBSAB",
+            "KAsyEy5ldmVudC52MS5UaW1lVGFibGVSCXRpbWVUYWJsZRIyCgp1c2VyX2l0",
+            "ZW1zGAYgASgLMhMuZXZlbnQudjEuVXNlckl0ZW1zUgl1c2VySXRlbXMSIAoD",
+            "dWlkGAcgASgLMg4uY29tbW9uLnYxLlVpZFIDdWlkIpYBCglUaW1lVGFibGUS",
             "KwoEaXRlbRgBIAMoCzIXLmV2ZW50LnYxLlRpbWVUYWJsZUl0ZW1SBGl0ZW0S",
             "IwoNdHJhbnNpdF9jb3VudBgCIAEoDVIMdHJhbnNpdENvdW50EiMKDXdhbGtf",
             "ZGlzdGFuY2UYAyABKA1SDHdhbGtEaXN0YW5jZRISCgRmYXJlGAQgASgNUgRm",
@@ -49,34 +51,36 @@ namespace Event.V1 {
             "ZXRFdmVudFJlc3BvbnNlEiUKBWV2ZW50GAEgASgLMg8uZXZlbnQudjEuRXZl",
             "bnRSBWV2ZW50IjQKEEdldEV2ZW50c1JlcXVlc3QSIAoDdWlkGAEgASgLMg4u",
             "Y29tbW9uLnYxLlVpZFIDdWlkIjwKEUdldEV2ZW50c1Jlc3BvbnNlEicKBmV2",
-            "ZW50cxgBIAMoCzIPLmV2ZW50LnYxLkV2ZW50UgZldmVudHMingEKEkNyZWF0",
+            "ZW50cxgBIAMoCzIPLmV2ZW50LnYxLkV2ZW50UgZldmVudHMi9QEKEkNyZWF0",
             "ZUV2ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21tb24udjEuVWlkUgN1",
-            "aWQSMgoKdGltZV90YWJsZRgCIAEoCzITLmV2ZW50LnYxLlRpbWVUYWJsZVIJ",
-            "dGltZVRhYmxlEjIKCnVzZXJfaXRlbXMYAyABKAsyEy5ldmVudC52MS5Vc2Vy",
-            "SXRlbXNSCXVzZXJJdGVtcyI8ChNDcmVhdGVFdmVudFJlc3BvbnNlEiUKBWV2",
-            "ZW50GAEgASgLMg8uZXZlbnQudjEuRXZlbnRSBWV2ZW50In4KElVwZGF0ZUV2",
-            "ZW50UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21tb24udjEuVWlkUgN1aWQS",
-            "HwoCaWQYAiABKAsyDy5jb21tb24udjEuR3VpZFICaWQSJQoFZXZlbnQYAyAB",
-            "KAsyDy5ldmVudC52MS5FdmVudFIFZXZlbnQiPAoTVXBkYXRlRXZlbnRSZXNw",
-            "b25zZRIlCgVldmVudBgBIAEoCzIPLmV2ZW50LnYxLkV2ZW50UgVldmVudCJb",
-            "ChJEZWxldGVFdmVudFJlcXVlc3QSIAoDdWlkGAEgASgLMg4uY29tbW9uLnYx",
-            "LlVpZFIDdWlkEiMKBGd1aWQYAiABKAsyDy5jb21tb24udjEuR3VpZFIEZ3Vp",
-            "ZCIVChNEZWxldGVFdmVudFJlc3BvbnNlMvsCCgxFdmVudFNlcnZpY2USQQoI",
-            "R2V0RXZlbnQSGS5ldmVudC52MS5HZXRFdmVudFJlcXVlc3QaGi5ldmVudC52",
-            "MS5HZXRFdmVudFJlc3BvbnNlEkQKCUdldEV2ZW50cxIaLmV2ZW50LnYxLkdl",
-            "dEV2ZW50c1JlcXVlc3QaGy5ldmVudC52MS5HZXRFdmVudHNSZXNwb25zZRJK",
-            "CgtDcmVhdGVFdmVudBIcLmV2ZW50LnYxLkNyZWF0ZUV2ZW50UmVxdWVzdBod",
-            "LmV2ZW50LnYxLkNyZWF0ZUV2ZW50UmVzcG9uc2USSgoLVXBkYXRlRXZlbnQS",
-            "HC5ldmVudC52MS5VcGRhdGVFdmVudFJlcXVlc3QaHS5ldmVudC52MS5VcGRh",
-            "dGVFdmVudFJlc3BvbnNlEkoKC0RlbGV0ZUV2ZW50EhwuZXZlbnQudjEuRGVs",
-            "ZXRlRXZlbnRSZXF1ZXN0Gh0uZXZlbnQudjEuRGVsZXRlRXZlbnRSZXNwb25z",
-            "ZUJbCgxjb20uZXZlbnQudjFCCkV2ZW50UHJvdG9QAaICA0VYWKoCCEV2ZW50",
-            "LlYxygIIRXZlbnRcVjHiAhRFdmVudFxWMVxHUEJNZXRhZGF0YeoCCUV2ZW50",
-            "OjpWMWIGcHJvdG8z"));
+            "aWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGAMgASgJ",
+            "UgtkZXNjcmlwdGlvbhIdCgpldmVudF9pdGVtGAQgAygJUglldmVudEl0ZW0S",
+            "MgoKdGltZV90YWJsZRgFIAEoCzITLmV2ZW50LnYxLlRpbWVUYWJsZVIJdGlt",
+            "ZVRhYmxlEjIKCnVzZXJfaXRlbXMYBiABKAsyEy5ldmVudC52MS5Vc2VySXRl",
+            "bXNSCXVzZXJJdGVtcyI8ChNDcmVhdGVFdmVudFJlc3BvbnNlEiUKBWV2ZW50",
+            "GAEgASgLMg8uZXZlbnQudjEuRXZlbnRSBWV2ZW50In4KElVwZGF0ZUV2ZW50",
+            "UmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21tb24udjEuVWlkUgN1aWQSHwoC",
+            "aWQYAiABKAsyDy5jb21tb24udjEuR3VpZFICaWQSJQoFZXZlbnQYAyABKAsy",
+            "Dy5ldmVudC52MS5FdmVudFIFZXZlbnQiPAoTVXBkYXRlRXZlbnRSZXNwb25z",
+            "ZRIlCgVldmVudBgBIAEoCzIPLmV2ZW50LnYxLkV2ZW50UgVldmVudCJXChJE",
+            "ZWxldGVFdmVudFJlcXVlc3QSIAoDdWlkGAEgASgLMg4uY29tbW9uLnYxLlVp",
+            "ZFIDdWlkEh8KAmlkGAIgASgLMg8uY29tbW9uLnYxLkd1aWRSAmlkIhUKE0Rl",
+            "bGV0ZUV2ZW50UmVzcG9uc2Uy+wIKDEV2ZW50U2VydmljZRJBCghHZXRFdmVu",
+            "dBIZLmV2ZW50LnYxLkdldEV2ZW50UmVxdWVzdBoaLmV2ZW50LnYxLkdldEV2",
+            "ZW50UmVzcG9uc2USRAoJR2V0RXZlbnRzEhouZXZlbnQudjEuR2V0RXZlbnRz",
+            "UmVxdWVzdBobLmV2ZW50LnYxLkdldEV2ZW50c1Jlc3BvbnNlEkoKC0NyZWF0",
+            "ZUV2ZW50EhwuZXZlbnQudjEuQ3JlYXRlRXZlbnRSZXF1ZXN0Gh0uZXZlbnQu",
+            "djEuQ3JlYXRlRXZlbnRSZXNwb25zZRJKCgtVcGRhdGVFdmVudBIcLmV2ZW50",
+            "LnYxLlVwZGF0ZUV2ZW50UmVxdWVzdBodLmV2ZW50LnYxLlVwZGF0ZUV2ZW50",
+            "UmVzcG9uc2USSgoLRGVsZXRlRXZlbnQSHC5ldmVudC52MS5EZWxldGVFdmVu",
+            "dFJlcXVlc3QaHS5ldmVudC52MS5EZWxldGVFdmVudFJlc3BvbnNlQlsKDGNv",
+            "bS5ldmVudC52MUIKRXZlbnRQcm90b1ABogIDRVhYqgIIRXZlbnQuVjHKAghF",
+            "dmVudFxWMeICFEV2ZW50XFYxXEdQQk1ldGFkYXRh6gIJRXZlbnQ6OlYxYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Common.V1.CommonReflection.Descriptor, global::Event.V1.CoreReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Event), global::Event.V1.Event.Parser, new[]{ "Id", "EventItem", "TimeTable", "UserItems" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Event), global::Event.V1.Event.Parser, new[]{ "Id", "Title", "Description", "EventItem", "TimeTable", "UserItems", "Uid" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.TimeTable), global::Event.V1.TimeTable.Parser, new[]{ "Item", "TransitCount", "WalkDistance", "Fare" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.TimeTableItem), global::Event.V1.TimeTableItem.Parser, new[]{ "Type", "Name", "Move", "FromTime", "EndTime", "Distance", "LineName", "Transport" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.Transport), global::Event.V1.Transport.Parser, new[]{ "Fare", "TrainName", "Color", "Direction", "Destination" }, null, null, null, null),
@@ -85,11 +89,11 @@ namespace Event.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.GetEventResponse), global::Event.V1.GetEventResponse.Parser, new[]{ "Event" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.GetEventsRequest), global::Event.V1.GetEventsRequest.Parser, new[]{ "Uid" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.GetEventsResponse), global::Event.V1.GetEventsResponse.Parser, new[]{ "Events" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.CreateEventRequest), global::Event.V1.CreateEventRequest.Parser, new[]{ "Uid", "TimeTable", "UserItems" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.CreateEventRequest), global::Event.V1.CreateEventRequest.Parser, new[]{ "Uid", "Title", "Description", "EventItem", "TimeTable", "UserItems" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.CreateEventResponse), global::Event.V1.CreateEventResponse.Parser, new[]{ "Event" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.UpdateEventRequest), global::Event.V1.UpdateEventRequest.Parser, new[]{ "Uid", "Id", "Event" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.UpdateEventResponse), global::Event.V1.UpdateEventResponse.Parser, new[]{ "Event" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.DeleteEventRequest), global::Event.V1.DeleteEventRequest.Parser, new[]{ "Uid", "Guid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.DeleteEventRequest), global::Event.V1.DeleteEventRequest.Parser, new[]{ "Uid", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.DeleteEventResponse), global::Event.V1.DeleteEventResponse.Parser, null, null, null, null, null)
           }));
     }
@@ -133,9 +137,12 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Event(Event other) : this() {
       id_ = other.id_ != null ? other.id_.Clone() : null;
+      title_ = other.title_;
+      description_ = other.description_;
       eventItem_ = other.eventItem_.Clone();
       timeTable_ = other.timeTable_ != null ? other.timeTable_.Clone() : null;
       userItems_ = other.userItems_ != null ? other.userItems_.Clone() : null;
+      uid_ = other.uid_ != null ? other.uid_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -157,10 +164,34 @@ namespace Event.V1 {
       }
     }
 
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 2;
+    private string title_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Title {
+      get { return title_; }
+      set {
+        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 3;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "event_item" field.</summary>
-    public const int EventItemFieldNumber = 2;
+    public const int EventItemFieldNumber = 4;
     private static readonly pb::FieldCodec<string> _repeated_eventItem_codec
-        = pb::FieldCodec.ForString(18);
+        = pb::FieldCodec.ForString(34);
     private readonly pbc::RepeatedField<string> eventItem_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -169,7 +200,7 @@ namespace Event.V1 {
     }
 
     /// <summary>Field number for the "time_table" field.</summary>
-    public const int TimeTableFieldNumber = 3;
+    public const int TimeTableFieldNumber = 5;
     private global::Event.V1.TimeTable timeTable_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -181,7 +212,7 @@ namespace Event.V1 {
     }
 
     /// <summary>Field number for the "user_items" field.</summary>
-    public const int UserItemsFieldNumber = 4;
+    public const int UserItemsFieldNumber = 6;
     private global::Event.V1.UserItems userItems_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -189,6 +220,18 @@ namespace Event.V1 {
       get { return userItems_; }
       set {
         userItems_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 7;
+    private global::Common.V1.Uid uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Common.V1.Uid Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
       }
     }
 
@@ -208,9 +251,12 @@ namespace Event.V1 {
         return true;
       }
       if (!object.Equals(Id, other.Id)) return false;
+      if (Title != other.Title) return false;
+      if (Description != other.Description) return false;
       if(!eventItem_.Equals(other.eventItem_)) return false;
       if (!object.Equals(TimeTable, other.TimeTable)) return false;
       if (!object.Equals(UserItems, other.UserItems)) return false;
+      if (!object.Equals(Uid, other.Uid)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -219,9 +265,12 @@ namespace Event.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (id_ != null) hash ^= Id.GetHashCode();
+      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
       hash ^= eventItem_.GetHashCode();
       if (timeTable_ != null) hash ^= TimeTable.GetHashCode();
       if (userItems_ != null) hash ^= UserItems.GetHashCode();
+      if (uid_ != null) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -244,14 +293,26 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Id);
       }
+      if (Title.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
       eventItem_.WriteTo(output, _repeated_eventItem_codec);
       if (timeTable_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(TimeTable);
       }
       if (userItems_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(UserItems);
+      }
+      if (uid_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Uid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -267,14 +328,26 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Id);
       }
+      if (Title.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
       eventItem_.WriteTo(ref output, _repeated_eventItem_codec);
       if (timeTable_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(TimeTable);
       }
       if (userItems_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(UserItems);
+      }
+      if (uid_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Uid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -289,12 +362,21 @@ namespace Event.V1 {
       if (id_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Id);
       }
+      if (Title.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
       size += eventItem_.CalculateSize(_repeated_eventItem_codec);
       if (timeTable_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TimeTable);
       }
       if (userItems_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UserItems);
+      }
+      if (uid_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Uid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -314,6 +396,12 @@ namespace Event.V1 {
         }
         Id.MergeFrom(other.Id);
       }
+      if (other.Title.Length != 0) {
+        Title = other.Title;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
       eventItem_.Add(other.eventItem_);
       if (other.timeTable_ != null) {
         if (timeTable_ == null) {
@@ -326,6 +414,12 @@ namespace Event.V1 {
           UserItems = new global::Event.V1.UserItems();
         }
         UserItems.MergeFrom(other.UserItems);
+      }
+      if (other.uid_ != null) {
+        if (uid_ == null) {
+          Uid = new global::Common.V1.Uid();
+        }
+        Uid.MergeFrom(other.Uid);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -354,21 +448,36 @@ namespace Event.V1 {
             break;
           }
           case 18: {
-            eventItem_.AddEntriesFrom(input, _repeated_eventItem_codec);
+            Title = input.ReadString();
             break;
           }
           case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            eventItem_.AddEntriesFrom(input, _repeated_eventItem_codec);
+            break;
+          }
+          case 42: {
             if (timeTable_ == null) {
               TimeTable = new global::Event.V1.TimeTable();
             }
             input.ReadMessage(TimeTable);
             break;
           }
-          case 34: {
+          case 50: {
             if (userItems_ == null) {
               UserItems = new global::Event.V1.UserItems();
             }
             input.ReadMessage(UserItems);
+            break;
+          }
+          case 58: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
             break;
           }
         }
@@ -398,21 +507,36 @@ namespace Event.V1 {
             break;
           }
           case 18: {
-            eventItem_.AddEntriesFrom(ref input, _repeated_eventItem_codec);
+            Title = input.ReadString();
             break;
           }
           case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            eventItem_.AddEntriesFrom(ref input, _repeated_eventItem_codec);
+            break;
+          }
+          case 42: {
             if (timeTable_ == null) {
               TimeTable = new global::Event.V1.TimeTable();
             }
             input.ReadMessage(TimeTable);
             break;
           }
-          case 34: {
+          case 50: {
             if (userItems_ == null) {
               UserItems = new global::Event.V1.UserItems();
             }
             input.ReadMessage(UserItems);
+            break;
+          }
+          case 58: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
             break;
           }
         }
@@ -2636,6 +2760,9 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CreateEventRequest(CreateEventRequest other) : this() {
       uid_ = other.uid_ != null ? other.uid_.Clone() : null;
+      title_ = other.title_;
+      description_ = other.description_;
+      eventItem_ = other.eventItem_.Clone();
       timeTable_ = other.timeTable_ != null ? other.timeTable_.Clone() : null;
       userItems_ = other.userItems_ != null ? other.userItems_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2659,8 +2786,43 @@ namespace Event.V1 {
       }
     }
 
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 2;
+    private string title_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Title {
+      get { return title_; }
+      set {
+        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 3;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "event_item" field.</summary>
+    public const int EventItemFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_eventItem_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> eventItem_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> EventItem {
+      get { return eventItem_; }
+    }
+
     /// <summary>Field number for the "time_table" field.</summary>
-    public const int TimeTableFieldNumber = 2;
+    public const int TimeTableFieldNumber = 5;
     private global::Event.V1.TimeTable timeTable_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2672,7 +2834,7 @@ namespace Event.V1 {
     }
 
     /// <summary>Field number for the "user_items" field.</summary>
-    public const int UserItemsFieldNumber = 3;
+    public const int UserItemsFieldNumber = 6;
     private global::Event.V1.UserItems userItems_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2699,6 +2861,9 @@ namespace Event.V1 {
         return true;
       }
       if (!object.Equals(Uid, other.Uid)) return false;
+      if (Title != other.Title) return false;
+      if (Description != other.Description) return false;
+      if(!eventItem_.Equals(other.eventItem_)) return false;
       if (!object.Equals(TimeTable, other.TimeTable)) return false;
       if (!object.Equals(UserItems, other.UserItems)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2709,6 +2874,9 @@ namespace Event.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (uid_ != null) hash ^= Uid.GetHashCode();
+      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      hash ^= eventItem_.GetHashCode();
       if (timeTable_ != null) hash ^= TimeTable.GetHashCode();
       if (userItems_ != null) hash ^= UserItems.GetHashCode();
       if (_unknownFields != null) {
@@ -2733,12 +2901,21 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Uid);
       }
-      if (timeTable_ != null) {
+      if (Title.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      eventItem_.WriteTo(output, _repeated_eventItem_codec);
+      if (timeTable_ != null) {
+        output.WriteRawTag(42);
         output.WriteMessage(TimeTable);
       }
       if (userItems_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(UserItems);
       }
       if (_unknownFields != null) {
@@ -2755,12 +2932,21 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Uid);
       }
-      if (timeTable_ != null) {
+      if (Title.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      eventItem_.WriteTo(ref output, _repeated_eventItem_codec);
+      if (timeTable_ != null) {
+        output.WriteRawTag(42);
         output.WriteMessage(TimeTable);
       }
       if (userItems_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(UserItems);
       }
       if (_unknownFields != null) {
@@ -2776,6 +2962,13 @@ namespace Event.V1 {
       if (uid_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Uid);
       }
+      if (Title.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      size += eventItem_.CalculateSize(_repeated_eventItem_codec);
       if (timeTable_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TimeTable);
       }
@@ -2800,6 +2993,13 @@ namespace Event.V1 {
         }
         Uid.MergeFrom(other.Uid);
       }
+      if (other.Title.Length != 0) {
+        Title = other.Title;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      eventItem_.Add(other.eventItem_);
       if (other.timeTable_ != null) {
         if (timeTable_ == null) {
           TimeTable = new global::Event.V1.TimeTable();
@@ -2839,13 +3039,25 @@ namespace Event.V1 {
             break;
           }
           case 18: {
+            Title = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            eventItem_.AddEntriesFrom(input, _repeated_eventItem_codec);
+            break;
+          }
+          case 42: {
             if (timeTable_ == null) {
               TimeTable = new global::Event.V1.TimeTable();
             }
             input.ReadMessage(TimeTable);
             break;
           }
-          case 26: {
+          case 50: {
             if (userItems_ == null) {
               UserItems = new global::Event.V1.UserItems();
             }
@@ -2879,13 +3091,25 @@ namespace Event.V1 {
             break;
           }
           case 18: {
+            Title = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            eventItem_.AddEntriesFrom(ref input, _repeated_eventItem_codec);
+            break;
+          }
+          case 42: {
             if (timeTable_ == null) {
               TimeTable = new global::Event.V1.TimeTable();
             }
             input.ReadMessage(TimeTable);
             break;
           }
-          case 26: {
+          case 50: {
             if (userItems_ == null) {
               UserItems = new global::Event.V1.UserItems();
             }
@@ -3648,7 +3872,7 @@ namespace Event.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DeleteEventRequest(DeleteEventRequest other) : this() {
       uid_ = other.uid_ != null ? other.uid_.Clone() : null;
-      guid_ = other.guid_ != null ? other.guid_.Clone() : null;
+      id_ = other.id_ != null ? other.id_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3670,15 +3894,15 @@ namespace Event.V1 {
       }
     }
 
-    /// <summary>Field number for the "guid" field.</summary>
-    public const int GuidFieldNumber = 2;
-    private global::Common.V1.Guid guid_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private global::Common.V1.Guid id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Common.V1.Guid Guid {
-      get { return guid_; }
+    public global::Common.V1.Guid Id {
+      get { return id_; }
       set {
-        guid_ = value;
+        id_ = value;
       }
     }
 
@@ -3698,7 +3922,7 @@ namespace Event.V1 {
         return true;
       }
       if (!object.Equals(Uid, other.Uid)) return false;
-      if (!object.Equals(Guid, other.Guid)) return false;
+      if (!object.Equals(Id, other.Id)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3707,7 +3931,7 @@ namespace Event.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (uid_ != null) hash ^= Uid.GetHashCode();
-      if (guid_ != null) hash ^= Guid.GetHashCode();
+      if (id_ != null) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3730,9 +3954,9 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Uid);
       }
-      if (guid_ != null) {
+      if (id_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(Guid);
+        output.WriteMessage(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3748,9 +3972,9 @@ namespace Event.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Uid);
       }
-      if (guid_ != null) {
+      if (id_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(Guid);
+        output.WriteMessage(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3765,8 +3989,8 @@ namespace Event.V1 {
       if (uid_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Uid);
       }
-      if (guid_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Guid);
+      if (id_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3786,11 +4010,11 @@ namespace Event.V1 {
         }
         Uid.MergeFrom(other.Uid);
       }
-      if (other.guid_ != null) {
-        if (guid_ == null) {
-          Guid = new global::Common.V1.Guid();
+      if (other.id_ != null) {
+        if (id_ == null) {
+          Id = new global::Common.V1.Guid();
         }
-        Guid.MergeFrom(other.Guid);
+        Id.MergeFrom(other.Id);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3819,10 +4043,10 @@ namespace Event.V1 {
             break;
           }
           case 18: {
-            if (guid_ == null) {
-              Guid = new global::Common.V1.Guid();
+            if (id_ == null) {
+              Id = new global::Common.V1.Guid();
             }
-            input.ReadMessage(Guid);
+            input.ReadMessage(Id);
             break;
           }
         }
@@ -3852,10 +4076,10 @@ namespace Event.V1 {
             break;
           }
           case 18: {
-            if (guid_ == null) {
-              Guid = new global::Common.V1.Guid();
+            if (id_ == null) {
+              Id = new global::Common.V1.Guid();
             }
-            input.ReadMessage(Guid);
+            input.ReadMessage(Id);
             break;
           }
         }

@@ -1,4 +1,5 @@
-﻿using GrpcService.Models.Greet;
+using GrpcService.Models.Event;
+using GrpcService.Models.Greet;
 using GrpcService.Models.Remind;
 using GrpcService.Models.RemindTemplate;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> opt) : DbContext(opt)
     public DbSet<RemindGroupModel> RemindGroups { get; set; }
 
     public DbSet<RemindTemplateModel> RemindTemplates { get; set; }
+
+    public DbSet<EventModel> Events { get; set; }
+
+    public DbSet<TimeTableItemModel> TimeTableItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
