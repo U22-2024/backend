@@ -1,34 +1,37 @@
 ﻿using System.Text.Json;
 using Claudia;
 using Event.V1;
+using Grpc.Core;
 using DateTime = Event.V1.DateTime;
 
-public class PredictEventMaterial(IConfiguration _config)
+namespace GrpcService.API;
+
+public class PredictEventMaterial(IConfiguration config)
 {
-    private Anthropic _anthropic = new Anthropic
+    private readonly Anthropic _anthropic = new()
     {
-        ApiKey = _config["AnthropicApiKey"]
+        ApiKey = config["AnthropicApiKey"] ?? throw new Exception("AnthropicApiKey is not set.")
     };
 
     public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial eventMaterial)
     {
-        string startTimeStr = GetDateTimeString(eventMaterial.StartTime);
-        string endTimeStr = GetDateTimeString(eventMaterial.EndTime);
+        var startTimeStr = GetDateTimeString(eventMaterial.StartTime);
+        var endTimeStr = GetDateTimeString(eventMaterial.EndTime);
 
-        ClaudeFormat knownInfo = new ClaudeFormat(eventMaterial.IsOut, eventMaterial.Remind, eventMaterial.Destination,
+        var knownInfo = new ClaudeFormat(eventMaterial.IsOut, eventMaterial.Remind, eventMaterial.Destination,
             (int)eventMaterial.MoveType, startTimeStr, endTimeStr);
-        string infoString = JsonSerializer.Serialize(knownInfo);
+        var infoString = JsonSerializer.Serialize(knownInfo);
 
         try
         {
-            var message = await _anthropic.Messages.CreateAsync(new()
+            var message = await _anthropic.Messages.CreateAsync(new MessageRequest
             {
                 Model = "claude-3-haiku-20240307",
                 MaxTokens = 1000,
                 Temperature = 0,
                 Messages =
                 [
-                    new()
+                    new Message
                     {
                         Role = "user",
                         Content =
@@ -37,10 +40,12 @@ public class PredictEventMaterial(IConfiguration _config)
                 ]
             });
 
-            ClaudeFormat? responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
+            var responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
+            if (responseInfo == null)
+                throw new RpcException(new Status(StatusCode.Internal, "Claude API error"));
 
-            DateTime startTime = GetDateTime(responseInfo.StartTime);
-            DateTime endTime = GetDateTime(responseInfo.EndTime);
+            var startTime = GetDateTime(responseInfo.StartTime);
+            var endTime = GetDateTime(responseInfo.EndTime);
 
             eventMaterial.IsOut = responseInfo.IsOut;
             eventMaterial.Remind = responseInfo.Remind;
@@ -51,31 +56,29 @@ public class PredictEventMaterial(IConfiguration _config)
         }
         catch (ClaudiaException ex)
         {
-            Console.WriteLine("Error: Claude API | " + (int)ex.Status);
-            Console.WriteLine(ex.Name);
-            Console.WriteLine(ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, $"Claude API error | {ex.Status} | {ex.Name} | {ex.Message}"));
         }
 
         return eventMaterial;
     }
 
-    private string GetDateTimeString(DateTime dateTime)
+    private static string GetDateTimeString(DateTime? dateTime)
     {
         if (dateTime == null)
             return "";
         return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + "T" + dateTime.Hour + ":" + dateTime.Minute;
     }
 
-    private DateTime GetDateTime(string dateTimeStr)
+    private static DateTime GetDateTime(string dateTimeStr)
     {
-        DateTime dateTime = new DateTime();
+        var dateTime = new DateTime();
 
         if (dateTimeStr == "")
             return dateTime;
 
-        string[] dateTimeArray = dateTimeStr.Split('T');
-        string[] dateArray = dateTimeArray[0].Split('-');
-        string[] timeArray = dateTimeArray[1].Split(':');
+        var dateTimeArray = dateTimeStr.Split('T');
+        var dateArray = dateTimeArray[0].Split('-');
+        var timeArray = dateTimeArray[1].Split(':');
         dateTime.Year = uint.Parse(dateArray[0]);
         dateTime.Month = uint.Parse(dateArray[1]);
         dateTime.Day = uint.Parse(dateArray[2]);
@@ -85,24 +88,16 @@ public class PredictEventMaterial(IConfiguration _config)
     }
 }
 
-public class ClaudeFormat
+public class ClaudeFormat(bool isOut, string remind, string to, int moveType, string startTime, string endTime)
 {
-    public bool IsOut { get; set; }
-    public string Remind { get; set; }
-    public string To { get; set; }
-    public int MoveType { get; set; }
-    public string StartTime { get; set; }
-    public string EndTime { get; set; }
-
-    public ClaudeFormat() { }
-
-    public ClaudeFormat(bool IsOut, string Remind, string To, int MoveType, string StartTime, string EndTime)
+    public ClaudeFormat(string remind, string to, string startTime, string endTime) : this(false, remind, to, 0, startTime, endTime)
     {
-        this.IsOut = IsOut;
-        this.Remind = Remind;
-        this.To = To;
-        this.MoveType = MoveType;
-        this.StartTime = StartTime;
-        this.EndTime = EndTime;
     }
+
+    public bool IsOut { get; init; } = isOut;
+    public string Remind { get; init; } = remind;
+    public string To { get; init; } = to;
+    public int MoveType { get; init; } = moveType;
+    public string StartTime { get; init; } = startTime;
+    public string EndTime { get; init; } = endTime;
 }

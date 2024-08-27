@@ -1,8 +1,8 @@
+using Event.V1;
 using Grpc.Core;
 using GrpcService.Extensions;
 using GrpcService.Models.Event;
 using Microsoft.AspNetCore.Authorization;
-using Event.V1;
 using DateTime = System.DateTime;
 
 namespace GrpcService.Services;
@@ -34,7 +34,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
 
         foreach (var timeTableItem in request.TimeTable.Item)
         {
-            TimeTableItemModel timeTableItemModel = GetTimeTableItemModel(timeTableItem);
+            var timeTableItemModel = GetTimeTableItemModel(timeTableItem);
 
             dbContext.TimeTableItems.Add(timeTableItemModel);
             await dbContext.SaveChangesAsync();
@@ -63,7 +63,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
     }
 
     [Authorize]
-    public override async Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context)
+    public override Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
         if (authUser.Uid != request.Uid.Value)
@@ -71,10 +71,10 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
         var eventModels = dbContext.Events.Where(e => e.Uid == request.Uid.Value).ToList();
         var events = eventModels.Select(GetEvent).ToList();
 
-        return new GetEventsResponse
+        return Task.FromResult(new GetEventsResponse
         {
             Events = { events }
-        };
+        });
     }
 
     [Authorize]
@@ -106,7 +106,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
 
         foreach (var timeTableItem in request.Event.TimeTable.Item)
         {
-            TimeTableItemModel timeTableItemModel = GetTimeTableItemModel(timeTableItem);
+            var timeTableItemModel = GetTimeTableItemModel(timeTableItem);
 
             dbContext.TimeTableItems.Add(timeTableItemModel);
             await dbContext.SaveChangesAsync();
@@ -148,12 +148,12 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
 
     public Event.V1.Event GetEvent(EventModel eventModel)
     {
-        UserItems userItems = new UserItems();
+        var userItems = new UserItems();
         userItems.Item.AddRange(eventModel.UserItems);
 
         return new Event.V1.Event
         {
-            Id = new Common.V1.Guid() { Value = eventModel.Id.ToString() },
+            Id = new Common.V1.Guid { Value = eventModel.Id.ToString() },
             Title = eventModel.Title,
             Description = eventModel.Description,
             EventItem = { eventModel.EventItems },
@@ -165,7 +165,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
                 Fare = (uint)eventModel.Fare,
                 Item =
                 {
-                    eventModel.TimeTableItems.Select(timeTableItem => new TimeTableItem()
+                    eventModel.TimeTableItems.Select(timeTableItem => new TimeTableItem
                     {
                         Type = (TimeTableType)timeTableItem.Type,
                         Name = timeTableItem.Name,
@@ -188,7 +188,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
                         },
                         Distance = (uint)timeTableItem.Distance,
                         LineName = timeTableItem.LineName,
-                        Transport = new Transport()
+                        Transport = new Transport
                         {
                             Fare = (uint)timeTableItem.Fare,
                             TrainName = timeTableItem.TrainName,
@@ -204,7 +204,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
 
     public TimeTableItemModel GetTimeTableItemModel(TimeTableItem timeTableItem)
     {
-        return new TimeTableItemModel()
+        return new TimeTableItemModel
         {
             Type = (int)timeTableItem.Type,
             Name = timeTableItem.Name,
