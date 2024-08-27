@@ -1,13 +1,16 @@
 ﻿using System.Text.Json;
 using Claudia;
 using Event.V1;
+using Grpc.Core;
 using DateTime = Event.V1.DateTime;
 
-public class PredictEventMaterial(IConfiguration _config)
+namespace GrpcService.API;
+
+public class PredictEventMaterial(IConfiguration config)
 {
     private readonly Anthropic _anthropic = new()
     {
-        ApiKey = _config["AnthropicApiKey"]
+        ApiKey = config["AnthropicApiKey"] ?? throw new Exception("AnthropicApiKey is not set.")
     };
 
     public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial eventMaterial)
@@ -38,6 +41,8 @@ public class PredictEventMaterial(IConfiguration _config)
             });
 
             var responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
+            if (responseInfo == null)
+                throw new RpcException(new Status(StatusCode.Internal, "Claude API error"));
 
             var startTime = GetDateTime(responseInfo.StartTime);
             var endTime = GetDateTime(responseInfo.EndTime);
@@ -51,22 +56,20 @@ public class PredictEventMaterial(IConfiguration _config)
         }
         catch (ClaudiaException ex)
         {
-            Console.WriteLine("Error: Claude API | " + (int)ex.Status);
-            Console.WriteLine(ex.Name);
-            Console.WriteLine(ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, $"Claude API error | {ex.Status} | {ex.Name} | {ex.Message}"));
         }
 
         return eventMaterial;
     }
 
-    private string GetDateTimeString(DateTime dateTime)
+    private static string GetDateTimeString(DateTime? dateTime)
     {
         if (dateTime == null)
             return "";
         return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + "T" + dateTime.Hour + ":" + dateTime.Minute;
     }
 
-    private DateTime GetDateTime(string dateTimeStr)
+    private static DateTime GetDateTime(string dateTimeStr)
     {
         var dateTime = new DateTime();
 
@@ -85,26 +88,16 @@ public class PredictEventMaterial(IConfiguration _config)
     }
 }
 
-public class ClaudeFormat
+public class ClaudeFormat(bool isOut, string remind, string to, int moveType, string startTime, string endTime)
 {
-    public ClaudeFormat()
+    public ClaudeFormat(string remind, string to, string startTime, string endTime) : this(false, remind, to, 0, startTime, endTime)
     {
     }
 
-    public ClaudeFormat(bool IsOut, string Remind, string To, int MoveType, string StartTime, string EndTime)
-    {
-        this.IsOut = IsOut;
-        this.Remind = Remind;
-        this.To = To;
-        this.MoveType = MoveType;
-        this.StartTime = StartTime;
-        this.EndTime = EndTime;
-    }
-
-    public bool IsOut { get; set; }
-    public string Remind { get; set; }
-    public string To { get; set; }
-    public int MoveType { get; set; }
-    public string StartTime { get; set; }
-    public string EndTime { get; set; }
+    public bool IsOut { get; init; } = isOut;
+    public string Remind { get; init; } = remind;
+    public string To { get; init; } = to;
+    public int MoveType { get; init; } = moveType;
+    public string StartTime { get; init; } = startTime;
+    public string EndTime { get; init; } = endTime;
 }
