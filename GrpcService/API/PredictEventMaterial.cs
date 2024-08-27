@@ -103,15 +103,10 @@ public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMat
 
 public class ClaudeFormat(bool isOut, string remind, string to, int moveType, string startTime, string endTime)
 {
-    public ClaudeFormat(string remind, string to, string startTime, string endTime) : this(false, remind, to, 0,
-        startTime, endTime)
-    {
-    }
-
-    public bool IsOut { get; init; } = isOut;
-    public string Remind { get; init; } = remind;
-    public string To { get; init; } = to;
-    public int MoveType { get; init; } = moveType;
-    public string StartTime { get; init; } = startTime;
-    public string EndTime { get; init; } = endTime;
+    public bool IsOut { get; set; } = isOut;
+    public string Remind { get; set; } = remind;
+    public string To { get; set; } = to;
+    public int MoveType { get; set; } = moveType;
+    public string StartTime { get; set; } = startTime;
+    public string EndTime { get; set; } = endTime;
 }
