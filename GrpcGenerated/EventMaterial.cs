@@ -51,18 +51,23 @@ namespace Event.V1 {
             "aWRSA3VpZBI+Cg5ldmVudF9tYXRlcmlhbBgCIAEoCzIXLmV2ZW50LnYxLkV2",
             "ZW50TWF0ZXJpYWxSDWV2ZW50TWF0ZXJpYWwSGQoIaXNfZ29pbmcYAyABKAhS",
             "B2lzR29pbmciTgoYUHJlZGljdFRpbWVUYWJsZVJlc3BvbnNlEjIKCnRpbWVf",
-            "dGFibGUYASADKAsyEy5ldmVudC52MS5UaW1lVGFibGVSCXRpbWVUYWJsZTLX",
-            "AgoURXZlbnRNYXRlcmlhbFNlcnZpY2UScQoYUHJlZGljdEV2ZW50TWF0ZXJp",
-            "YWxJdGVtEikuZXZlbnQudjEuUHJlZGljdEV2ZW50TWF0ZXJpYWxJdGVtUmVx",
-            "dWVzdBoqLmV2ZW50LnYxLlByZWRpY3RFdmVudE1hdGVyaWFsSXRlbVJlc3Bv",
-            "bnNlEnEKGFByZWRpY3RQb3NpdGlvbnNGcm9tVGV4dBIpLmV2ZW50LnYxLlBy",
-            "ZWRpY3RQb3NpdGlvbnNGcm9tVGV4dFJlcXVlc3QaKi5ldmVudC52MS5QcmVk",
-            "aWN0UG9zaXRpb25zRnJvbVRleHRSZXNwb25zZRJZChBQcmVkaWN0VGltZVRh",
-            "YmxlEiEuZXZlbnQudjEuUHJlZGljdFRpbWVUYWJsZVJlcXVlc3QaIi5ldmVu",
-            "dC52MS5QcmVkaWN0VGltZVRhYmxlUmVzcG9uc2VCYwoMY29tLmV2ZW50LnYx",
-            "QhJFdmVudE1hdGVyaWFsUHJvdG9QAaICA0VYWKoCCEV2ZW50LlYxygIIRXZl",
-            "bnRcVjHiAhRFdmVudFxWMVxHUEJNZXRhZGF0YeoCCUV2ZW50OjpWMWIGcHJv",
-            "dG8z"));
+            "dGFibGUYASADKAsyEy5ldmVudC52MS5UaW1lVGFibGVSCXRpbWVUYWJsZSJP",
+            "ChdQcmVkaWN0RXZlbnRJdGVtUmVxdWVzdBIgCgN1aWQYASABKAsyDi5jb21t",
+            "b24udjEuVWlkUgN1aWQSEgoEdGV4dBgCIAEoCVIEdGV4dCI5ChhQcmVkaWN0",
+            "RXZlbnRJdGVtUmVzcG9uc2USHQoKZXZlbnRfaXRlbRgBIAMoCVIJZXZlbnRJ",
+            "dGVtMrIDChRFdmVudE1hdGVyaWFsU2VydmljZRJxChhQcmVkaWN0RXZlbnRN",
+            "YXRlcmlhbEl0ZW0SKS5ldmVudC52MS5QcmVkaWN0RXZlbnRNYXRlcmlhbEl0",
+            "ZW1SZXF1ZXN0GiouZXZlbnQudjEuUHJlZGljdEV2ZW50TWF0ZXJpYWxJdGVt",
+            "UmVzcG9uc2UScQoYUHJlZGljdFBvc2l0aW9uc0Zyb21UZXh0EikuZXZlbnQu",
+            "djEuUHJlZGljdFBvc2l0aW9uc0Zyb21UZXh0UmVxdWVzdBoqLmV2ZW50LnYx",
+            "LlByZWRpY3RQb3NpdGlvbnNGcm9tVGV4dFJlc3BvbnNlElkKEFByZWRpY3RU",
+            "aW1lVGFibGUSIS5ldmVudC52MS5QcmVkaWN0VGltZVRhYmxlUmVxdWVzdBoi",
+            "LmV2ZW50LnYxLlByZWRpY3RUaW1lVGFibGVSZXNwb25zZRJZChBQcmVkaWN0",
+            "RXZlbnRJdGVtEiEuZXZlbnQudjEuUHJlZGljdEV2ZW50SXRlbVJlcXVlc3Qa",
+            "Ii5ldmVudC52MS5QcmVkaWN0RXZlbnRJdGVtUmVzcG9uc2VCYwoMY29tLmV2",
+            "ZW50LnYxQhJFdmVudE1hdGVyaWFsUHJvdG9QAaICA0VYWKoCCEV2ZW50LlYx",
+            "ygIIRXZlbnRcVjHiAhRFdmVudFxWMVxHUEJNZXRhZGF0YeoCCUV2ZW50OjpW",
+            "MWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Common.V1.CommonReflection.Descriptor, global::Event.V1.CoreReflection.Descriptor, global::Event.V1.EventReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -73,7 +78,9 @@ namespace Event.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextRequest), global::Event.V1.PredictPositionsFromTextRequest.Parser, new[]{ "Uid", "Text", "FromPos" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictPositionsFromTextResponse), global::Event.V1.PredictPositionsFromTextResponse.Parser, new[]{ "Place" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictTimeTableRequest), global::Event.V1.PredictTimeTableRequest.Parser, new[]{ "Uid", "EventMaterial", "IsGoing" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictTimeTableResponse), global::Event.V1.PredictTimeTableResponse.Parser, new[]{ "TimeTable" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictTimeTableResponse), global::Event.V1.PredictTimeTableResponse.Parser, new[]{ "TimeTable" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictEventItemRequest), global::Event.V1.PredictEventItemRequest.Parser, new[]{ "Uid", "Text" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Event.V1.PredictEventItemResponse), global::Event.V1.PredictEventItemResponse.Parser, new[]{ "EventItem" }, null, null, null, null)
           }));
     }
     #endregion
@@ -417,6 +424,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "is_out" field.</summary>
     public const int IsOutFieldNumber = 1;
     private bool isOut_;
+    /// <summary>
+    /// 外出するかしないか
+    /// ただのタスクか外出イベントか
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsOut {
@@ -429,6 +440,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "remind" field.</summary>
     public const int RemindFieldNumber = 2;
     private string remind_ = "";
+    /// <summary>
+    /// イベントのタイトル
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Remind {
@@ -441,6 +455,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "from_pos" field.</summary>
     public const int FromPosFieldNumber = 3;
     private global::Event.V1.Pos fromPos_;
+    /// <summary>
+    /// 現在地の緯度経度
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos FromPos {
@@ -453,6 +470,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "destination" field.</summary>
     public const int DestinationFieldNumber = 4;
     private string destination_ = "";
+    /// <summary>
+    /// 目的地の名前
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Destination {
@@ -465,6 +485,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "destination_pos" field.</summary>
     public const int DestinationPosFieldNumber = 5;
     private global::Event.V1.Pos destinationPos_;
+    /// <summary>
+    /// 目的地の緯度経度
+    /// PredictPositionsFromTextで取得したものを使う
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos DestinationPos {
@@ -477,6 +501,10 @@ namespace Event.V1 {
     /// <summary>Field number for the "move_type" field.</summary>
     public const int MoveTypeFieldNumber = 6;
     private global::Event.V1.MoveType moveType_ = global::Event.V1.MoveType.Unspecified;
+    /// <summary>
+    /// 移動手段
+    /// リクエスト時には設定しなくてよい
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.MoveType MoveType {
@@ -489,6 +517,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "option" field.</summary>
     public const int OptionFieldNumber = 7;
     private string option_ = "";
+    /// <summary>
+    /// 移動手段のオプション
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Option {
@@ -501,6 +532,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "start_time" field.</summary>
     public const int StartTimeFieldNumber = 8;
     private global::Event.V1.DateTime startTime_;
+    /// <summary>
+    /// イベントの開始時間
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.DateTime StartTime {
@@ -513,6 +547,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "end_time" field.</summary>
     public const int EndTimeFieldNumber = 9;
     private global::Event.V1.DateTime endTime_;
+    /// <summary>
+    /// イベントの終了時間
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.DateTime EndTime {
@@ -953,6 +990,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "event_material" field.</summary>
     public const int EventMaterialFieldNumber = 2;
     private global::Event.V1.EventMaterial eventMaterial_;
+    /// <summary>
+    /// 初回は空でリクエスト
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.EventMaterial EventMaterial {
@@ -965,6 +1005,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 3;
     private string text_ = "";
+    /// <summary>
+    /// レスポンスをもとにして、テキストをクライアント側で作成する
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Text {
@@ -1450,6 +1493,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 2;
     private string text_ = "";
+    /// <summary>
+    /// ex.) イオン、スターバックス、東京駅
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Text {
@@ -1462,6 +1508,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "from_pos" field.</summary>
     public const int FromPosFieldNumber = 3;
     private global::Event.V1.Pos fromPos_;
+    /// <summary>
+    /// 現在地の緯度経度
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.Pos FromPos {
@@ -1728,6 +1777,9 @@ namespace Event.V1 {
     private static readonly pb::FieldCodec<global::Event.V1.Place> _repeated_place_codec
         = pb::FieldCodec.ForMessage(10, global::Event.V1.Place.Parser);
     private readonly pbc::RepeatedField<global::Event.V1.Place> place_ = new pbc::RepeatedField<global::Event.V1.Place>();
+    /// <summary>
+    /// 候補をいくつか返す
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::Event.V1.Place> Place {
@@ -1927,6 +1979,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "event_material" field.</summary>
     public const int EventMaterialFieldNumber = 2;
     private global::Event.V1.EventMaterial eventMaterial_;
+    /// <summary>
+    /// 全て埋まった状態でリクエスト
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Event.V1.EventMaterial EventMaterial {
@@ -1939,6 +1994,9 @@ namespace Event.V1 {
     /// <summary>Field number for the "is_going" field.</summary>
     public const int IsGoingFieldNumber = 3;
     private bool isGoing_;
+    /// <summary>
+    /// 行きか帰りか
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsGoing {
@@ -2333,6 +2391,437 @@ namespace Event.V1 {
             break;
           case 10: {
             timeTable_.AddEntriesFrom(ref input, _repeated_timeTable_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PredictEventItemRequest : pb::IMessage<PredictEventItemRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PredictEventItemRequest> _parser = new pb::MessageParser<PredictEventItemRequest>(() => new PredictEventItemRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PredictEventItemRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Event.V1.EventMaterialReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemRequest(PredictEventItemRequest other) : this() {
+      uid_ = other.uid_ != null ? other.uid_.Clone() : null;
+      text_ = other.text_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemRequest Clone() {
+      return new PredictEventItemRequest(this);
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private global::Common.V1.Uid uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Common.V1.Uid Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "text" field.</summary>
+    public const int TextFieldNumber = 2;
+    private string text_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Text {
+      get { return text_; }
+      set {
+        text_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PredictEventItemRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PredictEventItemRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Uid, other.Uid)) return false;
+      if (Text != other.Text) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (uid_ != null) hash ^= Uid.GetHashCode();
+      if (Text.Length != 0) hash ^= Text.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (uid_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Uid);
+      }
+      if (Text.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Text);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (uid_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Uid);
+      }
+      if (Text.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Text);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (uid_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Uid);
+      }
+      if (Text.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PredictEventItemRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.uid_ != null) {
+        if (uid_ == null) {
+          Uid = new global::Common.V1.Uid();
+        }
+        Uid.MergeFrom(other.Uid);
+      }
+      if (other.Text.Length != 0) {
+        Text = other.Text;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
+            break;
+          }
+          case 18: {
+            Text = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (uid_ == null) {
+              Uid = new global::Common.V1.Uid();
+            }
+            input.ReadMessage(Uid);
+            break;
+          }
+          case 18: {
+            Text = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PredictEventItemResponse : pb::IMessage<PredictEventItemResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PredictEventItemResponse> _parser = new pb::MessageParser<PredictEventItemResponse>(() => new PredictEventItemResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PredictEventItemResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Event.V1.EventMaterialReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemResponse(PredictEventItemResponse other) : this() {
+      eventItem_ = other.eventItem_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PredictEventItemResponse Clone() {
+      return new PredictEventItemResponse(this);
+    }
+
+    /// <summary>Field number for the "event_item" field.</summary>
+    public const int EventItemFieldNumber = 1;
+    private static readonly pb::FieldCodec<string> _repeated_eventItem_codec
+        = pb::FieldCodec.ForString(10);
+    private readonly pbc::RepeatedField<string> eventItem_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> EventItem {
+      get { return eventItem_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PredictEventItemResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PredictEventItemResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!eventItem_.Equals(other.eventItem_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= eventItem_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      eventItem_.WriteTo(output, _repeated_eventItem_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      eventItem_.WriteTo(ref output, _repeated_eventItem_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += eventItem_.CalculateSize(_repeated_eventItem_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PredictEventItemResponse other) {
+      if (other == null) {
+        return;
+      }
+      eventItem_.Add(other.eventItem_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            eventItem_.AddEntriesFrom(input, _repeated_eventItem_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            eventItem_.AddEntriesFrom(ref input, _repeated_eventItem_codec);
             break;
           }
         }
