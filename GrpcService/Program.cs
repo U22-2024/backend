@@ -15,6 +15,7 @@ builder.SetupApp();
 
 builder.Services.AddScoped<PredictEventMaterial>();
 builder.Services.AddScoped<GetPlace>();
+builder.Services.AddScoped<GetTimeTable>();
 
 var app = builder.Build();
 

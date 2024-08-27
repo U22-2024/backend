@@ -5,13 +5,8 @@ using DateTime = Event.V1.DateTime;
 
 namespace GrpcService.API;
 
-public abstract class GetTimeTable(IConfiguration config)
+public class GetTimeTable(IConfiguration config)
 {
-    private readonly JsonSerializerOptions _serializerOption = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-    };
-
     public async Task<List<TimeTable>> GetTimeTableList(EventMaterial eventMaterial, bool isStart)
     {
         if (!eventMaterial.IsOut)
@@ -57,7 +52,7 @@ public abstract class GetTimeTable(IConfiguration config)
             response.EnsureSuccessStatusCode();
             var body = await response.Content.ReadAsStringAsync();
 
-            naviTimeFormat = JsonSerializer.Deserialize<NaviTimeFormat>(body, _serializerOption);
+            naviTimeFormat = JsonSerializer.Deserialize<NaviTimeFormat>(body);
             if (naviTimeFormat == null)
                 return [];
         }
