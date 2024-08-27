@@ -31,7 +31,7 @@ app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
 app.MapGrpcService<GreetService>();
-
+app.MapGrpcService<EventMaterialService>();
 app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();

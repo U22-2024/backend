@@ -5,30 +5,30 @@ using DateTime = Event.V1.DateTime;
 
 public class PredictEventMaterial(IConfiguration _config)
 {
-    private Anthropic _anthropic = new Anthropic
+    private readonly Anthropic _anthropic = new()
     {
         ApiKey = _config["AnthropicApiKey"]
     };
 
     public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial eventMaterial)
     {
-        string startTimeStr = GetDateTimeString(eventMaterial.StartTime);
-        string endTimeStr = GetDateTimeString(eventMaterial.EndTime);
+        var startTimeStr = GetDateTimeString(eventMaterial.StartTime);
+        var endTimeStr = GetDateTimeString(eventMaterial.EndTime);
 
-        ClaudeFormat knownInfo = new ClaudeFormat(eventMaterial.IsOut, eventMaterial.Remind, eventMaterial.Destination,
+        var knownInfo = new ClaudeFormat(eventMaterial.IsOut, eventMaterial.Remind, eventMaterial.Destination,
             (int)eventMaterial.MoveType, startTimeStr, endTimeStr);
-        string infoString = JsonSerializer.Serialize(knownInfo);
+        var infoString = JsonSerializer.Serialize(knownInfo);
 
         try
         {
-            var message = await _anthropic.Messages.CreateAsync(new()
+            var message = await _anthropic.Messages.CreateAsync(new MessageRequest
             {
                 Model = "claude-3-haiku-20240307",
                 MaxTokens = 1000,
                 Temperature = 0,
                 Messages =
                 [
-                    new()
+                    new Message
                     {
                         Role = "user",
                         Content =
@@ -37,10 +37,10 @@ public class PredictEventMaterial(IConfiguration _config)
                 ]
             });
 
-            ClaudeFormat? responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
+            var responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
 
-            DateTime startTime = GetDateTime(responseInfo.StartTime);
-            DateTime endTime = GetDateTime(responseInfo.EndTime);
+            var startTime = GetDateTime(responseInfo.StartTime);
+            var endTime = GetDateTime(responseInfo.EndTime);
 
             eventMaterial.IsOut = responseInfo.IsOut;
             eventMaterial.Remind = responseInfo.Remind;
@@ -68,14 +68,14 @@ public class PredictEventMaterial(IConfiguration _config)
 
     private DateTime GetDateTime(string dateTimeStr)
     {
-        DateTime dateTime = new DateTime();
+        var dateTime = new DateTime();
 
         if (dateTimeStr == "")
             return dateTime;
 
-        string[] dateTimeArray = dateTimeStr.Split('T');
-        string[] dateArray = dateTimeArray[0].Split('-');
-        string[] timeArray = dateTimeArray[1].Split(':');
+        var dateTimeArray = dateTimeStr.Split('T');
+        var dateArray = dateTimeArray[0].Split('-');
+        var timeArray = dateTimeArray[1].Split(':');
         dateTime.Year = uint.Parse(dateArray[0]);
         dateTime.Month = uint.Parse(dateArray[1]);
         dateTime.Day = uint.Parse(dateArray[2]);
@@ -87,14 +87,9 @@ public class PredictEventMaterial(IConfiguration _config)
 
 public class ClaudeFormat
 {
-    public bool IsOut { get; set; }
-    public string Remind { get; set; }
-    public string To { get; set; }
-    public int MoveType { get; set; }
-    public string StartTime { get; set; }
-    public string EndTime { get; set; }
-
-    public ClaudeFormat() { }
+    public ClaudeFormat()
+    {
+    }
 
     public ClaudeFormat(bool IsOut, string Remind, string To, int MoveType, string StartTime, string EndTime)
     {
@@ -105,4 +100,11 @@ public class ClaudeFormat
         this.StartTime = StartTime;
         this.EndTime = EndTime;
     }
+
+    public bool IsOut { get; set; }
+    public string Remind { get; set; }
+    public string To { get; set; }
+    public int MoveType { get; set; }
+    public string StartTime { get; set; }
+    public string EndTime { get; set; }
 }
