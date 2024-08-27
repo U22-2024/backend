@@ -1,9 +1,10 @@
-using Event.V1;
 using GrpcService;
 using GrpcService.API;
 using GrpcService.Extensions;
+using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
+using Spire.Xls;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.SetupApp();
 builder.Services.AddScoped<PredictEventMaterial>();
 builder.Services.AddScoped<GetPlace>();
 builder.Services.AddScoped<GetRainfall>();
+builder.Services.AddScoped<GetTimeTable>();
 
 var app = builder.Build();
 
@@ -31,7 +33,9 @@ app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
 app.MapGrpcService<AdviceOutingService>();
-// app.MapGrpcService<EventService>();
+app.MapGrpcService<GreetService>();
+app.MapGrpcService<EventMaterialService>();
+app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();
 using (var scope = app.Services.CreateScope())
@@ -39,27 +43,27 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
 {
     var strategy = dbCtx.Database.CreateExecutionStrategy();
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
-}
+  
+    // 一言メッセージを読み込んでデータベースに保存する
+    var wb = new Workbook();
+    wb.LoadFromFile("../mother_hitokoto.xlsx");
 
-using (var scope = app.Services.CreateScope())
-{
+    var worksheet = wb.Worksheets[0];
 
-    // var ai = scope.ServiceProvider.GetRequiredService<GetPlace>();
-    // var pos = new Pos();
-    // pos.Lat = 34.23404579573394;
-    // pos.Lon = 133.6358061308664;
-    // ai.GetTextPos("イオン", pos);
+    for (var row = 1; row <= worksheet.LastRow; row++)
+    {
+        var range = worksheet.Range[row, 1];
+        var cellValue = range.Text == null ? string.Empty : range.Text;
+        var greet = new GreetModel { Id = row, Message = cellValue };
 
-    // var ai = scope.ServiceProvider.GetRequiredService<PredictEvent>();
-    // var eventMaterial = new EventMaterial();
-    // EventMaterial after = await ai.PredictEventMaterial("明日の9時に友達とバイクでイオンに行く。今日は2024/08/24", eventMaterial);
+        dbCtx.Greets.Add(greet);
+    }
 
-//     var api = scope.ServiceProvider.GetRequiredService<GetRainfall>();
-//     var location = new Location();
-//     location.latitude = 34.23404579573394;
-//     location.longitude = 133.6358061308664;
+    // リソースを解放する
+    wb.Dispose();
 
-//    Console.WriteLine(await api.GetListRainfall(location));
+    // DBへ書き込み
+    await dbCtx.SaveChangesAsync();
 }
 
 app.Run();
