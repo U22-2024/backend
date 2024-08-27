@@ -57,6 +57,10 @@ namespace Event.V1 {
     static readonly grpc::Marshaller<global::Event.V1.PredictTimeTableRequest> __Marshaller_event_v1_PredictTimeTableRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Event.V1.PredictTimeTableRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Event.V1.PredictTimeTableResponse> __Marshaller_event_v1_PredictTimeTableResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Event.V1.PredictTimeTableResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Event.V1.PredictEventItemRequest> __Marshaller_event_v1_PredictEventItemRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Event.V1.PredictEventItemRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Event.V1.PredictEventItemResponse> __Marshaller_event_v1_PredictEventItemResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Event.V1.PredictEventItemResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Event.V1.PredictEventMaterialItemRequest, global::Event.V1.PredictEventMaterialItemResponse> __Method_PredictEventMaterialItem = new grpc::Method<global::Event.V1.PredictEventMaterialItemRequest, global::Event.V1.PredictEventMaterialItemResponse>(
@@ -82,6 +86,14 @@ namespace Event.V1 {
         __Marshaller_event_v1_PredictTimeTableRequest,
         __Marshaller_event_v1_PredictTimeTableResponse);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Event.V1.PredictEventItemRequest, global::Event.V1.PredictEventItemResponse> __Method_PredictEventItem = new grpc::Method<global::Event.V1.PredictEventItemRequest, global::Event.V1.PredictEventItemResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "PredictEventItem",
+        __Marshaller_event_v1_PredictEventItemRequest,
+        __Marshaller_event_v1_PredictEventItemResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -106,6 +118,12 @@ namespace Event.V1 {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Event.V1.PredictTimeTableResponse> PredictTimeTable(global::Event.V1.PredictTimeTableRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Event.V1.PredictEventItemResponse> PredictEventItem(global::Event.V1.PredictEventItemRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -199,6 +217,26 @@ namespace Event.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_PredictTimeTable, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Event.V1.PredictEventItemResponse PredictEventItem(global::Event.V1.PredictEventItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PredictEventItem(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Event.V1.PredictEventItemResponse PredictEventItem(global::Event.V1.PredictEventItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_PredictEventItem, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Event.V1.PredictEventItemResponse> PredictEventItemAsync(global::Event.V1.PredictEventItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PredictEventItemAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Event.V1.PredictEventItemResponse> PredictEventItemAsync(global::Event.V1.PredictEventItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_PredictEventItem, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override EventMaterialServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -215,7 +253,8 @@ namespace Event.V1 {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_PredictEventMaterialItem, serviceImpl.PredictEventMaterialItem)
           .AddMethod(__Method_PredictPositionsFromText, serviceImpl.PredictPositionsFromText)
-          .AddMethod(__Method_PredictTimeTable, serviceImpl.PredictTimeTable).Build();
+          .AddMethod(__Method_PredictTimeTable, serviceImpl.PredictTimeTable)
+          .AddMethod(__Method_PredictEventItem, serviceImpl.PredictEventItem).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -228,6 +267,7 @@ namespace Event.V1 {
       serviceBinder.AddMethod(__Method_PredictEventMaterialItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Event.V1.PredictEventMaterialItemRequest, global::Event.V1.PredictEventMaterialItemResponse>(serviceImpl.PredictEventMaterialItem));
       serviceBinder.AddMethod(__Method_PredictPositionsFromText, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Event.V1.PredictPositionsFromTextRequest, global::Event.V1.PredictPositionsFromTextResponse>(serviceImpl.PredictPositionsFromText));
       serviceBinder.AddMethod(__Method_PredictTimeTable, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Event.V1.PredictTimeTableRequest, global::Event.V1.PredictTimeTableResponse>(serviceImpl.PredictTimeTable));
+      serviceBinder.AddMethod(__Method_PredictEventItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Event.V1.PredictEventItemRequest, global::Event.V1.PredictEventItemResponse>(serviceImpl.PredictEventItem));
     }
 
   }
