@@ -6,20 +6,21 @@ using DateTime = Event.V1.DateTime;
 
 namespace GrpcService.API;
 
-public class PredictEventMaterial(IConfiguration config)
+public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMaterial> logger)
 {
     private readonly Anthropic _anthropic = new()
     {
         ApiKey = config["AnthropicApiKey"] ?? throw new Exception("AnthropicApiKey is not set.")
     };
 
-    public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial eventMaterial)
+    public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial? eventMaterial)
     {
-        var startTimeStr = GetDateTimeString(eventMaterial.StartTime);
-        var endTimeStr = GetDateTimeString(eventMaterial.EndTime);
+        var startTimeStr = GetDateTimeString(eventMaterial?.StartTime);
+        var endTimeStr = GetDateTimeString(eventMaterial?.EndTime);
 
-        var knownInfo = new ClaudeFormat(eventMaterial.IsOut, eventMaterial.Remind, eventMaterial.Destination,
-            (int)eventMaterial.MoveType, startTimeStr, endTimeStr);
+        var knownInfo = new ClaudeFormat(eventMaterial?.IsOut ?? false, eventMaterial?.Remind ?? "",
+            eventMaterial?.Destination ?? "",
+            (int)(eventMaterial?.MoveType ?? MoveType.Other), startTimeStr, endTimeStr);
         var infoString = JsonSerializer.Serialize(knownInfo);
 
         try
@@ -40,6 +41,7 @@ public class PredictEventMaterial(IConfiguration config)
                 ]
             });
 
+            logger.LogInformation("Anthropic API response: {msg}", message);
             var responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
             if (responseInfo == null)
                 throw new RpcException(new Status(StatusCode.Internal, "Claude API error"));
@@ -47,19 +49,30 @@ public class PredictEventMaterial(IConfiguration config)
             var startTime = GetDateTime(responseInfo.StartTime);
             var endTime = GetDateTime(responseInfo.EndTime);
 
+            if (eventMaterial == null)
+                return new EventMaterial
+                {
+                    IsOut = responseInfo.IsOut,
+                    Remind = responseInfo.Remind,
+                    Destination = responseInfo.To,
+                    MoveType = (MoveType)responseInfo.MoveType,
+                    StartTime = startTime,
+                    EndTime = endTime
+                };
             eventMaterial.IsOut = responseInfo.IsOut;
             eventMaterial.Remind = responseInfo.Remind;
             eventMaterial.Destination = responseInfo.To;
             eventMaterial.MoveType = (MoveType)responseInfo.MoveType;
             eventMaterial.StartTime = startTime;
             eventMaterial.EndTime = endTime;
+            return eventMaterial;
+
         }
         catch (ClaudiaException ex)
         {
-            throw new RpcException(new Status(StatusCode.Internal, $"Claude API error | {ex.Status} | {ex.Name} | {ex.Message}"));
+            throw new RpcException(new Status(StatusCode.Internal,
+                $"Claude API error | {ex.Status} | {ex.Name} | {ex.Message}"));
         }
-
-        return eventMaterial;
     }
 
     private static string GetDateTimeString(DateTime? dateTime)
@@ -90,7 +103,8 @@ public class PredictEventMaterial(IConfiguration config)
 
 public class ClaudeFormat(bool isOut, string remind, string to, int moveType, string startTime, string endTime)
 {
-    public ClaudeFormat(string remind, string to, string startTime, string endTime) : this(false, remind, to, 0, startTime, endTime)
+    public ClaudeFormat(string remind, string to, string startTime, string endTime) : this(false, remind, to, 0,
+        startTime, endTime)
     {
     }
 
