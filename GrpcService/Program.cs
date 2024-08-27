@@ -1,4 +1,3 @@
-using Event.V1;
 using GrpcService;
 using GrpcService.API;
 using GrpcService.Extensions;
@@ -6,8 +5,6 @@ using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
 using Spire.Xls;
-using DateTime = Event.V1.DateTime;
-using EventService = GrpcService.Services.EventService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +32,7 @@ app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
 app.MapGrpcService<GreetService>();
+app.MapGrpcService<EventMaterialService>();
 app.MapGrpcService<EventService>();
 
 if (app.Environment.IsDevelopment()) app.MapGrpcReflectionService();

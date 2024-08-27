@@ -1,10 +1,12 @@
 using System.Text;
-using System.Text.Json;
 using Event.V1;
+using Grpc.Core;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace GrpcService.API;
 
-public class GetPlace(IConfiguration _config)
+public class GetPlace(IConfiguration config)
 {
     public async Task<List<Place>> GetTextPos(string text, Pos homePos)
     {
@@ -25,36 +27,30 @@ public class GetPlace(IConfiguration _config)
             languageCode = "ja"
         };
 
-        var json = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
+        var json = JsonConvert.SerializeObject(requestBody);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        client.DefaultRequestHeaders.Add("X-Goog-Api-Key", _config["GoogleApiKey"]);
-        client.DefaultRequestHeaders.Add("X-Goog-FieldMask", "places.displayName,places.formattedAddress,places.location,nextPageToken");
+        client.DefaultRequestHeaders.Add("X-Goog-Api-Key", config["GoogleApiKey"]);
+        client.DefaultRequestHeaders.Add("X-Goog-FieldMask",
+            "places.displayName,places.formattedAddress,places.location,nextPageToken");
 
         var response = await client.PostAsync("https://places.googleapis.com/v1/places:searchText", content);
 
-        List<Place> posList = new List<Place>();
+        var posList = new List<Place>();
         if (response.IsSuccessStatusCode)
         {
             var responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine(responseBody);
 
-            PlaceFormat? placeFormat = JsonSerializer.Deserialize<PlaceFormat>(responseBody);
+            var placeFormat = JsonSerializer.Deserialize<PlaceFormat>(responseBody);
+            if (placeFormat == null)
+                throw new RpcException(new Status(StatusCode.Internal, "Google Place API error"));
 
-            foreach (var place in placeFormat.places)
+            posList.AddRange(placeFormat.places.Select(place => new Place
             {
-                var placeItem = new Place()
-                {
-                    Name = place.displayName.text,
-                    Address = place.formattedAddress,
-                    Pos = new Pos()
-                    {
-                        Lat = place.location.latitude,
-                        Lon = place.location.longitude
-                    }
-                };
-                posList.Add(placeItem);
-            }
+                Name = place.displayName.text, Address = place.formattedAddress,
+                Pos = new Pos { Lat = place.location.latitude, Lon = place.location.longitude }
+            }));
         }
         else
         {
