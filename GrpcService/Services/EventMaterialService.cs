@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GrpcService.Services;
 
-public class EventMaterialService(PredictEventMaterial predictEventMaterial, GetPlace getPlace, GetTimeTable getTimeTable)
+public class EventMaterialService(PredictEventMaterial predictEventMaterial, GetPlace getPlace, GetTimeTable getTimeTable, PredictEventItem predictEventItem)
     : Event.V1.EventMaterialService.EventMaterialServiceBase
 {
     [Authorize]
@@ -59,6 +59,23 @@ public class EventMaterialService(PredictEventMaterial predictEventMaterial, Get
         return new PredictTimeTableResponse
         {
             TimeTable = { response }
+        };
+    }
+
+    [Authorize]
+    public override async Task<PredictEventItemResponse> PredictEventItem(PredictEventItemRequest request,
+        ServerCallContext context)
+    {
+        var authUser = context.GetAuthUser();
+        if (request.Uid.Value != authUser.Uid)
+            throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
+
+        var prompt = request.Text;
+        var response = await predictEventItem.PredictEventItemList(prompt);
+
+        return new PredictEventItemResponse
+        {
+            EventItem = { response }
         };
     }
 }

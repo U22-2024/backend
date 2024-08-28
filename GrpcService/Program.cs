@@ -5,6 +5,8 @@ using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
 using Spire.Xls;
+using EventMaterialService = GrpcService.Services.EventMaterialService;
+using EventService = GrpcService.Services.EventService;
 
 var builder = WebApplication.CreateBuilder(args);
 

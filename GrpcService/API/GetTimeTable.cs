@@ -1,7 +1,12 @@
+using System.Text;
 using System.Text.Json;
+using Claudia;
 using Event.V1;
+using Grpc.Core;
 using Microsoft.IdentityModel.Tokens;
-using DateTime = Event.V1.DateTime;
+using Newtonsoft.Json;
+using DateTime = System.DateTime;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace GrpcService.API;
 
@@ -127,15 +132,15 @@ public class GetTimeTable(IConfiguration config)
         return timeTableList;
     }
 
-    private static string GetDateTimeString(DateTime dateTime)
+    private static string GetDateTimeString(Event.V1.DateTime dateTime)
     {
         return dateTime.Year.ToString("D4") + "-" + dateTime.Month.ToString("D2") + "-" + dateTime.Day.ToString("D2") +
                "T" + dateTime.Hour.ToString("D2") + "%3A" + dateTime.Minute.ToString("D2") + "%3A00";
     }
 
-    private static DateTime GetDateTime(string dateTimeStr)
+    private static Event.V1.DateTime GetDateTime(string dateTimeStr)
     {
-        var dateTime = new DateTime();
+        var dateTime = new Event.V1.DateTime();
         if (dateTimeStr == "")
             return dateTime;
 
@@ -168,10 +173,110 @@ public class GetTimeTable(IConfiguration config)
         return move;
     }
 
-    private Task<List<TimeTable>> GetTimeTableListByGoogle(EventMaterial eventMaterial, bool isStart)
+    private async Task<List<TimeTable>> GetTimeTableListByGoogle(EventMaterial eventMaterial, bool isStart)
     {
-        // 力尽きた
-        return Task.FromResult(new List<TimeTable>());
+        var client = new HttpClient();
+
+        var requestBody = new
+        {
+            origin = new { location = new { latLng = new
+            {
+                latitude = eventMaterial.FromPos.Lat,
+                longitude = eventMaterial.FromPos.Lon
+            }}},
+            destination = new { location = new { latLng = new
+            {
+                latitude = eventMaterial.DestinationPos.Lat,
+                longitude = eventMaterial.DestinationPos.Lon
+            }}},
+            travelMode = eventMaterial.MoveType switch
+            {
+                MoveType.Car => "DRIVE",
+                _ => "WALK"
+            },
+            routeModifiers = new
+            {
+                avoidTolls = true,
+            },
+            languageCode = "ja",
+            units = "METRIC"
+        };
+
+        var json = JsonConvert.SerializeObject(requestBody);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        client.DefaultRequestHeaders.Add("X-Goog-Api-Key", config["GoogleApiKey"]);
+        client.DefaultRequestHeaders.Add("X-Goog-FieldMask", "routes.duration,routes.distanceMeters");
+
+        var response = await client.PostAsync("https://routes.googleapis.com/directions/v2:computeRoutes", content);
+
+        GoogleRouteFormat? routeFormat;
+        if (response.IsSuccessStatusCode)
+        {
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine(responseBody);
+            routeFormat = JsonSerializer.Deserialize<GoogleRouteFormat>(responseBody);
+            if (routeFormat == null)
+                throw new RpcException(new Status(StatusCode.Internal, "Google Place API error"));
+        }
+        else
+        {
+            throw new RpcException(new Status(StatusCode.Internal, $"Google Place API error | {response.StatusCode}"));
+        }
+
+        int deltaTime = int.Parse(routeFormat.routes[0].duration.Substring(0, routeFormat.routes[0].duration.Length - 1));
+        TimeSpan ts = new(0, deltaTime / 60 + 1, 0);
+        Event.V1.DateTime fromTime = isStart ? ToDateTime(ToDateTime(eventMaterial.StartTime) - ts) : eventMaterial.EndTime;
+        Event.V1.DateTime endTime = isStart ? eventMaterial.StartTime : ToDateTime(ToDateTime(eventMaterial.EndTime) + ts);
+
+        var timeTableList = new List<TimeTable>();
+        timeTableList.Add(new TimeTable
+        {
+            Item =
+            {
+                new TimeTableItem
+                {
+                    Type = TimeTableType.Point,
+                    Name = "自宅"
+                },
+                new TimeTableItem
+                {
+                    Type = TimeTableType.Move,
+                    Move = eventMaterial.MoveType == MoveType.Car ? "car" : "walk",
+                    FromTime = fromTime,
+                    EndTime = endTime,
+                    Distance = (uint)routeFormat.routes[0].distanceMeters,
+                    LineName = eventMaterial.MoveType == MoveType.Car ? "車" : "徒歩"
+                },
+                new TimeTableItem
+                {
+                    Type = TimeTableType.Point,
+                    Name = eventMaterial.Destination
+                }
+            }
+        });
+
+        return timeTableList;
+    }
+
+    private DateTime ToDateTime(Event.V1.DateTime dateTime)
+    {
+        DateTime dt = new((int)dateTime.Year, (int)dateTime.Month, (int)dateTime.Day, (int)dateTime.Hour, (int)dateTime.Minute, 0);
+        return dt;
+    }
+
+    private Event.V1.DateTime ToDateTime(DateTime dateTime)
+    {
+        Event.V1.DateTime dt = new()
+        {
+            Year = (uint)dateTime.Year,
+            Month = (uint)dateTime.Month,
+            Day = (uint)dateTime.Day,
+            Hour = (uint)dateTime.Hour,
+            Minute = (uint)dateTime.Minute
+        };
+        return dt;
     }
 }
 
@@ -238,4 +343,15 @@ public class Link
 public class NodeItem
 {
     public string name { get; set; } = "";
+}
+
+public class GoogleRouteFormat
+{
+    public List<GoogleRoute> routes { get; set; } = new();
+}
+
+public class GoogleRoute
+{
+    public string duration { get; set; }
+    public int distanceMeters { get; set; } = -1;
 }

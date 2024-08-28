@@ -54,7 +54,7 @@ public class GetPlace(IConfiguration config)
         }
         else
         {
-            Console.WriteLine($"Error: Google Place API | {response.StatusCode}");
+            throw new RpcException(new Status(StatusCode.Internal, $"Google Place API error | {response.StatusCode}"));
         }
 
         return posList;
