@@ -17,6 +17,7 @@ builder.SetupApp();
 
 builder.Services.AddScoped<PredictEventMaterial>();
 builder.Services.AddScoped<GetPlace>();
+builder.Services.AddScoped<GetRainfall>();
 builder.Services.AddScoped<GetTimeTable>();
 
 var app = builder.Build();
@@ -33,6 +34,7 @@ app.MapGrpcService<RemindService>();
 app.MapGrpcService<RemindGroupService>();
 app.MapGrpcService<HealthCheckService>();
 app.MapGrpcService<RemindTemplateService>();
+app.MapGrpcService<AdviceOutingService>();
 app.MapGrpcService<GreetService>();
 app.MapGrpcService<EventMaterialService>();
 app.MapGrpcService<EventService>();
@@ -43,7 +45,7 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
 {
     var strategy = dbCtx.Database.CreateExecutionStrategy();
     await strategy.ExecuteAsync(() => dbCtx.Database.EnsureCreatedAsync());
-
+  
     // 一言メッセージを読み込んでデータベースに保存する
     var wb = new Workbook();
     wb.LoadFromFile("../mother_hitokoto.xlsx");

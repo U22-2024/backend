@@ -12,11 +12,6 @@ namespace GrpcService.API;
 
 public class GetTimeTable(IConfiguration config)
 {
-    private readonly JsonSerializerOptions _serializerOption = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-    };
-
     public async Task<List<TimeTable>> GetTimeTableList(EventMaterial eventMaterial, bool isStart)
     {
         if (!eventMaterial.IsOut)
@@ -62,7 +57,7 @@ public class GetTimeTable(IConfiguration config)
             response.EnsureSuccessStatusCode();
             var body = await response.Content.ReadAsStringAsync();
 
-            naviTimeFormat = JsonSerializer.Deserialize<NaviTimeFormat>(body, _serializerOption);
+            naviTimeFormat = JsonSerializer.Deserialize<NaviTimeFormat>(body);
             if (naviTimeFormat == null)
                 return [];
         }
