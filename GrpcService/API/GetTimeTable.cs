@@ -179,89 +179,92 @@ public class GetTimeTable(IConfiguration config)
 
     private async Task<List<TimeTable>> GetTimeTableListByGoogle(EventMaterial eventMaterial, bool isStart)
     {
-        var client = new HttpClient();
-
-        var requestBody = new
+        using (var client = new HttpClient())
         {
-            origin = new { location = new { latLng = new
-            {
-                latitude = eventMaterial.FromPos.Lat,
-                longitude = eventMaterial.FromPos.Lon
-            }}},
-            destination = new { location = new { latLng = new
-            {
-                latitude = eventMaterial.DestinationPos.Lat,
-                longitude = eventMaterial.DestinationPos.Lon
-            }}},
-            travelMode = eventMaterial.MoveType switch
-            {
-                MoveType.Car => "DRIVE",
-                _ => "WALK"
-            },
-            routeModifiers = new
-            {
-                avoidTolls = true,
-            },
-            languageCode = "ja",
-            units = "METRIC"
-        };
-
-        var json = JsonConvert.SerializeObject(requestBody);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        client.DefaultRequestHeaders.Add("X-Goog-Api-Key", config["GoogleApiKey"]);
-        client.DefaultRequestHeaders.Add("X-Goog-FieldMask", "routes.duration,routes.distanceMeters");
-
-        var response = await client.PostAsync("https://routes.googleapis.com/directions/v2:computeRoutes", content);
-
-        GoogleRouteFormat? routeFormat;
-        if (response.IsSuccessStatusCode)
-        {
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            Console.WriteLine(responseBody);
-            routeFormat = JsonSerializer.Deserialize<GoogleRouteFormat>(responseBody);
-            if (routeFormat == null)
-                throw new RpcException(new Status(StatusCode.Internal, "Google Place API error"));
-        }
-        else
-        {
-            throw new RpcException(new Status(StatusCode.Internal, $"Google Place API error | {response.StatusCode}"));
-        }
-
-        int deltaTime = int.Parse(routeFormat.routes[0].duration.Substring(0, routeFormat.routes[0].duration.Length - 1));
-        TimeSpan ts = new(0, deltaTime / 60 + 1, 0);
-        Event.V1.DateTime fromTime = isStart ? ToDateTime(ToDateTime(eventMaterial.StartTime) - ts) : eventMaterial.EndTime;
-        Event.V1.DateTime endTime = isStart ? eventMaterial.StartTime : ToDateTime(ToDateTime(eventMaterial.EndTime) + ts);
-
-        var timeTableList = new List<TimeTable>();
-        timeTableList.Add(new TimeTable
-        {
-            Item =
-            {
-                new TimeTableItem
-                {
-                    Type = TimeTableType.Point,
-                    Name = "自宅"
-                },
-                new TimeTableItem
-                {
-                    Type = TimeTableType.Move,
-                    Move = eventMaterial.MoveType == MoveType.Car ? "car" : "walk",
-                    FromTime = fromTime,
-                    EndTime = endTime,
-                    Distance = (uint)routeFormat.routes[0].distanceMeters,
-                    LineName = eventMaterial.MoveType == MoveType.Car ? "車" : "徒歩"
-                },
-                new TimeTableItem
-                {
-                    Type = TimeTableType.Point,
-                    Name = eventMaterial.Destination
-                }
+            var requestBody = $$"""
+{
+    "origin": {
+        "location": {
+            "latLng": {
+                "latitude": {{eventMaterial.FromPos.Lat}},
+                "longitude": {{eventMaterial.FromPos.Lon}}
             }
-        });
+        }
+    },
+    "destination": {
+        "location": {
+            "latLng": {
+                "latitude": {{eventMaterial.DestinationPos.Lat}},
+                "longitude": {{eventMaterial.DestinationPos.Lon}}
+            }
+        }
+    },
+    "travelMode": "{{eventMaterial.MoveType switch { MoveType.Car => "DRIVE", _ => "WALK" } }}",
+    "languageCode": "ja",
+    "units": "METRIC"
+}
+""";
 
-        return timeTableList;
+            client.DefaultRequestHeaders.Add("X-Goog-Api-Key", config["GoogleApiKey"]);
+            client.DefaultRequestHeaders.Add("X-Goog-FieldMask", "routes.duration,routes.distanceMeters");
+
+            var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("https://routes.googleapis.com/directions/v2:computeRoutes", content);
+
+            GoogleRouteFormat? routeFormat;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine(responseBody);
+                routeFormat = JsonSerializer.Deserialize<GoogleRouteFormat>(responseBody);
+                if (routeFormat == null)
+                    throw new RpcException(new Status(StatusCode.Internal, "Google Place API error"));
+            }
+            else
+            {
+                throw new RpcException(new Status(StatusCode.Internal,
+                    $"Google Place API error | {response.StatusCode}"));
+            }
+
+            int deltaTime = int.Parse(routeFormat.routes[0].duration
+                .Substring(0, routeFormat.routes[0].duration.Length - 1));
+            TimeSpan ts = new(0, deltaTime / 60 + 1, 0);
+            Event.V1.DateTime fromTime =
+                isStart ? ToDateTime(ToDateTime(eventMaterial.StartTime) - ts) : eventMaterial.EndTime;
+            Event.V1.DateTime endTime =
+                isStart ? eventMaterial.StartTime : ToDateTime(ToDateTime(eventMaterial.EndTime) + ts);
+
+            var timeTableList = new List<TimeTable>();
+            timeTableList.Add(new TimeTable
+            {
+                Item =
+                {
+                    new TimeTableItem
+                    {
+                        Type = TimeTableType.Point,
+                        Name = "自宅"
+                    },
+                    new TimeTableItem
+                    {
+                        Type = TimeTableType.Move,
+                        Move = eventMaterial.MoveType == MoveType.Car ? "car" : "walk",
+                        FromTime = fromTime,
+                        EndTime = endTime,
+                        Distance = (uint)routeFormat.routes[0].distanceMeters,
+                        LineName = eventMaterial.MoveType == MoveType.Car ? "車" : "徒歩"
+                    },
+                    new TimeTableItem
+                    {
+                        Type = TimeTableType.Point,
+                        Name = eventMaterial.Destination
+                    }
+                }
+            });
+
+            return timeTableList;
+        }
     }
 
     private DateTime ToDateTime(Event.V1.DateTime dateTime)

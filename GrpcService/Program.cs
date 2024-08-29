@@ -1,4 +1,3 @@
-using Event.V1;
 using GrpcService;
 using GrpcService.API;
 using GrpcService.Extensions;
@@ -6,7 +5,6 @@ using GrpcService.Models.Greet;
 using GrpcService.Services;
 using Microsoft.EntityFrameworkCore;
 using Spire.Xls;
-using DateTime = Event.V1.DateTime;
 using EventMaterialService = GrpcService.Services.EventMaterialService;
 using EventService = GrpcService.Services.EventService;
 
