@@ -20,18 +20,17 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
         {
             Title = request.Title,
             Description = request.Description,
-            EventItems = request.EventItem.ToArray(),
-            UserItems = request.UserItems.Item.ToArray(),
-
-            TransitCount = (int)request.TimeTable.TransitCount,
-            WalkDistance = (int)request.TimeTable.WalkDistance,
-            Fare = (int)request.TimeTable.Fare,
+            EventItems = request.EventItem?.ToArray() ?? [],
+            UserItems = request.UserItems?.Item?.ToArray() ?? [],
+            TransitCount = (int)(request.TimeTable?.TransitCount ?? 0),
+            WalkDistance = (int)(request.TimeTable?.WalkDistance ?? 0),
+            Fare = (int)(request.TimeTable?.Fare ?? 0),
             Uid = request.Uid.Value
         };
 
         var e = dbContext.Events.Add(eventModel);
 
-        foreach (var timeTableItem in request.TimeTable.Item)
+        foreach (var timeTableItem in request.TimeTable?.Item ?? [])
         {
             var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
 
@@ -89,21 +88,17 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
 
         eventModel.Title = request.Event.Title;
         eventModel.Description = request.Event.Description;
-        eventModel.EventItems = request.Event.EventItem.ToArray();
-        eventModel.UserItems = request.Event.UserItems.Item.ToArray();
-        eventModel.TransitCount = (int)request.Event.TimeTable.TransitCount;
-        eventModel.WalkDistance = (int)request.Event.TimeTable.WalkDistance;
-        eventModel.Fare = (int)request.Event.TimeTable.Fare;
+        eventModel.EventItems = request.Event?.EventItem?.ToArray() ?? [];
+        eventModel.UserItems = request.Event?.UserItems?.Item.ToArray() ?? [];
+        eventModel.TransitCount = (int)(request.Event?.TimeTable?.TransitCount ?? 0);
+        eventModel.WalkDistance = (int)(request.Event?.TimeTable?.WalkDistance ?? 0);
+        eventModel.Fare = (int)(request.Event?.TimeTable?.Fare ?? 0);
 
-        foreach (var timeTableItem in eventModel.TimeTableItems)
-        {
-            dbContext.TimeTableItems.Remove(timeTableItem);
-            await dbContext.SaveChangesAsync();
-        }
+        foreach (var timeTableItem in eventModel.TimeTableItems) dbContext.TimeTableItems.Remove(timeTableItem);
 
         var e = dbContext.Events.Update(eventModel);
 
-        foreach (var timeTableItem in request.Event.TimeTable.Item)
+        foreach (var timeTableItem in request.Event?.TimeTable?.Item ?? [])
         {
             var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
 

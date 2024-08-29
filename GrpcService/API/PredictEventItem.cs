@@ -17,7 +17,7 @@ public class PredictEventItem(IConfiguration config)
         {
             var message = await _anthropic.Messages.CreateAsync(new MessageRequest
             {
-                Model = "claude-3-haiku-20240307",
+                Model = "claude-3-5-sonnet-20240620",
                 MaxTokens = 1000,
                 Temperature = 0,
                 Messages =

@@ -9,6 +9,11 @@
         <UserSecretsId>BE82C85A-611E-4B18-AA1C-CF83E5F04FB0</UserSecretsId>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <PublishSingleFile>true</PublishSingleFile>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0"/>
         <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="8.1.0"/>
