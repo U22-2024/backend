@@ -2,6 +2,7 @@
 using Claudia;
 using Event.V1;
 using Grpc.Core;
+using DateTime = Event.V1.DateTime;
 
 namespace GrpcService.API;
 
@@ -78,19 +79,19 @@ public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMat
         }
     }
 
-    private static string GetDateTimeString(Event.V1.DateTime? dateTime)
+    private static string GetDateTimeString(DateTime? dateTime)
     {
         if (dateTime == null)
             return "";
         return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + "T" + dateTime.Hour + ":" + dateTime.Minute;
     }
 
-    private static Event.V1.DateTime GetDateTime(string dateTimeStr)
+    private static DateTime? GetDateTime(string dateTimeStr)
     {
-        var dateTime = new Event.V1.DateTime();
+        var dateTime = new DateTime();
 
         if (dateTimeStr == "")
-            return dateTime;
+            return null;
 
         var dateTimeArray = dateTimeStr.Split('T');
         var dateArray = dateTimeArray[0].Split('-');

@@ -21,6 +21,7 @@ builder.Services.AddScoped<PredictEventMaterial>();
 builder.Services.AddScoped<GetPlace>();
 builder.Services.AddScoped<GetRainfall>();
 builder.Services.AddScoped<GetTimeTable>();
+builder.Services.AddScoped<PredictEventItem>();
 
 var app = builder.Build();
 
@@ -68,36 +69,6 @@ await using (var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>(
 
     // DBへ書き込み
     await dbCtx.SaveChangesAsync();
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var getTimeTable = scope.ServiceProvider.GetRequiredService<GetTimeTable>();
-
-    EventMaterial eventMaterial = new EventMaterial()
-    {
-        IsOut = true,
-        Remind = "test",
-        Destination = "test",
-        MoveType = MoveType.Train,
-        StartTime = new DateTime() { Year = 2024, Month = 8, Day = 1, Hour = 10, Minute = 0 },
-        EndTime = new DateTime() { Year = 2024, Month = 8, Day = 1, Hour = 12, Minute = 0 },
-        DestinationPos = new Pos()
-        {
-            Lat = 34.236,
-            Lon = 133.79
-        },
-        FromPos = new Pos()
-        {
-            Lat = 34.2273,
-            Lon = 133.666
-        },
-        Option = ""
-    };
-
-    var response = await getTimeTable.GetTimeTableList(eventMaterial, true);
-
-    Console.WriteLine(response);
 }
 
 app.Run();

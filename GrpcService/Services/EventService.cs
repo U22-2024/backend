@@ -7,7 +7,7 @@ using DateTime = System.DateTime;
 
 namespace GrpcService.Services;
 
-public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventServiceBase
+public class EventService(AppDbContext dbContext, ILogger<EventService> logger) : Event.V1.EventService.EventServiceBase
 {
     [Authorize]
     public override async Task<CreateEventResponse> CreateEvent(CreateEventRequest request, ServerCallContext context)
@@ -29,16 +29,16 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
             Uid = request.Uid.Value
         };
 
-        dbContext.Events.Add(eventModel);
-        await dbContext.SaveChangesAsync();
+        var e = dbContext.Events.Add(eventModel);
 
         foreach (var timeTableItem in request.TimeTable.Item)
         {
-            var timeTableItemModel = GetTimeTableItemModel(timeTableItem);
+            var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
 
             dbContext.TimeTableItems.Add(timeTableItemModel);
-            await dbContext.SaveChangesAsync();
         }
+
+        await dbContext.SaveChangesAsync();
 
         return new CreateEventResponse
         {
@@ -101,16 +101,16 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
             await dbContext.SaveChangesAsync();
         }
 
-        dbContext.Events.Update(eventModel);
-        await dbContext.SaveChangesAsync();
+        var e = dbContext.Events.Update(eventModel);
 
         foreach (var timeTableItem in request.Event.TimeTable.Item)
         {
-            var timeTableItemModel = GetTimeTableItemModel(timeTableItem);
+            var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
 
             dbContext.TimeTableItems.Add(timeTableItemModel);
-            await dbContext.SaveChangesAsync();
         }
+
+        await dbContext.SaveChangesAsync();
 
         return new UpdateEventResponse
         {
@@ -128,11 +128,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
         if (authUser.Uid != request.Uid.Value)
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
 
-        foreach (var timeTableItem in eventModel.TimeTableItems)
-        {
-            dbContext.TimeTableItems.Remove(timeTableItem);
-            await dbContext.SaveChangesAsync();
-        }
+        foreach (var timeTableItem in eventModel.TimeTableItems) dbContext.TimeTableItems.Remove(timeTableItem);
 
         dbContext.Events.Remove(eventModel);
         await dbContext.SaveChangesAsync();
@@ -143,7 +139,7 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
     public DateTime ToDateTime(Event.V1.DateTime dateTime)
     {
         return new DateTime((int)dateTime.Year, (int)dateTime.Month, (int)dateTime.Day, (int)dateTime.Hour,
-            (int)dateTime.Minute, 0);
+            (int)dateTime.Minute, 0, DateTimeKind.Utc);
     }
 
     public Event.V1.Event GetEvent(EventModel eventModel)
@@ -165,59 +161,50 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
                 Fare = (uint)eventModel.Fare,
                 Item =
                 {
-                    eventModel.TimeTableItems.Select(timeTableItem => new TimeTableItem
-                    {
-                        Type = (TimeTableType)timeTableItem.Type,
-                        Name = timeTableItem.Name,
-                        Move = timeTableItem.Move,
-                        FromTime = new Event.V1.DateTime
-                        {
-                            Year = (uint)timeTableItem.FromTime.Year,
-                            Month = (uint)timeTableItem.FromTime.Month,
-                            Day = (uint)timeTableItem.FromTime.Day,
-                            Hour = (uint)timeTableItem.FromTime.Hour,
-                            Minute = (uint)timeTableItem.FromTime.Minute
-                        },
-                        EndTime = new Event.V1.DateTime
-                        {
-                            Year = (uint)timeTableItem.EndTime.Year,
-                            Month = (uint)timeTableItem.EndTime.Month,
-                            Day = (uint)timeTableItem.EndTime.Day,
-                            Hour = (uint)timeTableItem.EndTime.Hour,
-                            Minute = (uint)timeTableItem.EndTime.Minute
-                        },
-                        Distance = (uint)timeTableItem.Distance,
-                        LineName = timeTableItem.LineName,
-                        Transport = new Transport
-                        {
-                            Fare = (uint)timeTableItem.Fare,
-                            TrainName = timeTableItem.TrainName,
-                            Color = timeTableItem.Color,
-                            Direction = timeTableItem.Direction,
-                            Destination = timeTableItem.Destination
-                        }
-                    })
+                    eventModel.TimeTableItems.Select(timeTableItem => timeTableItem.ToTimeTableItem())
                 }
             }
         };
     }
 
-    public TimeTableItemModel GetTimeTableItemModel(TimeTableItem timeTableItem)
+    public TimeTableItemModel GetTimeTableItemModel(TimeTableItem timeTableItem, Guid eventId)
     {
+        if (timeTableItem.Type == TimeTableType.Point)
+            return new TimeTableItemModel
+            {
+                Type = (int)timeTableItem.Type,
+                Name = timeTableItem.Name,
+                EventId = eventId
+            };
+
+        if (timeTableItem.Move == "train")
+            return new TimeTableItemModel
+            {
+                EventId = eventId,
+                Type = (int)timeTableItem.Type,
+                Name = timeTableItem.Name,
+                Move = timeTableItem.Move,
+                FromTime = ToDateTime(timeTableItem.FromTime),
+                EndTime = ToDateTime(timeTableItem.EndTime),
+                Distance = (int)timeTableItem.Distance,
+                LineName = timeTableItem.LineName,
+                Fare = (int)timeTableItem.Transport.Fare,
+                TrainName = timeTableItem.Transport.TrainName,
+                Color = timeTableItem.Transport.Color,
+                Direction = timeTableItem.Transport.Direction,
+                Destination = timeTableItem.Transport.Destination
+            };
+
         return new TimeTableItemModel
         {
+            EventId = eventId,
             Type = (int)timeTableItem.Type,
             Name = timeTableItem.Name,
             Move = timeTableItem.Move,
             FromTime = ToDateTime(timeTableItem.FromTime),
             EndTime = ToDateTime(timeTableItem.EndTime),
             Distance = (int)timeTableItem.Distance,
-            LineName = timeTableItem.LineName,
-            Fare = (int)timeTableItem.Transport.Fare,
-            TrainName = timeTableItem.Transport.TrainName,
-            Color = timeTableItem.Transport.Color,
-            Direction = timeTableItem.Transport.Direction,
-            Destination = timeTableItem.Transport.Destination
+            LineName = timeTableItem.LineName
         };
     }
 }
