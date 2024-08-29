@@ -106,15 +106,19 @@ public class GetTimeTable(IConfiguration config)
                         timeTableItem.Distance = (uint)section.distance;
                         timeTableItem.LineName = section.line_name;
 
-                        var transport = new Event.V1.Transport
+                        if (timeTableItem.Move == "train")
                         {
-                            Fare = (uint)section.transport.fare.unit_0,
-                            Color = section.transport.color,
-                            TrainName = section.transport.self_name,
-                            Direction = section.transport.links[0].direction,
-                            Destination = section.transport.links[0].destination.name
-                        };
-                        timeTableItem.Transport = transport;
+                            var transport = new Event.V1.Transport
+                            {
+                                Fare = (uint)section.transport.fare.unit_0,
+                                Color = section.transport.color,
+                                TrainName = section.transport.self_name,
+                                Direction = section.transport.links[0].direction,
+                                Destination = section.transport.links[0].destination.name
+                            };
+                            timeTableItem.Transport = transport;
+                        }
+
                         break;
                     }
                     case TimeTableType.Unspecified:
@@ -305,7 +309,7 @@ public class RouteSummaryItem
 
 public class Fare
 {
-    public int unit_0 { get; set; } = -1;
+    public double unit_0 { get; set; } = -1;
 }
 
 public class RouteSectionItem
