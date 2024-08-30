@@ -10,3 +10,5 @@ Tools/
 /.idea
 !.idea/.idea.backend/.idea/externalDependencies.xml
 .azure
+
+.vs/
