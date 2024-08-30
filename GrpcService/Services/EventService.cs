@@ -30,10 +30,10 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
             TimeTableItems = new List<TimeTableItemModel>()
         };
 
-
+        var index = 0;
         foreach (var timeTableItem in request.TimeTable?.Item ?? [])
         {
-            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel);
+            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel, index++);
             eventModel.TimeTableItems.Add(timeTableItemModel);
         }
 
@@ -106,9 +106,11 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
         eventModel.WalkDistance = (int)(request.Event?.TimeTable?.WalkDistance ?? 0);
         eventModel.Fare = (int)(request.Event?.TimeTable?.Fare ?? 0);
         eventModel.TimeTableItems.Clear();
+
+        var index = 0;
         foreach (var timeTableItem in request.Event?.TimeTable?.Item ?? [])
         {
-            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel);
+            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel, index++);
             dbContext.TimeTableItems.Add(timeTableItemModel);
         }
 
@@ -163,20 +165,23 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
                 Fare = (uint)eventModel.Fare,
                 Item =
                 {
-                    eventModel.TimeTableItems.Select(timeTableItem => timeTableItem.ToTimeTableItem())
+                    eventModel.TimeTableItems
+                        .OrderBy(item => item.SeqId)
+                        .Select(timeTableItem => timeTableItem.ToTimeTableItem())
                 }
             }
         };
     }
 
-    private TimeTableItemModel ToTimeTableItemModel(TimeTableItem timeTableItem, EventModel eventModel)
+    private TimeTableItemModel ToTimeTableItemModel(TimeTableItem timeTableItem, EventModel eventModel, int index)
     {
         if (timeTableItem.Type == TimeTableType.Point)
             return new TimeTableItemModel
             {
                 Type = (int)timeTableItem.Type,
                 Name = timeTableItem.Name,
-                Event = eventModel
+                Event = eventModel,
+                SeqId = index
             };
 
         if (timeTableItem.Move == "train")
@@ -194,7 +199,8 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
                 TrainName = timeTableItem.Transport.TrainName,
                 Color = timeTableItem.Transport.Color,
                 Direction = timeTableItem.Transport.Direction,
-                Destination = timeTableItem.Transport.Destination
+                Destination = timeTableItem.Transport.Destination,
+                SeqId = index
             };
 
         return new TimeTableItemModel
@@ -206,7 +212,8 @@ public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventS
             FromTime = ToDateTime(timeTableItem.FromTime),
             EndTime = ToDateTime(timeTableItem.EndTime),
             Distance = (int)timeTableItem.Distance,
-            LineName = timeTableItem.LineName
+            LineName = timeTableItem.LineName,
+            SeqId = index
         };
     }
 }

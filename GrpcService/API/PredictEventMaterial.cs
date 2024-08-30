@@ -15,9 +15,9 @@ public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMat
 
     public async Task<EventMaterial> UpdateEventMaterial(string prompt, EventMaterial? eventMaterial)
     {
-        TimeZoneInfo tokyoTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
-        System.DateTime dateTimeInTokyo = TimeZoneInfo.ConvertTime(System.DateTime.Now, tokyoTimeZoneInfo);
-        string today = dateTimeInTokyo.ToString("yyyy/MM/dd");
+        var tokyoTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+        var dateTimeInTokyo = TimeZoneInfo.ConvertTime(System.DateTime.Now, tokyoTimeZoneInfo);
+        var today = dateTimeInTokyo.ToString("yyyy/MM/dd");
 
         var startTimeStr = GetDateTimeString(eventMaterial?.StartTime);
         var endTimeStr = GetDateTimeString(eventMaterial?.EndTime);
@@ -45,7 +45,6 @@ public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMat
                 ]
             });
 
-            logger.LogInformation("Anthropic API response: {msg}", message);
             var responseInfo = JsonSerializer.Deserialize<ClaudeFormat>(message.ToString());
             if (responseInfo == null)
                 throw new RpcException(new Status(StatusCode.Internal, "Claude API error"));
@@ -70,7 +69,6 @@ public class PredictEventMaterial(IConfiguration config, ILogger<PredictEventMat
             eventMaterial.StartTime = startTime;
             eventMaterial.EndTime = endTime;
             return eventMaterial;
-
         }
         catch (ClaudiaException ex)
         {

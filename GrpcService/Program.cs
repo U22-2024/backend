@@ -26,8 +26,6 @@ var app = builder.Build();
 app.UseHttpLogging();
 app.UseExceptionHandler();
 
-// app.MapDefaultEndpoints();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -46,35 +44,42 @@ if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
     await using var dbCtx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    // データベースを初期化
     var strategy = dbCtx.Database.CreateExecutionStrategy();
+
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-    logger.LogInformation("データベースを初期化しています...");
-    await strategy.ExecuteAsync(async () =>
+    var created = await strategy.ExecuteAsync(async () =>
     {
+        logger.LogInformation("Initializing Database...");
+        // await dbCtx.Database.EnsureDeletedAsync();
         var res = await dbCtx.Database.EnsureCreatedAsync();
-        logger.LogInformation("データベースの初期化が完了しました。 {b}", res);
+        logger.LogInformation("Initialized Database: {b}", res);
+        return res;
     });
-
-    // 一言メッセージを読み込んでデータベースに保存する
-    var wb = new Workbook();
-    wb.LoadFromFile("../mother_hitokoto.xlsx");
-
-    var worksheet = wb.Worksheets[0];
-
-    for (var row = 1; row <= worksheet.LastRow; row++)
+    if (created)
     {
-        var range = worksheet.Range[row, 1];
-        var cellValue = range.Text ?? string.Empty;
-        var greet = new GreetModel { Id = row, Message = cellValue };
+        // 一言メッセージを読み込んでデータベースに保存する
+        var wb = new Workbook();
+        wb.LoadFromFile("../mother_hitokoto.xlsx");
 
-        dbCtx.Greets.Add(greet);
+        var worksheet = wb.Worksheets[0];
+
+        for (var row = 1; row <= worksheet.LastRow; row++)
+        {
+            var range = worksheet.Range[row, 1];
+            var cellValue = range.Text ?? string.Empty;
+            var greet = new GreetModel { Id = row, Message = cellValue };
+
+            dbCtx.Greets.Add(greet);
+        }
+
+        // リソースを解放する
+        wb.Dispose();
+
+        // DBへ書き込み
+        await dbCtx.SaveChangesAsync();
     }
-
-    // リソースを解放する
-    wb.Dispose();
-
-    // DBへ書き込み
-    await dbCtx.SaveChangesAsync();
 }
 
 app.Run();

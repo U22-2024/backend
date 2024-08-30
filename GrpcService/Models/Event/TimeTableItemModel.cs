@@ -11,27 +11,29 @@ public class TimeTableItemModel
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; init; }
 
+    [Required] public required int SeqId { get; set; }
+
     [Required] public required int Type { get; set; }
 
-    [MaxLength(100)] public string? Name { get; set; } = null;
+    [MaxLength(100)] public string? Name { get; set; }
 
-    [MaxLength(100)] public string? Move { get; set; } = null;
+    [MaxLength(100)] public string? Move { get; set; }
 
     public DateTime FromTime { get; set; }
     public DateTime EndTime { get; set; }
     public int Distance { get; set; } = -1;
 
-    [MaxLength(100)] public string? LineName { get; set; } = null;
+    [MaxLength(100)] public string? LineName { get; set; }
 
     public int Fare { get; set; } = -1;
 
-    [MaxLength(100)] public string? TrainName { get; set; } = null;
+    [MaxLength(100)] public string? TrainName { get; set; }
 
-    [MaxLength(10)] public string? Color { get; set; } = null;
+    [MaxLength(10)] public string? Color { get; set; }
 
-    [MaxLength(100)] public string? Direction { get; set; } = null;
+    [MaxLength(100)] public string? Direction { get; set; }
 
-    [MaxLength(100)] public string? Destination { get; set; } = null;
+    [MaxLength(100)] public string? Destination { get; set; }
 
     public Guid EventId { get; set; }
 
