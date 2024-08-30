@@ -50,8 +50,7 @@
               "RelativeToolTip": "..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\697ca16d-7f38-47c3-82b3-7ced05ff5aa8\\secrets.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-29T15:33:12.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T15:33:12.218Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "GrpcService\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAACgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-29T15:21:45.251Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T15:21:45.251Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "GrpcService\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-29T15:21:41.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T15:21:41.048Z"
             }
           ]
         }
