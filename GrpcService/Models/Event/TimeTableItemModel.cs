@@ -33,7 +33,7 @@ public class TimeTableItemModel
 
     [MaxLength(100)] public string? Destination { get; set; } = null;
 
-    [Required] public required Guid EventId { get; set; }
+    public Guid EventId { get; set; }
 
     public EventModel Event { get; init; } = null!;
 }

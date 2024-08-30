@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\keigo\\RiderProjects\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D06598-9A08-4A16-861E-D6A2CEFE01D9}|GrpcService\\GrpcService.csproj|c:\\users\\keigo\\riderprojects\\backend\\grpcservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C2D06598-9A08-4A16-861E-D6A2CEFE01D9}|GrpcService\\GrpcService.csproj|solutionrelative:grpcservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2D06598-9A08-4A16-861E-D6A2CEFE01D9}|GrpcService\\GrpcService.csproj|c:\\users\\keigo\\riderprojects\\backend\\grpcservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C2D06598-9A08-4A16-861E-D6A2CEFE01D9}|GrpcService\\GrpcService.csproj|solutionrelative:grpcservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\keigo\\RiderProjects\\backend\\GrpcService\\appsettings.json",
+              "RelativeDocumentMoniker": "GrpcService\\appsettings.json",
+              "ToolTip": "C:\\Users\\keigo\\RiderProjects\\backend\\GrpcService\\appsettings.json",
+              "RelativeToolTip": "GrpcService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAACgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-29T15:21:45.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\keigo\\RiderProjects\\backend\\GrpcService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "GrpcService\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\keigo\\RiderProjects\\backend\\GrpcService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "GrpcService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-29T15:21:41.048Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

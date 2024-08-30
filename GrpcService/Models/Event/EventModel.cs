@@ -19,7 +19,7 @@ public class EventModel
 
     public string[] EventItems { get; set; } = [];
 
-    public ICollection<TimeTableItemModel> TimeTableItems { get; } = new List<TimeTableItemModel>();
+    public ICollection<TimeTableItemModel> TimeTableItems { get; set; }
 
     public string[] UserItems { get; set; } = [];
 

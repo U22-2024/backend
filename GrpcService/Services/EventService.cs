@@ -3,11 +3,12 @@ using Grpc.Core;
 using GrpcService.Extensions;
 using GrpcService.Models.Event;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using DateTime = System.DateTime;
 
 namespace GrpcService.Services;
 
-public class EventService(AppDbContext dbContext, ILogger<EventService> logger) : Event.V1.EventService.EventServiceBase
+public class EventService(AppDbContext dbContext) : Event.V1.EventService.EventServiceBase
 {
     [Authorize]
     public override async Task<CreateEventResponse> CreateEvent(CreateEventRequest request, ServerCallContext context)
@@ -25,23 +26,23 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
             TransitCount = (int)(request.TimeTable?.TransitCount ?? 0),
             WalkDistance = (int)(request.TimeTable?.WalkDistance ?? 0),
             Fare = (int)(request.TimeTable?.Fare ?? 0),
-            Uid = request.Uid.Value
+            Uid = request.Uid.Value,
+            TimeTableItems = new List<TimeTableItemModel>()
         };
 
-        var e = dbContext.Events.Add(eventModel);
 
         foreach (var timeTableItem in request.TimeTable?.Item ?? [])
         {
-            var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
-
-            dbContext.TimeTableItems.Add(timeTableItemModel);
+            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel);
+            eventModel.TimeTableItems.Add(timeTableItemModel);
         }
 
+        var e = dbContext.Events.Add(eventModel);
         await dbContext.SaveChangesAsync();
 
         return new CreateEventResponse
         {
-            Event = GetEvent(eventModel)
+            Event = EventModel2GrpcEvent(e.Entity)
         };
     }
 
@@ -49,7 +50,10 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
     public override async Task<GetEventResponse> GetEvent(GetEventRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
-        var eventModel = await dbContext.Events.FindAsync(Guid.Parse(request.Id.Value));
+        var guid = Guid.Parse(request.Id.Value);
+        var eventModel = await dbContext.Events
+            .Include(e => e.TimeTableItems)
+            .FirstAsync(e => e.Id == guid);
         if (eventModel == null)
             throw new RpcException(new Status(StatusCode.NotFound, "Event not found"));
         if (authUser.Uid != request.Uid.Value)
@@ -57,30 +61,38 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
 
         return new GetEventResponse
         {
-            Event = GetEvent(eventModel)
+            Event = EventModel2GrpcEvent(eventModel)
         };
     }
 
     [Authorize]
-    public override Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context)
+    public override async Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
         if (authUser.Uid != request.Uid.Value)
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
-        var eventModels = dbContext.Events.Where(e => e.Uid == request.Uid.Value).ToList();
-        var events = eventModels.Select(GetEvent).ToList();
+        var eventModels = await dbContext.Events
+            .Include(e => e.TimeTableItems)
+            .Where(e => e.Uid == request.Uid.Value)
+            .ToListAsync();
+        var events = eventModels
+            .Select(EventModel2GrpcEvent)
+            .ToList();
 
-        return Task.FromResult(new GetEventsResponse
+        return new GetEventsResponse
         {
             Events = { events }
-        });
+        };
     }
 
     [Authorize]
     public override async Task<UpdateEventResponse> UpdateEvent(UpdateEventRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
-        var eventModel = await dbContext.Events.FindAsync(Guid.Parse(request.Event.Id.Value));
+        var guid = Guid.Parse(request.Event.Id.Value);
+        var eventModel = await dbContext.Events
+            .Include(e => e.TimeTableItems)
+            .FirstAsync(e => e.Id == guid);
         if (eventModel == null)
             throw new RpcException(new Status(StatusCode.NotFound, "Event not found"));
         if (authUser.Uid != request.Uid.Value)
@@ -93,23 +105,19 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
         eventModel.TransitCount = (int)(request.Event?.TimeTable?.TransitCount ?? 0);
         eventModel.WalkDistance = (int)(request.Event?.TimeTable?.WalkDistance ?? 0);
         eventModel.Fare = (int)(request.Event?.TimeTable?.Fare ?? 0);
-
-        foreach (var timeTableItem in eventModel.TimeTableItems) dbContext.TimeTableItems.Remove(timeTableItem);
-
-        var e = dbContext.Events.Update(eventModel);
-
+        eventModel.TimeTableItems.Clear();
         foreach (var timeTableItem in request.Event?.TimeTable?.Item ?? [])
         {
-            var timeTableItemModel = GetTimeTableItemModel(timeTableItem, e.Entity.Id);
-
+            var timeTableItemModel = ToTimeTableItemModel(timeTableItem, eventModel);
             dbContext.TimeTableItems.Add(timeTableItemModel);
         }
 
+        var e = dbContext.Events.Update(eventModel);
         await dbContext.SaveChangesAsync();
 
         return new UpdateEventResponse
         {
-            Event = GetEvent(eventModel)
+            Event = EventModel2GrpcEvent(e.Entity)
         };
     }
 
@@ -117,17 +125,16 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
     public override async Task<DeleteEventResponse> DeleteEvent(DeleteEventRequest request, ServerCallContext context)
     {
         var authUser = context.GetAuthUser();
-        var eventModel = await dbContext.Events.FindAsync(Guid.Parse(request.Id.Value));
+        var guid = Guid.Parse(request.Id.Value);
+        var eventModel = await dbContext.Events
+            .FirstAsync(e => e.Id == guid);
         if (eventModel == null)
             throw new RpcException(new Status(StatusCode.NotFound, "Event not found"));
         if (authUser.Uid != request.Uid.Value)
             throw new RpcException(new Status(StatusCode.PermissionDenied, "Permission denied"));
 
-        foreach (var timeTableItem in eventModel.TimeTableItems) dbContext.TimeTableItems.Remove(timeTableItem);
-
         dbContext.Events.Remove(eventModel);
         await dbContext.SaveChangesAsync();
-
         return new DeleteEventResponse();
     }
 
@@ -137,7 +144,7 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
             (int)dateTime.Minute, 0, DateTimeKind.Utc);
     }
 
-    public Event.V1.Event GetEvent(EventModel eventModel)
+    private static Event.V1.Event EventModel2GrpcEvent(EventModel eventModel)
     {
         var userItems = new UserItems();
         userItems.Item.AddRange(eventModel.UserItems);
@@ -162,20 +169,20 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
         };
     }
 
-    public TimeTableItemModel GetTimeTableItemModel(TimeTableItem timeTableItem, Guid eventId)
+    private TimeTableItemModel ToTimeTableItemModel(TimeTableItem timeTableItem, EventModel eventModel)
     {
         if (timeTableItem.Type == TimeTableType.Point)
             return new TimeTableItemModel
             {
                 Type = (int)timeTableItem.Type,
                 Name = timeTableItem.Name,
-                EventId = eventId
+                Event = eventModel
             };
 
         if (timeTableItem.Move == "train")
             return new TimeTableItemModel
             {
-                EventId = eventId,
+                Event = eventModel,
                 Type = (int)timeTableItem.Type,
                 Name = timeTableItem.Name,
                 Move = timeTableItem.Move,
@@ -192,7 +199,7 @@ public class EventService(AppDbContext dbContext, ILogger<EventService> logger) 
 
         return new TimeTableItemModel
         {
-            EventId = eventId,
+            Event = eventModel,
             Type = (int)timeTableItem.Type,
             Name = timeTableItem.Name,
             Move = timeTableItem.Move,
